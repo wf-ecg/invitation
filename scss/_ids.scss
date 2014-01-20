@@ -1,0 +1,54 @@
+
+#D0 article {
+    background-color: #939;
+    top: 22em;
+    text-align: right;
+}
+
+#D1, #D5 {
+    background: url('../images/image1_blur.jpg') 50% 0 no-repeat fixed;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+#D1 article, #D5 article {
+    left: 5%;
+    top: 22em;
+    width: 55em;
+}
+
+#D2, #D6 {
+    background: url('../images/image2_blur.jpg') 50% 0 no-repeat fixed;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+#D2 article, #D6 article {
+    right: 5%;
+    top: 33em;
+    width: 22em;
+}
+#D3 {
+    background: url('../images/image3_blur.jpg') 50% 0 no-repeat fixed;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+#D3 article {
+    background: url('../images/logo.jpg') no-repeat scroll center top transparent;
+    height: 15em;
+    margin: auto;
+    position: relative;
+    top: 30em;
+}
+#D4 {
+    height: auto;
+}
+#D4 article {
+    position: relative;
+}
+
+#D7 {
+    height: 22em;
+}
+#D7 article {
+    font-family: zapfino;
+    font-weight: normal;
+    text-align: center;
+    top: 7em;
+    width: 100%;
+}

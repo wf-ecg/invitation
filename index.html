@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!--
+http://robertnyman.com/2010/01/11/css-background-transparency-without-affecting-child-elements-through-rgba-and-filters/
+http://net.tutsplus.com/tutorials/html-css-techniques/simple-parallax-scrolling-technique/
+-->
+<html class="no-js debug" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Parallax Scrolling</title>
+        <link rel="stylesheet" href="styles/screen.css">
+        <script src="http://www.wellsfargomedia.com/lib/js/req.js"></script>
+        <script src="scripts/bg.js"></script>
+        <script src="scripts/port.js"></script>
+        <script src="scripts/script.js"></script>
+    </head>
+    <body>
+    <div id="Wrap">
+        <div id="Map"></div>
+        <section id="D0" data-ratio="10" class="background alpha60">
+            <article>
+                <h1>Simple Parallax Scroll</h1>
+            </article>
+        </section>
+
+        <section id="D1" data-ratio="10" class="background">
+            <article class="alpha60">
+                <h1>Introduction</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Donec a tincidunt orci.
+                    Integer faucibus accumsan risus, eu ornare nisl sodales vitae.
+                    Donec vestibulum quam vitae diam venenatis, sagittis facilisis nisi pretium.
+                    Fusce sed velit sodales, ultrices metus eget, ultricies urna.
+                    Nulla non metus aliquam, lacinia odio lacinia, suscipit nunc.
+                    Ut a turpis fringilla, pharetra arcu ut, elementum turpis.
+                    Aenean hendrerit lectus nec ornare molestie.
+                    Aliquam vitae nisl tellus.
+                    Phasellus dignissim magna felis, eget tristique dui fringilla eu.
+                    Nunc porttitor lobortis dui, sit amet sollicitudin purus.
+                </p>
+                <p>
+                    Curabitur tincidunt est sit amet mi placerat, vitae interdum eros dictum.
+                    Mauris quis nunc blandit nulla posuere lobortis.
+                    Praesent arcu felis, convallis nec quam at, mattis mollis nisi.
+                    Aenean consectetur pellentesque scelerisque.
+                    Sed ut massa sed nibh pretium commodo.
+                    Quisque lorem turpis, accumsan ac mi fringilla, feugiat vulputate erat.
+                    Maecenas aliquam elit nec vestibulum aliquet.
+                    Curabitur pharetra magna nisl, sit amet iaculis eros sodales a.
+                    Nunc non nisi auctor, iaculis ipsum sed, eleifend augue.
+                    Maecenas suscipit nibh non venenatis commodo.
+                    Donec at viverra elit.
+                </p>
+            </article>
+        </section>
+
+        <section id="D2" data-ratio="10" class="background">
+            <article class="alpha60"><h1>Middle section</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Donec a tincidunt orci.
+                    Integer faucibus accumsan risus, eu ornare nisl sodales vitae.
+                    Donec vestibulum quam vitae diam venenatis, sagittis facilisis nisi pretium.
+                    Fusce sed velit sodales, ultrices metus eget, ultricies urna.
+                    Nulla non metus aliquam, lacinia odio lacinia, suscipit nunc.
+                    Ut a turpis fringilla, pharetra arcu ut, elementum turpis.
+                    Aenean hendrerit lectus nec ornare molestie.
+                    Aliquam vitae nisl tellus.
+                    Phasellus dignissim magna felis, eget tristique dui fringilla eu.
+                    Nunc porttitor lobortis dui, sit amet sollicitudin purus.
+                </p>
+            </article>
+        </section>
+
+        <section id="D3" data-ratio="10" class="background">
+            <article></article>
+        </section>
+
+        <section id="D4" data-ratio="10" class="background">
+            <article class="alpha60">
+                <h1>Was that a logo?</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Donec a tincidunt orci.
+                    Integer faucibus accumsan risus, eu ornare nisl sodales vitae.
+                    Donec vestibulum quam vitae diam venenatis, sagittis facilisis nisi pretium.
+                    Fusce sed velit sodales, ultrices metus eget, ultricies urna.
+                    Nulla non metus aliquam, lacinia odio lacinia, suscipit nunc.
+                    Ut a turpis fringilla, pharetra arcu ut, elementum turpis.
+                    Aenean hendrerit lectus nec ornare molestie.
+                    Aliquam vitae nisl tellus.
+                    Phasellus dignissim magna felis, eget tristique dui fringilla eu.
+                    Nunc porttitor lobortis dui, sit amet sollicitudin purus.
+                </p>
+                <p>
+                    Curabitur tincidunt est sit amet mi placerat, vitae interdum eros dictum.
+                    Mauris quis nunc blandit nulla posuere lobortis.
+                    Praesent arcu felis, convallis nec quam at, mattis mollis nisi.
+                    Aenean consectetur pellentesque scelerisque.
+                    Sed ut massa sed nibh pretium commodo.
+                    Quisque lorem turpis, accumsan ac mi fringilla, feugiat vulputate erat.
+                    Maecenas aliquam elit nec vestibulum aliquet.
+                    Curabitur pharetra magna nisl, sit amet iaculis eros sodales a.
+                    Nunc non nisi auctor, iaculis ipsum sed, eleifend augue.
+                    Maecenas suscipit nibh non venenatis commodo.
+                    Donec at viverra elit.
+                </p>
+            </article>
+        </section>
+
+        <section id="D5" data-ratio="10" class="background">
+            <article>Simple Parallax Scroll</article>
+        </section>
+
+        <section id="D6" data-ratio="10" class="background">
+            <article class="alpha60">
+                <h1>We saw trees</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Donec a tincidunt orci.
+                    Integer faucibus accumsan risus, eu ornare nisl sodales vitae.
+                    Donec vestibulum quam vitae diam venenatis, sagittis facilisis nisi pretium.
+                    Fusce sed velit sodales, ultrices metus eget, ultricies urna.
+                    Nulla non metus aliquam, lacinia odio lacinia, suscipit nunc.
+                    Ut a turpis fringilla, pharetra arcu ut, elementum turpis.
+                    Aenean hendrerit lectus nec ornare molestie.
+                    Aliquam vitae nisl tellus.
+                    Phasellus dignissim magna felis, eget tristique dui fringilla eu.
+                    Nunc porttitor lobortis dui, sit amet sollicitudin purus.
+                </p>
+            </article>
+        </section>
+
+        <section id="D7" data-ratio="10" class="background">
+            <article>
+                <h1>Fin</h1>
+            </article>
+        </section>
+    </div>
+    </body>
+</html>
