@@ -6,4 +6,4 @@
 *.zip
 /media/
 /styles/
-/images/snaps/*/*.png
+/images/**/\ *.png
