@@ -1,5 +1,56 @@
 /* MISC */
 
 img {
-    display: block;
+    display: inline-block;
 }
+.hide {
+    display: none;
+}
+
+.center {
+    display: block;
+    margin: auto;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 0;
+}
+
+#Map {
+    background: rgba(255, 255, 255, 0.6);
+    border: 3px solid gray;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 15em;
+    z-index: 11;
+
+    a {
+        font-size: 99px;
+    }
+}
+
+#Mask {
+    background-color: rgba(55,55,55,0.8);
+    bottom: 0;
+    height: 100%;
+    position: fixed;
+    top: 640px;
+    width: 100%;
+    z-index: 1;
+}
+
+#Slug {
+    background-color: white;
+    bottom: 0;
+    height: 40px;
+    font-size: 9pt;
+    padding: 5px 15px;
+    position: fixed;
+    top: 600px;
+    width: 1280px;
+    z-index: 11;
+}
+

@@ -5,7 +5,43 @@ body {
 #Wrap {
     background-color: #46a033;
 }
+section {
+    overflow: hidden;
+}
 #Header {
     position: fixed;
+    top: 0;
     z-index: 9999;
 }
+#X0 {
+    background: url('../images/snaps/drive/back.jpg') 50% 0 no-repeat fixed;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+#X1 {
+    background: url('../images/snaps/holes/back.jpg') 50% 0 no-repeat fixed;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+#X2 {
+    background: url('../images/snaps/beauty/back.jpg') 50% 0 no-repeat fixed;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+#X3 {
+    background: url('../images/snaps/community/back1.jpg') 50% 0 no-repeat fixed;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+#X4 {
+    background: url('../images/snaps/community/back2.jpg') 50% 0 no-repeat fixed;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+#X5 {
+    background: url('../images/snaps/close/back.jpg') 50% 0 no-repeat fixed;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+
+#X0 article {
+    left: 5%;
+    top: 22em;
+}
+
+
+
