@@ -1,0 +1,46 @@
+/* PARA */
+
+html {
+    background-color: #aaa;
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+div {
+    box-sizing: border-box;
+}
+h1 {
+    font-size: 3em;
+}
+p {
+    margin-bottom: 0.25em;
+    margin-top: 0.75em;
+}
+section.background {
+    background-size: cover !important;
+    height: 1000px;
+    margin: 0 auto;
+    min-height: 100px;
+    min-width: 1000px;
+    max-width: 1200px;
+    position: relative;
+    width: 100%;
+}
+section.background article {
+    color: #ffffff;
+    position: absolute;
+    padding: 2%;
+    z-index: 9999;
+}
+
+.alpha60 {
+    /* Fallback for web browsers that doesn't support RGBa */
+    background: rgb(0, 0, 0);
+    /* RGBa with 0.6 opacity */
+    background: rgba(0, 0, 0, 0.6);
+    /* For IE 5.5 - 7*/
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+    /* For IE 8*/
+    -ms-filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)';
+}
