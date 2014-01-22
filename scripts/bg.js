@@ -20,17 +20,22 @@ var Bg = (function (W) {
         beyond: null, // how much beyond port.scroll.top (0)
         height: null,
         inited: null,
-        ratio: null,
+        data: null,
         topof: null,
         showing: null,
         measure: function () {
-            this.ratio = this.getRatio();
+            this.data = this.getData();
+            console.error(name, 'data', this.data);
             this.topof = this.getTopof();
             this.height = this.$.height();
             this.inited = true;
         },
-        getRatio: function () {
-            return this.$.data('ratio');
+        getData: function () {
+            return {
+                ratio: this.$.data('r'),
+                offby: this.$.data('o'),
+                trans: this.$.data('t'),
+            };
         },
         getTopof: function () {
             return this.$.position().top | 0;
@@ -40,7 +45,7 @@ var Bg = (function (W) {
             return this.showing;
         },
         getCss: function () {
-            this._y = -(this.beyond / this.ratio) | 0;
+            this._y = -(this.beyond / this.data.ratio) | 0;
             // negative as we scroll up
             return '50% ' + this._y + 'px';
         },
