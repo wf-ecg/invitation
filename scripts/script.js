@@ -26,7 +26,8 @@ $(function () {
             bg.redraw();
 
             if (!bg.isShowing()) {
-                (W.debug > 0) && C.log('offscreen', i, bg._css.backgroundPosition);
+                (W.debug > 0) && C.log('offscreen');
+                (W.debug > 1) && C.log(i, bg._css.backgroundPosition);
             } else {
                 (W.debug > 0) && C.debug('parallax', i, bg._css);
             }
