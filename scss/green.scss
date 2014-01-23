@@ -1,0 +1,70 @@
+/* GREEN */
+$green: #46a033;
+
+body {
+/*    padding-right: 15em;*/
+}
+section {
+    overflow: hidden;
+}
+#Header {
+    opacity: 0.95;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+}
+#Mask {
+    background: $green;
+    bottom: 0;
+/*    height: 100%;*/
+    position: fixed;
+/*    top: 640px;*/
+    width: 100%;
+    z-index: 1;
+}
+#Wrap {
+    background-color: $green;
+}
+#X0 {
+    background: url('../images/1drive/panel.png') 50% 0 no-repeat fixed;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    height: 1200px;
+}
+#X1 {
+    background: url('../images/1drive/_back.jpg') 50% 0 no-repeat fixed;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    height: 1200px;
+}
+#X2 {
+    background: url('../images/2holes/_back.jpg') 50% 0 no-repeat fixed;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+#X3 {
+    background: url('../images/3beauty/_back.jpg') 50% 0 no-repeat fixed;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+#X4a {
+    background: url('../images/4comm/_back1.jpg') 50% 0 no-repeat fixed;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+#X4b {
+    background: url('../images/4comm/_back2.jpg') 50% 0 no-repeat fixed;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+#X5 {
+    background: url('../images/5close/_back.jpg') 50% 0 no-repeat fixed;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+#X6 {
+    background: url('../images/5close/panel2.png') 0 0 no-repeat fixed;
+    background-size: auto !important;
+    height: 1200px;
+}
+
+#X0 article {
+    left: 5%;
+    top: 22em;
+}
+
+
+

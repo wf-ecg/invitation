@@ -1,3 +1,4 @@
+*.app
 *.mp4
 *.pdf
 *.psd
@@ -5,3 +6,4 @@
 *.zip
 /media/
 /styles/
+/images/**/\ *.png
