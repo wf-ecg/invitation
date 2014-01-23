@@ -1,7 +1,6 @@
 /*jslint es5:true, white:false */
 /*globals $, console, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-window.debug = 0;
 
 var Scale = (function (W) {
     var self, name = 'Scale',
