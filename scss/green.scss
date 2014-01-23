@@ -2,7 +2,7 @@
 $green: #46a033;
 
 body {
-    padding-right: 15em;
+/*    padding-right: 15em;*/
 }
 section {
     overflow: hidden;
@@ -16,14 +16,19 @@ section {
 #Mask {
     background: $green;
     bottom: 0;
-    height: 100%;
+/*    height: 100%;*/
     position: fixed;
-    top: 640px;
+/*    top: 640px;*/
     width: 100%;
     z-index: 1;
 }
 #Wrap {
     background-color: $green;
+}
+#X0 {
+    background: url('../images/1drive/panel.png') 50% 0 no-repeat fixed;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    height: 1200px;
 }
 #X1 {
     background: url('../images/1drive/_back.jpg') 50% 0 no-repeat fixed;

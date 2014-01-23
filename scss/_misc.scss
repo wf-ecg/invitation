@@ -28,17 +28,17 @@ section {
 }
 
 #Map {
-    background-color: rgba(111,111,111,1);
+    background-color: rgba(111,111,111,.5);
     border: 3px solid gray;
     height: 100%;
     position: fixed;
     top: 0;
     right: 0;
-    width: 15em;
+    width: 5em;
     z-index: 11;
 
     a {
-        font-size: 99px;
+        font-size: 22px;
     }
 }
 
@@ -50,7 +50,7 @@ section {
     font-size: 9pt;
     padding: 5px 15px;
     position: fixed;
-    top: 600px;
+    //top: 600px;
     width: 1280px;
     z-index: 11;
 }
