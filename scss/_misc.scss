@@ -3,8 +3,15 @@
 img {
     display: inline-block;
 }
+section {
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+}
+
 .hide {
-    display: none;
+    display: none !important;
 }
 
 .tbox, .center {
@@ -17,7 +24,7 @@ img {
     bottom: 0;
 }
 .tbox {
-    margin: 12em auto;
+    margin: 15em auto;
 }
 
 #Map {
@@ -35,18 +42,9 @@ img {
     }
 }
 
-#Mask {
-    background: rgba(255, 255, 255, 0.8);
-    bottom: 0;
-    height: 100%;
-    position: fixed;
-    top: 640px;
-    width: 100%;
-    z-index: 1;
-}
-
 #Slug {
-    background-color: white;
+    background-color: rgba(255,255,255,0.9);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
     bottom: 0;
     height: 40px;
     font-size: 9pt;

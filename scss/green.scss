@@ -1,22 +1,29 @@
 /* GREEN */
+$green: #46a033;
 
 body {
     padding-right: 15em;
 }
 section {
     overflow: hidden;
-    -webkit-transition: all 0.25s ease-in-out;
-    -moz-transition: all 0.25s ease-in-out;
-    -o-transition: all 0.25s ease-in-out;
-    transition: all 0.25s ease-in-out;
-}
-#Wrap {
-    background-color: #46a033;
 }
 #Header {
+    opacity: 0.95;
     position: fixed;
     top: 0;
     z-index: 9999;
+}
+#Mask {
+    background: $green;
+    bottom: 0;
+    height: 100%;
+    position: fixed;
+    top: 640px;
+    width: 100%;
+    z-index: 1;
+}
+#Wrap {
+    background-color: $green;
 }
 #X1 {
     background: url('../images/1drive/_back.jpg') 50% 0 no-repeat fixed;
@@ -44,7 +51,9 @@ section {
     box-shadow: 0 0 50px rgba(0,0,0,0.8);
 }
 #X6 {
-    height: 600px;
+    background: url('../images/5close/panel2.png') 0 0 no-repeat fixed;
+    background-size: auto !important;
+    height: 1200px;
 }
 
 #X0 article {
