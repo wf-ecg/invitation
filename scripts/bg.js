@@ -25,16 +25,15 @@ var Bg = (function (W) {
         showing: null,
         measure: function () {
             this.data = this.getData();
-            console.error(name, 'data', this.data);
             this.topof = this.getTopof();
             this.height = this.$.height();
             this.inited = true;
         },
         getData: function () {
             return {
-                ratio: this.$.data('r'),
-                offby: this.$.data('o'),
-                trans: this.$.data('t'),
+                ratio: this.$.data('r') || 10,
+                offby: this.$.data('o') || 0,
+                trans: this.$.data('t') || 'move',
             };
         },
         getTopof: function () {
@@ -46,6 +45,7 @@ var Bg = (function (W) {
         },
         getCss: function () {
             this._y = -(this.beyond / this.data.ratio) | 0;
+            this._y -= this.data.offby;
             // negative as we scroll up
             return '50% ' + this._y + 'px';
         },
