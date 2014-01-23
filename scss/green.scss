@@ -1,12 +1,17 @@
 /* GREEN */
 
 body {
-}
-#Wrap {
-    background-color: #46a033;
+    padding-right: 15em;
 }
 section {
     overflow: hidden;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+}
+#Wrap {
+    background-color: #46a033;
 }
 #Header {
     position: fixed;
