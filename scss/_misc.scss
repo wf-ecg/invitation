@@ -4,12 +4,17 @@ img {
     display: inline-block;
 }
 section {
-    -webkit-transition: all 0.25s ease-out;
-    -moz-transition: all 0.25s ease-out;
-    -o-transition: all 0.25s ease-out;
-    transition: all 0.25s ease-out;
+    -webkit-transition: all 0.125s ease-out;
+    -moz-transition: all 0.125s ease-out;
+    -o-transition: all 0.125s ease-out;
+    transition: all 0.125s ease-out;
 }
-
+.stretch {
+    width: 100%;
+}
+.padded {
+/*    padding: 10% 0;*/
+}
 .bottom {
     position: absolute;
     bottom: 0;
@@ -24,39 +29,9 @@ section {
 .tbox {
     margin: 15em auto;
 }
-
-#Header {
-    opacity: 0.95;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1;
+.teach {
+    display: block;
+    margin: auto;
+    margin-top: 22em;
+    margin-left: 1em;
 }
-#Map {
-    background-color: rgba(111,111,111,.5);
-    color: white;
-    height: 100%;
-    padding: 3px;
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 7em;
-    z-index: 2;
-
-    a {
-        display: block;
-        font-size: 22px;
-    }
-}
-#Slug {
-    background-color: rgba(255,255,255,0.9);
-    bottom: 0;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    height: 40px;
-    font-size: 9pt;
-    padding: 5px 15px;
-    position: fixed;
-    width: 100%;
-    z-index: 3;
-}
-

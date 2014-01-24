@@ -8,7 +8,12 @@ var Bg = (function (W) {
     self = function Bg(ele) {
         this.$ = $(ele);
         this.$.data(name, this);
+        this.readData();
         this.measure();
+        this.$.css({
+            backgroundImage: 'url(images/' + this.data.image +')',
+//            height: this.data.height,
+        });
 
         (W.debug > 0) && C.debug(name, this);
     };
@@ -24,13 +29,14 @@ var Bg = (function (W) {
         topof: null,
         showing: null,
         measure: function () {
-            this.data = this.getData();
             this.topof = this.getTopof();
-            this.height = this.$.height();
+            this.height = this.$.outerHeight();
             this.inited = true;
         },
-        getData: function () {
-            return {
+        readData: function () {
+            this.data = {
+                image: this.$.data('f') || '0chrome/swatch.png',
+                height: this.$.data('h') || '100',
                 ratio: this.$.data('r') || 10,
                 offby: this.$.data('o') || 0,
                 trans: this.$.data('t') || 'move',

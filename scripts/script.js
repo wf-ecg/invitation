@@ -16,8 +16,9 @@ $(function () {
     $W = $(W);
     $W.viewport = new Port($W);
 
-    $('section.background').each(function (i) {
-        var bg = new Bg(this);
+    $('#Wrap section').each(function (i) {
+        var el = this,
+            bg = new Bg(el);
         // cache em
 
         $W.scroll(function () {
@@ -29,7 +30,7 @@ $(function () {
                 (W.debug > 0) && C.log('offscreen');
                 (W.debug > 1) && C.log(i, bg._css.backgroundPosition);
             } else {
-                (W.debug > 0) && C.debug('parallax', i, bg._css);
+                (W.debug > 0) && C.debug('parallax', [i, bg._css, el]);
             }
 
         });
