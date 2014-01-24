@@ -55,8 +55,8 @@ var Scale = (function (W) {
     }
 
     function fillGaps(ar1, ar2) {
-        var arr = ar1.concat(),
-            len = ar1.length - 1,
+        var arr = ar1.concat(), // copy
+            len = ar1.length - 1, // cache
             steps, i;
 
         for (i = 0; i < len; i++) {
@@ -66,25 +66,49 @@ var Scale = (function (W) {
         return Util.flatten(arr);
     }
 
-    function _doAll(arr) {
+    function makeScaleFrom(arr) {
         var tmp = fillGaps(arr, calcPositions(arr));
 
-        debug(2) && C.debug(name, 'length', tmp.length);
-        debug() && C.debug(name, 'doAll', tmp, 'from', arr);
+        tmp.transform = function (pct, val) {
+            pct = Math.abs(pct || 10);
+            pct = (pct > 100) ? 100 : pct;
+            val = val || 100;
 
+
+            var idx = Math.round(pct / 10),
+                adj = tmp[idx] / 100;
+
+            return val * adj;
+        };
+        tmp.mapt = function (val) {
+            return $.map(tmp, function (e, i){
+                var z = tmp.transform(i * 100, e);
+                return z;
+            });
+        }
         return tmp;
     }
 
+    function test(arr) {
+        var tmp = makeScaleFrom(arr);
+
+        C.debug(name, 'make', tmp, 'length', tmp.length, 'from', arr);
+
+        C.debug(name, 'mapt', tmp.mapt(100));
+        return tmp
+    }
+
+
     function _test() {
-        self.run([0, 0, 1]);
-        self.run([0, 1,1,1,1,1,1, 1]);
-        self.run([0, 1111, 1]);
-        self.run([[0, 2, 4, 6, 8, 10]]);
-        self.run([1000, 100]);
+        test([0, 0, 1]);
+        test([0, 1,1,1,1,1,1, 1]);
+        test([0, 1111, 1]);
+        test([[0, 2, 4, 6, 8, 10]]);
+        return test([1000, 100]);
     }
 
     self = {
-        run: _doAll,
+        run: makeScaleFrom,
         test: _test,
     };
 
@@ -92,9 +116,9 @@ var Scale = (function (W) {
 }(window));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+var scale = Scale.test()
 
 /*
 
-Scale.test()
 
  */
