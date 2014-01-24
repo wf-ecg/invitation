@@ -20,17 +20,16 @@ p {
     background: url('../images/0chrome/swatch.png') 50% 0 no-repeat fixed;
     background-size: cover !important;
     box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    border: 1px solid red;
     margin: 0 auto;
     min-height: 640px;
-    min-width: 600px;
-    padding: 10% 0;
+    height: 100%;
     position: relative;
     width: 100%;
 }
 #Wrap section article {
     color: #ffffff;
     //position: absolute;
-    padding: 2%;
     z-index: 9999;
 }
 

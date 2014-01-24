@@ -9,11 +9,11 @@ var Bg = (function (W) {
         this.$ = $(ele);
         this.$.data(name, this);
         this.readData();
-        this.measure();
         this.$.css({
             backgroundImage: 'url(images/' + this.data.image +')',
-//            height: this.data.height,
+            height: this.data.height,
         });
+        this.measure();
 
         (W.debug > 0) && C.debug(name, this);
     };

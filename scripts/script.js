@@ -24,7 +24,7 @@ $(function () {
         $W.scroll(function () {
 
             bg.compareTo($W.viewport.all);
-            bg.redraw();
+                bg.redraw();
 
             if (!bg.isShowing()) {
                 (W.debug > 0) && C.log('offscreen');
