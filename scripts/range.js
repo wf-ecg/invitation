@@ -20,17 +20,18 @@ var Range = (function (W) {
 
         if (typeof def === 'function') {
             obj[nom] = def;
-            return;
+        }
+        else {
+            obj[nom] = function (x) {
+                if (x) {
+                    obj._[nom] = x;
+                    return obj;
+                } else {
+                    return obj._[nom];
+                }
+            };
         }
 
-        obj[nom] = function (x) {
-            if (x) {
-                obj._[nom] = x;
-                return obj;
-            } else {
-                return obj._[nom];
-            }
-        };
         obj[nom].toString = obj[nom];
     }
 
@@ -69,16 +70,21 @@ var Range = (function (W) {
     function _test() {
         var port = makeRange(),
             B = $('body');
-
-        port.makeBinding('position', function () {
-//              console.error(B.scrollTop())
-            return B.scrollTop();
-        });
         C.debug(name, 'port.maximum(44)', 'port.position(22)', port.maximum(44) && port.position(22));
         C.debug(name, 'port.toPx()', port.toPx());
         C.debug(name, 'port.toPx(25)', port.toPx(25));
         C.debug(name, 'port.toPct()', port.toPct());
         C.debug(name, 'port.toPct(33)', port.toPct(33));
+
+        B.find('h1').on('click', function () {
+            $(this).hide()
+        });
+        port.makeBinding('position', function () {
+            return B.scrollTop();
+        });
+        port.makeBinding('maximum', function () {
+            return B.outerHeight() - B.parent().outerHeight();
+        });
         return port;
     }
 
@@ -98,3 +104,13 @@ var range = Range.test();
 
 
  */
+
+splat = function (ele) { // Util.heights =
+    var me = $(ele);
+    if (me.is(document)) return;
+    if (me.length) C.log(me.height(), me.innerHeight(), me.outerHeight());
+    splat(me.parent())
+}
+
+
+
