@@ -1,4 +1,7 @@
 /* MISC */
+
+$green: #46a033;
+
 section, div {
     box-sizing: border-box;
 }
@@ -21,23 +24,43 @@ section {
 .hide {
     display: none !important;
 }
-.tbox, .center {
-    display: block;
-    margin: auto;
-}
-.tbox {
-    margin: 15em auto;
-}
 .shadow, .ribbon {
-    box-shadow: 0 0 50px rgba(0,0,0,0.4);
+    box-shadow: 0 0 50px transparentize(black, 0.6);
 }
 .teach {
+    background-color: #f1f1f1;
+    background: url('../images/4comm/teach.png') 14px 17px no-repeat #f1f1f1;
+    display: inline-block;
+    margin: 22em auto auto 1em;
+}
+.arrow {
+    border: 0;
+    border-radius: 3em;
+    display: inline-block;
+    height: 45px;
+    opacity: 0.8;
+    padding: 0;
+    width: 45px;
+
+    &:hover {
+        background-color: rgba(255,255,155,0.4) !important;
+        box-shadow: 0 0 50px transparentize(#333, 0.6);
+        opacity: 1;
+    }
+    &:active {
+        box-shadow: 0 10px 40px transparentize(white, 0.8);
+    }
+    &.left {
+        background: url('../images/0chrome/arrows.png') 0 0 no-repeat;
+    }
+    &.right {
+        background: url('../images/0chrome/arrows.png') -45px 0 no-repeat;
+    }
+}
+.center {
     display: block;
     margin: auto;
-    margin-top: 22em;
-    margin-left: 1em;
 }
-
 .debug {
     #Wrap {
         border: 1px solid lime;
