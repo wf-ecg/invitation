@@ -5,34 +5,30 @@
 var Scale = (function (W) {
     var self, name = 'Scale',
         C = W.console,
-        MAX = 11;
+        SCALE = 10;
 
     function debug(n) {
         return W.debug >= (n || 0);
     }
 
-    function scaleOf10(arr) {
-        if (arr.length > 10) throw new Error('toolong');
+    function idxsOnScale(num) {
+        /// get length, find p
+        var arr = [],
+            len = num - 1,
+            grad, i;
 
-        function getGap(len) {
-            return 10 / len;
+        if (len < 1 || len > SCALE) {
+            throw new Error('bad sample');
+        }
+        grad = SCALE / len;
+
+        for (i = 0; i <= len; i++) {
+            arr[i] = Math.round(i * grad); /// collect
         }
 
-        function getPos(idx, gap) {
-            return Math.round(idx * gap);
-        }
+        debug(2) && C.debug(name, 'idxsOnScale', num, 'nodes of', grad, arr);
 
-        var tmp = [],
-            len = arr.length - 1,
-            gap = getGap(len); /// percent of 10
-
-        $.map(arr, function (e, i) {
-            tmp.push(getPos(i, gap)); /// collect
-        });
-
-        debug() && C.debug(name, 'scaleOf10', tmp, 'from', arr);
-
-        return tmp;
+        return arr;
     }
 
     function calcInc(n1, n2, steps) {
@@ -54,48 +50,47 @@ var Scale = (function (W) {
         return arr;
     }
 
-    function fillGaps(ar1, ar2) { // main array, positions array
-        var arr = ar1.concat(), // copy
-            len = ar1.length - 1, // cache
+    function spreadNums(arr, idxs) { // main array, positions array
+        // copy array and cache length
+        var neo = arr.concat(),
+            len = arr.length - 1,
             steps, i;
 
         for (i = 0; i < len; i++) {
-            steps = ar2[i + 1] - ar2[i];
-            arr[i] = genSteps(ar1[i], ar1[i + 1], steps);
+            steps = idxs[i + 1] - idxs[i];
+            neo[i] = genSteps(arr[i], arr[i + 1], steps);
         }
-        return Util.flatten(arr);
+        return Util.flatten(neo);
     }
 
     function makeScaleFrom(arr) {
-        var tmp = fillGaps(arr, scaleOf10(arr));
+        var tmp = spreadNums(arr, idxsOnScale(arr.length));
 
         tmp.transform = function (pct, val) {
             pct = Math.abs(pct || 10);
             pct = (pct > 100) ? 100 : pct;
             val = val || 100;
 
-
             var idx = Math.round(pct / 10),
                 adj = tmp[idx] / 100;
 
             return val * adj;
         };
-        tmp.mapt = function (val) {
-            return $.map(tmp, function (e, i){
+        tmp.mapt = function () {
+            return $.map(tmp, function (e, i) {
                 var z = tmp.transform(i * 100, e);
                 return z;
             });
-        }
+        };
         return tmp;
     }
 
     function test(arr) {
         var tmp = makeScaleFrom(arr);
 
-        C.debug(name, 'make', tmp, 'length', tmp.length, 'from', arr);
-
-        C.debug(name, 'mapt', tmp.mapt(100));
-        return tmp
+        C.debug(name, 'test', tmp.concat(), 'from', arr);
+        //        C.debug(name, 'mapt', tmp.mapt(100));
+        return tmp;
     }
 
 
