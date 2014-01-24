@@ -11,10 +11,10 @@ section {
     -o-transition: all 0.125s ease-out;
     transition: all 0.125s ease-out;
 }
-.stretch {
+.stretch, .ribbon {
     width: 100%;
 }
-.bottom {
+.bottom, .ribbon {
     position: absolute;
     bottom: 0;
 }
@@ -27,6 +27,9 @@ section {
 }
 .tbox {
     margin: 15em auto;
+}
+.shadow, .ribbon {
+    box-shadow: 0 0 50px rgba(0,0,0,0.4);
 }
 .teach {
     display: block;
@@ -44,3 +47,10 @@ section {
     }
 }
 
+#X5a {
+    text-align: center;
+    color: white;
+    padding: 10em 7em;
+
+
+}

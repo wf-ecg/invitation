@@ -11,6 +11,24 @@ $green: #46a033;
 #Wrap {
     background-color: $green;
     margin-top: 72px;
+    .ribbon {
+        background-color: $green;
+        opacity: 0.8;
+        height: 100px;
+    }
+    h1, h2, h3 {
+        font-family: 'Archer SSm A', 'Archer SSm B', Georgia, serif;
+        font-weight: 700;
+        margin: 1em;
+
+        /*
+        font-weight: 400; // Archer ScreenSmart Light
+        font-weight: 500; // Archer ScreenSmart Regular
+        font-weight: 600; // Archer ScreenSmart Medium
+        font-weight: 700; // Archer ScreenSmart Semibold
+        font-weight: 800; // Archer ScreenSmart Bold
+        */
+    }
 }
 #X0 article {
     left: 5%;
@@ -19,10 +37,9 @@ $green: #46a033;
 #Chrome {
     div {
         background-color: white;
-        opacity: 0.9;
+        opacity: 1;
     }
 }
-
 #Header {
     box-shadow: 0 0 50px rgba(0,0,0,0.4);
     height: 72px;
