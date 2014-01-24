@@ -5,13 +5,18 @@ var Bg = (function (W) {
     var C = W.console,
         self, name = 'Bg';
 
-    self = function Bg(ele) {
+    function debug(n) {
+        return W.debug >= (n || 0);
+    }
+
+    self = function Bg(ele, bounds) {
+        this.port = bounds;
         this.$ = $(ele);
         this.$.data(name, this);
         this.readData();
         this.$.css({
+//            height: this.data.height,
             backgroundImage: 'url(images/' + this.data.image +')',
-            height: this.data.height,
         });
         this.measure();
 
@@ -49,21 +54,23 @@ var Bg = (function (W) {
             this.showing = !(this.above < 0 || this.beyond > this.height);
             return this.showing;
         },
-        getCss: function () {
+        getBackCss: function () {
             this._y = -(this.beyond / this.data.ratio) | 0;
             this._y -= this.data.offby;
             // negative as we scroll up
             return '50% ' + this._y + 'px';
         },
         redraw: function () {
+            this.compare();
             this._css = {
-                backgroundPosition: this.getCss(),
+                backgroundPosition: this.getBackCss(),
+                height: this.port.all.high,
             };
             this.$.css(this._css);
         },
-        compareTo: function (port) { // vert only
-            this.above = port.bottom - this.topof;
-            this.beyond = port.top - this.topof;
+        compare: function () { // vert only
+            this.above = this.port.all.bottom - this.topof;
+            this.beyond = this.port.all.top - this.topof;
             return this;
         },
     };
