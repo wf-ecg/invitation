@@ -11,11 +11,11 @@ var Scale = (function (W) {
         return W.debug >= (n || 0);
     }
 
-    function calcPositions(arr, tot) {
-        tot = tot || MAX - 1;
+    function scaleOf10(arr) {
+        if (arr.length > 10) throw new Error('toolong');
 
         function getGap(len) {
-            return tot / len;
+            return 10 / len;
         }
 
         function getPos(idx, gap) {
@@ -24,13 +24,13 @@ var Scale = (function (W) {
 
         var tmp = [],
             len = arr.length - 1,
-            gap = getGap(len);
+            gap = getGap(len); /// percent of 10
 
         $.map(arr, function (e, i) {
-            tmp.push(getPos(i, gap));
+            tmp.push(getPos(i, gap)); /// collect
         });
 
-        debug(2) && C.debug(name, 'calcPositions', tmp, 'from', arr);
+        debug() && C.debug(name, 'scaleOf10', tmp, 'from', arr);
 
         return tmp;
     }
@@ -54,7 +54,7 @@ var Scale = (function (W) {
         return arr;
     }
 
-    function fillGaps(ar1, ar2) {
+    function fillGaps(ar1, ar2) { // main array, positions array
         var arr = ar1.concat(), // copy
             len = ar1.length - 1, // cache
             steps, i;
@@ -67,7 +67,7 @@ var Scale = (function (W) {
     }
 
     function makeScaleFrom(arr) {
-        var tmp = fillGaps(arr, calcPositions(arr));
+        var tmp = fillGaps(arr, scaleOf10(arr));
 
         tmp.transform = function (pct, val) {
             pct = Math.abs(pct || 10);
