@@ -105,12 +105,3 @@ var range = Range.test();
 
  */
 
-splat = function (ele) { // Util.heights =
-    var me = $(ele);
-    if (me.is(document)) return;
-    if (me.length) C.log(me.height(), me.innerHeight(), me.outerHeight());
-    splat(me.parent())
-}
-
-
-

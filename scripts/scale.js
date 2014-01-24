@@ -1,5 +1,5 @@
 /*jslint es5:true, white:false */
-/*globals $, console, window */
+/*globals $, Util, console, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 var Scale = (function (W) {
@@ -100,10 +100,11 @@ var Scale = (function (W) {
 
 
     function _test() {
+        test([0, 99]);
         test([0, 0, 1]);
-        test([0, 1,1,1,1,1,1, 1]);
+        test([0, 1, 1, 1, 1, 1, 1, 1]);
         test([0, 1111, 1]);
-        test([[0, 2, 4, 6, 8, 10]]);
+        test([0, 2, 4, 6, 8, 10]);
         return test([1000, 100]);
     }
 
@@ -116,7 +117,7 @@ var Scale = (function (W) {
 }(window));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var scale = Scale.test()
+var scale = Scale.test();
 
 /*
 
