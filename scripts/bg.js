@@ -37,7 +37,7 @@ var Bg = (function (W) {
             this.data = {
                 image: this.$.data('f') || '0chrome/swatch.png',
                 height: this.$.data('h') || '100',
-                ratio: this.$.data('r') || 10,
+                ratio: 100 / (this.$.data('r') || 1),
                 offby: this.$.data('o') || 0,
                 trans: this.$.data('t') || 'move',
             };
