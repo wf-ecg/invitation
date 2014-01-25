@@ -14,17 +14,14 @@ section {
     -o-transition: all 0.125s ease-out;
     transition: all 0.125s ease-out;
 }
-.stretch, .ribbon {
-    width: 100%;
-}
-.bottom, .ribbon {
+.bottom {
     position: absolute;
     bottom: 0;
 }
 .hide {
     display: none !important;
 }
-.shadow, .ribbon {
+.shadow {
     box-shadow: 0 0 50px transparentize(black, 0.6);
 }
 .teach {
@@ -43,12 +40,12 @@ section {
     width: 45px;
 
     &:hover {
-        background-color: rgba(255,255,155,0.4) !important;
+        background-color: rgba(255, 255, 155, 0.4) !important;
         box-shadow: 0 0 50px transparentize(#333, 0.6);
         opacity: 1;
     }
     &:active {
-        box-shadow: 0 10px 40px transparentize(white, 0.8);
+        box-shadow: 0 10px 20px transparentize(white, 0.8);
     }
     &.left {
         background: url('../images/0chrome/arrows.png') 0 0 no-repeat;
