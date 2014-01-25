@@ -15,8 +15,8 @@ var Range = (function (W) {
     }
 
     function makeAxsr(obj, nom, def) {
-        obj._ = obj._ || {};
-        obj._[nom] = def;
+        var _ = obj._ = (obj._ || {});
+        _[nom] = def;
 
         if (typeof def === 'function') {
             obj[nom] = def;
@@ -24,10 +24,10 @@ var Range = (function (W) {
         else {
             obj[nom] = function (x) {
                 if (x) {
-                    obj._[nom] = x;
+                    _[nom] = x;
                     return obj;
                 } else {
-                    return obj._[nom];
+                    return _[nom];
                 }
             };
         }
