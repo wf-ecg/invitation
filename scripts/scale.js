@@ -74,21 +74,24 @@ var Scale = (function (W) {
 
     function makeScaleFrom(arr) {
         var tmp = spreadNums(arr, makeAnchors(arr.length));
+        tmp.idx = 1;
 
         // take a number and transform it
-        // according to speced (or last used) percentage
+        // by percent value along scale
+        // or with last index speced
+        //
         tmp.transform = function (val, pct) {
-            val = (val || 100);
+            var factor;
 
-                adj = tmp[idx] / 100;
-            var idx = def(pct) ? pctToIdx(pct) : this.idx,
+            tmp.idx = def(pct) ? pctToIdx(pct) : tmp.idx;
+            factor = tmp[tmp.idx] / 100;
 
-            return (val * adj);
+            return (val * factor);
         };
-        tmp.mapt = function () {
+        tmp.mapt = function (val) { // make array with val transformed by each node
             return $.map(tmp, function (e, i) {
-                var z = tmp.transform(e, i * 100);
-                return z;
+                tmp.idx = i;
+                return tmp.transform(val);
             });
         };
         return tmp;
