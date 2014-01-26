@@ -11,6 +11,20 @@ var Scale = (function (W) {
         return W.debug >= (n || 0);
     }
 
+    function def() {
+        return (typeof arguments[0] !== 'undefined');
+    }
+
+    function cleanPct(pct) {
+        pct = Math.abs(parseFloat(pct) || 42); // no negatives
+        pct = (pct > 100) ? 100 : pct; // clip overage
+        return pct;
+    }
+
+    function pctToIdx(pct) {
+        return Math.round(cleanPct(pct) / SCALE);
+    }
+
     function makeAnchors(num) {
         /// get length, find p
         var arr = [],
@@ -61,13 +75,13 @@ var Scale = (function (W) {
     function makeScaleFrom(arr) {
         var tmp = spreadNums(arr, makeAnchors(arr.length));
 
-            pct = Math.abs(pct || 10); // no negatives
-            pct = (pct > 100) ? 100 : pct; // clip overage
+        // take a number and transform it
+        // according to speced (or last used) percentage
         tmp.transform = function (val, pct) {
             val = (val || 100);
 
-            var idx = Math.round(pct / SCALE),
                 adj = tmp[idx] / 100;
+            var idx = def(pct) ? pctToIdx(pct) : this.idx,
 
             return (val * adj);
         };
