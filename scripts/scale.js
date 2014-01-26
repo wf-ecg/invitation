@@ -61,9 +61,9 @@ var Scale = (function (W) {
     function makeScaleFrom(arr) {
         var tmp = spreadNums(arr, makeAnchors(arr.length));
 
-        tmp.transform = function (pct, val) {
             pct = Math.abs(pct || 10); // no negatives
             pct = (pct > 100) ? 100 : pct; // clip overage
+        tmp.transform = function (val, pct) {
             val = (val || 100);
 
             var idx = Math.round(pct / SCALE),
@@ -73,7 +73,7 @@ var Scale = (function (W) {
         };
         tmp.mapt = function () {
             return $.map(tmp, function (e, i) {
-                var z = tmp.transform(i * 100, e);
+                var z = tmp.transform(e, i * 100);
                 return z;
             });
         };
