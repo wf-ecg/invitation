@@ -1,5 +1,5 @@
 /*jslint es5:true, white:false */
-/*globals $, Util, console, window */
+/*globals $, Arrayish, Util, console, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 var Scale = (function (W) {
@@ -80,7 +80,7 @@ var Scale = (function (W) {
         return tmp;
     }
 
-    function test(arr) {
+    function _doTest(arr) {
         var tmp = makeScaleFrom(arr);
 
         debug(1) && C.debug(name, 'test', tmp.concat(), 'from', arr);
@@ -90,12 +90,12 @@ var Scale = (function (W) {
 
 
     function _test() {
-        test([9, 99]);
-        test([0, 3.9]);
-        test([0, 1, 5.3, 1, 1, 1]);
-        test([11, 111, 1]);
-        test([0, 2, 4, 6, 8, 10]);
-        return test([110, 10]);
+        _doTest([9, 99]);
+        _doTest([0, 3.9]);
+        _doTest([0, 1, 5.3, 1, 1, 1]);
+        _doTest([11, 111, 1]);
+        _doTest([0, 2, 4, 6, 8, 10]);
+        return _doTest([110, 10]);
     }
 
     self = {
