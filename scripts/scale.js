@@ -69,7 +69,7 @@ var Scale = (function (W) {
             steps = idxs[ii] - idxs[i];
             neo[i] = genSteps(arr[i], arr[ii], steps);
         }
-        return Util.flatten(neo);
+        return new Arrayish(Util.flatten(neo));
     }
 
     function makeScaleFrom(arr) {
