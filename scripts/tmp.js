@@ -26,14 +26,15 @@ var TMP = (function (W, $) {
         arguments.callee(me.parent());
     }
 
-    function makeMarks() {
+    function _makeMarks() {
         var B = $('body'),
-            D = $('<div>').addClass('marker').append('<span>'),
+            D = $('#Chrome'),
+            M = $('<span>').addClass('marker').append('<i>'),
             H = B.outerHeight(),
             i, x;
         //
         for (i = 250; i < H; i += 250) {
-            x = D.clone().appendTo(B).css('top', i).find('span').text(i);
+            x = M.clone().appendTo(D).css('top', i).find('i').text(i);
             debug(2) && C.debug(i, x);
         }
     }
@@ -41,7 +42,7 @@ var TMP = (function (W, $) {
     function _test() {
         logHeights('body');
 
-        makeMarks();
+        W.setTimeout(_makeMarks, 999);
 
         $('#Foo').on('inview', function (e, i, h, v) {
             if (i) {
@@ -75,7 +76,7 @@ if ($('html').is('.tmp')) {
 
     var tmp = TMP.test();
 
-    $('#Header').on('dblclick', function () {
+    $('#Chrome').on('dblclick', function () {
         $('html').toggleClass('debug');
     });
 }

@@ -14,7 +14,7 @@ $green: #46a033;
     font-family: 'Archer SSm A', 'Archer SSm B', Georgia, serif;
     margin-top: 72px;
     text-align: center;
-    
+
     .ribbon {
         background-color: transparentize($green, 0.15);
         height: 100px;
@@ -75,21 +75,6 @@ $green: #46a033;
     left: 5%;
     top: 22em;
 }
-#Chrome {
-    div {
-        background-color: white;
-        opacity: 1;
-    }
-}
-#Header {
-    box-shadow: 0 0 50px transparentize(black, 0.6);
-    height: 72px;
-    padding: 12px 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-}
 #Map {
     background-color: $green;
     border-radius: 1em;
@@ -104,6 +89,7 @@ $green: #46a033;
     top: 1em;
     width: 5em;
     z-index: 12;
+
     @include setEase(all, 1s, ease-in);
 
     h2 {
@@ -119,14 +105,4 @@ $green: #46a033;
         opacity: 0.9;
         @include setEase(all, 1s, ease-out);
     }
-}
-#Slug {
-    bottom: 0;
-    box-shadow: 0 0 15px transparentize(black, 0.8);
-    height: 40px;
-    font-size: 9pt;
-    padding: 5px 15px;
-    position: fixed;
-    width: 100%;
-    z-index: 3;
 }

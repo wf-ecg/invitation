@@ -1,6 +1,8 @@
 /* DEBUG */
 
 .debug {
+    overflow-x: hidden;
+
     #Wrap {
         @include debugWith(lime);
     }
@@ -21,7 +23,7 @@
         width: 50px;
         z-index: 9999;
 
-        span {
+        * {
             background-color: rgba(255, 255, 155, 0.5);
             color: green;
             font-size: 11px;
