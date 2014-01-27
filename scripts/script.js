@@ -26,7 +26,7 @@ $(function () {
                 debug(2) && C.log('offscreen');
                 debug(2) && C.log(i, bg._css.backgroundPosition);
             } else {
-                debug(0) && C.debug('parallax', [i, bg._css, el]);
+                debug(2) && C.debug('parallax', [i, bg._css, el]);
             }
 
         });

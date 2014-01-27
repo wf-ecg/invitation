@@ -20,7 +20,7 @@ var Bg = (function (W, $) {
         });
         this.measure();
 
-        (W.debug > 0) && C.debug(name, this);
+        debug(2) && C.debug(name, this);
     };
 
     self.prototype = {

@@ -21,9 +21,7 @@ var TMP = (function (W, $) {
             return;
         }
         if (me.length) {
-            C.log(me[0].tagName,
-                'height innerH outerH',
-                me.height(), me.innerHeight(), me.outerHeight());
+            C.log(me[0].tagName, 'height innerH outerH', me.height(), me.innerHeight(), me.outerHeight());
         }
         arguments.callee(me.parent());
     }
@@ -33,20 +31,19 @@ var TMP = (function (W, $) {
             D = $('<div>').addClass('marker').append('<span>'),
             H = B.outerHeight(),
             i, x;
-            //
+        //
         for (i = 250; i < H; i += 250) {
-            x = D.clone()
-            .appendTo(B)
-            .css('top', i)
-            .find('span')
-            .text(i);
-            C.debug(i, x);
+            x = D.clone().appendTo(B).css('top', i).find('span').text(i);
+            debug(2) && C.debug(i, x);
         }
     }
 
     function _test() {
         logHeights('body');
         makeMarks();
+        $('img').on('inview', function () {
+            C.log(this)
+        })
     }
 
     self = {
