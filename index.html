@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js debug tmp" lang="en">
+<html class="no-js tmp" lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -13,14 +13,9 @@
         <script src="lib/jq-pubsub.js"></script>
     </head>
     <body>
-        <div id="Map">
-            <h2>MAP</h2>
-            <p>DRIVE</p> <a href="#X1">X1</a> <a href="#X1b">X1a</a>
-            <p>HOLES</p> <a href="#X2">X2</a> <a href="#X2a">X2a</a> <a href="#X2b">X2b</a>
-            <p>BEAUT</p> <a href="#X3">X3</a> <a href="#X3a">X3a</a> <a href="#X3b">X3b</a>
-            <p>COMM </p> <a href="#X4">X4</a> <a href="#X4a">X4a</a> <a href="#X4b">X4b</a>
-            <p>CLOSE</p> <a href="#X5">X5</a> <a href="#X5a">X5a</a> <a href="#X5b">X5b</a> <a href="#X5c">X5c</a>
-        </div>
+        <!--
+WRAP
+        -->
         <div id="Wrap">
             <!-- | | | | -->
             <!--
@@ -65,9 +60,12 @@ HOLES
 
             <section id="X2b" class="hscroll" data-F="2holes/_back3.jpg" data-H="840" data-R="4" data-O="53" data-T="move">
                 <div class="pager construct">
-                    <div class="page"><img src="images/2holes/hole1.png" alt="Intro Text" class=""></div>
-                    <div class="page"><img src="images/2holes/hole1.png" alt="Intro Text" class=""></div>
-                    <div class="page"><img src="images/2holes/hole1.png" alt="Intro Text" class=""></div>
+                    <div id="H0" class="page"><a href="#H1"><img src="images/2holes/intro.png" alt="Intro Text" class=""></a></div>
+                    <div id="H1" class="page"><a href="#H2"><img src="images/2holes/hole1.png" alt="Intro Text" class=""></a></div>
+                    <div id="H2" class="page"><a href="#H3"><img src="images/2holes/intro.png" alt="Intro Text" class=""></a></div>
+                    <div id="H3" class="page"><a href="#H4"><img src="images/2holes/hole1.png" alt="Intro Text" class=""></a></div>
+                    <div id="H4" class="page"><a href="#H5"><img src="images/2holes/intro.png" alt="Intro Text" class=""></a></div>
+                    <div id="H5" class="page"><a href="#H0"><img src="images/2holes/hole1.png" alt="Intro Text" class=""></a></div>
                 </div>
             </section>
             <!-- | | | | -->
@@ -183,39 +181,30 @@ CLOSER
             </section>
         </div>
         <!--
-
-JUNK
-JUNK
-JUNK
-JUNK
-JUNK
-
+MAP
         -->
-        <section id="Chrome">
-            <br>
+        <div id="Map">
+            <h2>MAP</h2>
+            <p>DRIVE</p> <a href="#X1">X1</a> <a href="#X1b">X1a</a>
+            <p>HOLES</p> <a href="#X2">X2</a> <a href="#X2a">X2a</a> <a href="#X2b">X2b</a>
+            <p>BEAUT</p> <a href="#X3">X3</a> <a href="#X3a">X3a</a> <a href="#X3b">X3b</a>
+            <p>COMM </p> <a href="#X4">X4</a> <a href="#X4a">X4a</a> <a href="#X4b">X4b</a>
+            <p>CLOSE</p> <a href="#X5">X5</a> <a href="#X5a">X5a</a> <a href="#X5b">X5b</a> <a href="#X5c">X5c</a>
+        </div>
+        <!--
+CHROME
+        -->
+        <div id="Chrome">
             <div id="Header">
                 <img src="images/0chrome/header.png" alt="Header" class="center">
             </div>
-            <br>
             <div id="Slug">
                 <p>© 2013 Wells Fargo. All rights reserved. ECG-1166680 </p>
             </div>
-            <br>
-        </section>
-        <!--
-Z
-Z
-Z
-        -->
-        <div class="hide">
-            <article class="alpha60">
-                <h2>2</h2>
-            </article>
-            <div id="Mask" ondblclick="$(this).css('opacity',0.5)">
-                <p>offscreen // double click to reveal</p>
-            </div>
         </div>
-
+        <!--
+SCRIPTS
+        -->
         <script src="scripts/bg.js"></script>
         <script src="scripts/tmp.js"></script>
         <script src="scripts/port.js"></script>
