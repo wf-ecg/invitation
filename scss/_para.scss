@@ -15,21 +15,23 @@ p {
     margin-bottom: 0.25em;
     margin-top: 0.75em;
 }
+#Wrap {
+    overflow: hidden;
 
-#Wrap section {
-    background: url('../images/0chrome/swatch.png') 50% 0 no-repeat fixed;
-    background-size: cover !important;
-    box-shadow: 0 0 50px rgba(0,0,0,0.4);
-    margin: 0 auto;
-    min-height: 640px;
-    height: 100%;
-    position: relative;
-    width: 100%;
-}
-#Wrap section article {
-    color: #ffffff;
-    //position: absolute;
-    z-index: 9999;
+    section {
+        background: url('../images/0chrome/swatch.png') 50% 0 no-repeat fixed;
+        background-size: cover !important;
+        box-shadow: 0 0 50px rgba(0,0,0,0.4);
+        height: 100%;
+        margin: 0 auto;
+        min-height: 640px;
+        position: relative;
+        width: 100%;
+    }
+    section article {
+        color: #ffffff;
+        z-index: 9999;
+    }
 }
 
 .alpha60 {

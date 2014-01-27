@@ -6,7 +6,7 @@
     .hscroll {
         .pager {
             .debug & {
-                height: 100%;
+                height: 99%;
             }
             height: 102%;
             overflow-x: scroll;
@@ -18,7 +18,7 @@
                     border: 1px solid yellow;
                 }
                 display: inline-block;
-                padding: 33% 10%;
+                padding: 25% 10%;
 
                 a {
                     .debug & {
@@ -29,4 +29,29 @@
             }
         }
     }
+
+    .arrow {
+        border: 0;
+        border-radius: 3em;
+        display: inline-block;
+        height: 45px;
+        opacity: 0.8;
+        padding: 0;
+        width: 45px;
+
+        &:hover {
+            box-shadow: 0 0 50px transparentize(#333, 0.6);
+            opacity: 1;
+        }
+        &:active {
+            box-shadow: 0 10px 20px transparentize(white, 0.8);
+        }
+        &.left {
+            background: url('../images/0chrome/arrows.png') 0 0 no-repeat;
+        }
+        &.right {
+            background: url('../images/0chrome/arrows.png') -45px 0 no-repeat;
+        }
+    }
+
 }

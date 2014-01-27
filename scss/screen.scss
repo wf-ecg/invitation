@@ -4,5 +4,25 @@
 @import "_para";
 @import "_misc";
 
+@function setTrans($color, $opacity: 0.5) {
+    @return rgba($color, $opacity);
+}
+@mixin setTrans($color, $opacity: 0.5) {
+    background-color: $color; /* fallback2 */
+    background-color: lighten($color, percentage($opacity/2)); /* fallback1 */
+    background-color: setTrans($color, $opacity);
+}
+
 ::-moz-selection{ background-color: transparent; color: inherit; text-shadow: none; }
 ::selection { background-color: transparent; color: inherit; text-shadow: none; }
+
+#Chrome {
+    background: url('../images/policetape.png') 0 0 repeat;
+}
+
+section {
+    -webkit-transition: all 0.125s ease-out;
+    -moz-transition: all 0.125s ease-out;
+    -o-transition: all 0.125s ease-out;
+    transition: all 0.125s ease-out;
+}
