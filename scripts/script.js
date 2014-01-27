@@ -33,5 +33,6 @@ $(function () {
     });
     // touch
     $W.scroll();
+    W.pager = Pager.init();
 
 });

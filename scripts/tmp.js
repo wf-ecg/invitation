@@ -52,14 +52,6 @@ var TMP = (function (W, $) {
             }
         });
 
-        $('.pager').on('inview', function (e, i, h, v) {
-            if (v === 'both') {
-                C.log('Do HOLES');
-            }
-            if (i === false) {
-                C.log('Reset HOLES');
-            }
-        });
     }
 
     self = {
