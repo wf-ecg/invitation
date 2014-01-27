@@ -1,16 +1,26 @@
 /*jslint es5:true, white:false */
-/*globals $, window */
+/*globals jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Bg = (function (W) {
+var Bg = (function (W, $) {
     var C = W.console,
         self, name = 'Bg';
 
-    self = function Bg(ele) {
+    function debug(n) {
+        return W.debug >= (n || 0);
+    }
+
+    self = function Bg(ele, bounds) {
+        this.port = bounds;
         this.$ = $(ele);
         this.$.data(name, this);
+        this.readData();
+        this.$.css({
+//            height: this.data.height,
+            backgroundImage: 'url(images/' + this.data.image +')',
+        });
         this.measure();
 
-        (W.debug > 0) && C.debug(name, this);
+        debug(2) && C.debug(name, this);
     };
 
     self.prototype = {
@@ -24,14 +34,15 @@ var Bg = (function (W) {
         topof: null,
         showing: null,
         measure: function () {
-            this.data = this.getData();
             this.topof = this.getTopof();
-            this.height = this.$.height();
+            this.height = this.$.outerHeight();
             this.inited = true;
         },
-        getData: function () {
-            return {
-                ratio: this.$.data('r') || 10,
+        readData: function () {
+            this.data = {
+                image: this.$.data('f') || '0chrome/swatch.png',
+                height: this.$.data('h') || '100',
+                ratio: 100 / (this.$.data('r') || 1),
                 offby: this.$.data('o') || 0,
                 trans: this.$.data('t') || 'move',
             };
@@ -43,24 +54,28 @@ var Bg = (function (W) {
             this.showing = !(this.above < 0 || this.beyond > this.height);
             return this.showing;
         },
-        getCss: function () {
+        getBackCss: function () {
             this._y = -(this.beyond / this.data.ratio) | 0;
             this._y -= this.data.offby;
             // negative as we scroll up
             return '50% ' + this._y + 'px';
         },
         redraw: function () {
+            this.compare();
             this._css = {
-                backgroundPosition: this.getCss(),
+                backgroundPosition: this.getBackCss(),
+                height: this.port.all.high,
             };
             this.$.css(this._css);
         },
-        compareTo: function (port) { // vert only
-            this.above = port.bottom - this.topof;
-            this.beyond = port.top - this.topof;
+        compare: function () { // vert only
+            this.above = this.port.all.bottom - this.topof;
+            this.beyond = this.port.all.top - this.topof;
             return this;
         },
     };
 
+    (W.debug > 0) && C.log([name]);
+
     return self;
-}(window));
+}(window, jQuery));

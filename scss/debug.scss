@@ -1,5 +1,14 @@
 /* DEBUG */
 
+@function setTrans($color, $opacity: 0.5) {
+    @return rgba($color, $opacity);
+}
+@mixin setTrans($color, $opacity: 0.5) {
+    background-color: $color; /* fallback2 */
+    background-color: lighten($color, percentage($opacity/2)); /* fallback1 */
+    background-color: setTrans($color, $opacity);
+}
+
 .debug body {
     background: url('../images/test/parallax.png');
     /* no-repeat scroll center top transparent */

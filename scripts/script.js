@@ -1,10 +1,6 @@
 /*jslint es5:true, white:false */
 /*globals $, Port, Bg, document, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-/**
- * Parallax Scrolling Tutorial For NetTuts+
- * Author: Mohiuddin Parekh http://www.mohi.me mohiuddinparekh
- */
 window.debug = 1;
 var $W;
 
@@ -16,24 +12,26 @@ $(function () {
     $W = $(W);
     $W.viewport = new Port($W);
 
-    $('section.background').each(function (i) {
-        var bg = new Bg(this);
+    function debug(n) {
+        return W.debug >= (n || 0);
+    }
+
+    $('#Wrap section').each(function (i) {
+        var el = this,
+            bg = new Bg(el, $W.viewport);
         // cache em
-
-        $W.scroll(function () {
-
-            bg.compareTo($W.viewport.all);
+        $W.on('scroll resize', function () {
             bg.redraw();
-
             if (!bg.isShowing()) {
-                (W.debug > 0) && C.log('offscreen');
-                (W.debug > 1) && C.log(i, bg._css.backgroundPosition);
+                debug(2) && C.log('offscreen');
+                debug(2) && C.log(i, bg._css.backgroundPosition);
             } else {
-                (W.debug > 0) && C.debug('parallax', i, bg._css);
+                debug(2) && C.debug('parallax', [i, bg._css, el]);
             }
 
         });
     });
     // touch
     $W.scroll();
+
 });

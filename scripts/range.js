@@ -1,8 +1,8 @@
 /*jslint es5:true, white:false */
-/*globals $, console, window */
+/*globals jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-var Range = (function (W) {
+var Range = (function (W, $) {
     var self, name = 'Range',
         C = W.console;
 
@@ -15,22 +15,23 @@ var Range = (function (W) {
     }
 
     function makeAxsr(obj, nom, def) {
-        obj._ = obj._ || {};
-        obj._[nom] = def;
+        var _ = obj._ = (obj._ || {});
+        _[nom] = def;
 
         if (typeof def === 'function') {
             obj[nom] = def;
-            return;
+        }
+        else {
+            obj[nom] = function (x) {
+                if (x) {
+                    _[nom] = x;
+                    return obj;
+                } else {
+                    return _[nom];
+                }
+            };
         }
 
-        obj[nom] = function (x) {
-            if (x) {
-                obj._[nom] = x;
-                return obj;
-            } else {
-                return obj._[nom];
-            }
-        };
         obj[nom].toString = obj[nom];
     }
 
@@ -45,27 +46,46 @@ var Range = (function (W) {
     function makeRange(max, num) {
         var _ = {},
             O = {
-            _: _
+            _: _,
+            makeBinding: function (nom, fn) {
+                if (fn) {
+                    O[nom] = function () {
+                        return (_[nom] = fn());
+                    };
+                }
+                return this;
+            }
         };
         makeAxsr(O, 'maximum', max || 1e3);
         makeAxsr(O, 'position', undef(num) ? 1 : num);
         makeAxsr(O, 'toPct', function (px) {
-            return makePct(undef(px) ? _.position : px, _.maximum);
+            return makePct(undef(px) ? O.position() : px, _.maximum);
         });
         makeAxsr(O, 'toPx', function (pct) {
-            return undef(pct) ? _.position : _.maximum * (pct / 100);
+            return undef(pct) ? O.position() : _.maximum * (pct / 100);
         });
         return O;
     }
 
     function _test() {
-        var port = makeRange();
-        C.debug(name, 'port.maximum(44)', 'port.position(22)', port.maximum(44) && port.position(22));
-        C.debug(name, 'port.toPx()', port.toPx());
-        C.debug(name, 'port.toPx(25)', port.toPx(25));
-        C.debug(name, 'port.toPct()', port.toPct());
-        C.debug(name, 'port.toPct(33)', port.toPct(33));
-        return makeRange();
+        var port = makeRange(),
+            B = $('body');
+        C.debug(name, ['.maximum(44)', '.position(22)', port.maximum(44) && port.position(22)]);
+        C.debug(name, '.toPx()', port.toPx());
+        C.debug(name, '.toPx(25)', port.toPx(25));
+        C.debug(name, '.toPct()', port.toPct());
+        C.debug(name, '.toPct(33)', port.toPct(33));
+
+        B.find('h1').on('click', function () {
+            $(this).hide();
+        });
+        port.makeBinding('position', function () {
+            return B.scrollTop();
+        });
+        port.makeBinding('maximum', function () {
+            return B.outerHeight() - B.parent().outerHeight();
+        });
+        return port;
     }
 
     self = {
@@ -75,12 +95,15 @@ var Range = (function (W) {
     (W.debug > 0) && C.log([name]);
 
     return self;
-}(window));
+}(window, jQuery));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var range = Range.test();
+if (jQuery('html').is('.debug.range')) {
+    var range = Range.test();
+}
 
 /*
 
 
  */
+

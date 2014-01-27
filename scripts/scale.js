@@ -1,100 +1,139 @@
 /*jslint es5:true, white:false */
-/*globals $, console, window */
+/*globals Arrayish, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-var Scale = (function (W) {
+var Scale = (function (W, $) {
     var self, name = 'Scale',
         C = W.console,
-        MAX = 11;
+        SCALE = 10;
 
     function debug(n) {
         return W.debug >= (n || 0);
     }
 
-    function calcPositions(arr, tot) {
-        tot = tot || MAX - 1;
-
-        function getGap(len) {
-            return tot / len;
-        }
-
-        function getPos(idx, gap) {
-            return Math.round(idx * gap);
-        }
-
-        var tmp = [],
-            len = arr.length - 1,
-            gap = getGap(len);
-
-        $.map(arr, function (e, i) {
-            tmp.push(getPos(i, gap));
-        });
-
-        debug(2) && C.debug(name, 'calcPositions', tmp, 'from', arr);
-
-        return tmp;
+    function def() {
+        return (typeof arguments[0] !== 'undefined');
     }
 
-    function calcInc(n1, n2, steps) {
-        steps = steps || 1;
-        var inc = (n2 - n1) / steps;
-        return inc;
+    function flatten(arr) {
+        return arr.concat.apply([], arr);
     }
 
-    function genSteps(n1, n2, steps) {
-        steps = steps || 1;
+    function cleanPct(pct) {
+        pct = Math.abs(parseFloat(pct) || 42); // no negatives
+        pct = (pct > 100) ? 100 : pct; // clip overage
+        return pct;
+    }
 
-        var arr = [n1],
-            inc = calcInc(n1, n2, steps),
-            i;
+    function pctToIdx(pct) {
+        return Math.round(cleanPct(pct) / SCALE);
+    }
 
-        for (i = 0; i < steps - 1; i++) {
-            arr.push(arr[i] + inc);
+    function makeAnchors(num) {
+        /// get length, find p
+        var arr = [],
+            len = num - 1,
+            grad, i;
+        //
+        if (len < 1 || len > SCALE) { // need at least 1
+            throw new Error('bad sample:' + num);
         }
+        grad = SCALE / len;
+
+        for (i = 0; i <= len; i++) {
+            arr[i] = Math.round(i * grad); /// collect
+        }
+        debug(1) && C.debug(name, 'makeAnchors', num, 'nodes of', grad, arr);
+        //
         return arr;
     }
 
-    function fillGaps(ar1, ar2) {
-        var arr = ar1.concat(),
-            len = ar1.length - 1,
-            steps, i;
-
-        for (i = 0; i < len; i++) {
-            steps = ar2[i + 1] - ar2[i];
-            arr[i] = genSteps(ar1[i], ar1[i + 1], steps);
+    function genSteps(n1, n2, steps) {
+        steps = (steps || 1);
+        //
+        var arr = [n1],
+            inc = ((n2 - n1) / steps--) | 0,
+            i;
+        //
+        for (i = 0; i < steps; i++) {
+            arr.push(arr[i] + inc);
         }
-        return Util.flatten(arr);
+        //
+        return arr;
     }
 
-    function _doAll(arr) {
-        var tmp = fillGaps(arr, calcPositions(arr));
+    function spreadNums(arr, idxs) { // main array, positions array
+        // copy array and cache length
+        var neo = arr.concat(),
+            len = arr.length - 1,
+            steps, i, ii;
+        //
+        for (i = 0; i < len; i++) {
+            ii = i + 1;
+            steps = idxs[ii] - idxs[i];
+            neo[i] = genSteps(arr[i], arr[ii], steps);
+        }
+        //
+        return new Arrayish(flatten(neo));
+    }
 
-        debug(2) && C.debug(name, 'length', tmp.length);
-        debug() && C.debug(name, 'doAll', tmp, 'from', arr);
+    function makeScaleFrom(arr) {
+        arr = arr || [0, 100];
+        var tmp = spreadNums(arr, makeAnchors(arr.length));
+        tmp.idx = 1;
 
+        // take a number and transform it by
+        // percent along scale or with last index speced
+        tmp.transform = function (val, pct) {
+            var factor;
+            //
+            tmp.idx = def(pct) ? pctToIdx(pct) : tmp.idx;
+            factor = tmp[tmp.idx] / 100;
+            //
+            return (val * factor);
+        };
+        // make array with val transformed by each node
+        tmp.mapt = function (val) {
+            return $.map(tmp.array(), function (e, i) {
+                tmp.idx = i;
+                return tmp.transform(val);
+            });
+        };
         return tmp;
     }
 
+    function _doTest(arr) {
+        var tmp = makeScaleFrom(arr);
+        //
+        debug(1) && C.debug(name, 'test', tmp.toString(), 'from', arr);
+        debug(2) && C.debug(name, 'mapt', tmp.mapt(300).toString());
+        //
+        return tmp;
+    }
+
+
     function _test() {
-        self.run([0, 0, 1]);
-        self.run([0, 1,1,1,1,1,1, 1]);
-        self.run([0, 1111, 1]);
-        self.run([[0, 2, 4, 6, 8, 10]]);
-        self.run([1000, 100]);
+        _doTest([0, 3.3]);
+        _doTest([1, 1, 1, 99]);
+        return _doTest();
     }
 
     self = {
-        run: _doAll,
+        run: makeScaleFrom,
         test: _test,
     };
 
+    (W.debug > 0) && C.log([name]);
+
     return self;
-}(window));
+}(window, jQuery));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+if (jQuery('html').is('.debug.scale')) {
+    var scale = Scale.test();
+}
 
 /*
 
-Scale.test()
 
  */
