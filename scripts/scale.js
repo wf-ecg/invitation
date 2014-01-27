@@ -89,7 +89,7 @@ var Scale = (function (W) {
             return (val * factor);
         };
         tmp.mapt = function (val) { // make array with val transformed by each node
-            return $.map(tmp, function (e, i) {
+            return $.map(tmp.array(), function (e, i) {
                 tmp.idx = i;
                 return tmp.transform(val);
             });
@@ -100,8 +100,8 @@ var Scale = (function (W) {
     function _doTest(arr) {
         var tmp = makeScaleFrom(arr);
 
-        debug(1) && C.debug(name, 'test', tmp.concat(), 'from', arr);
-        debug(1) && C.debug(name, 'mapt', tmp.mapt(100));
+        debug(1) && C.debug(name, 'test', tmp.toString(), 'from', arr);
+        debug(1) && C.debug(name, 'mapt', tmp.mapt(1000).toString());
         return tmp;
     }
 
