@@ -33,8 +33,5 @@ $(function () {
     });
     // touch
     $W.scroll();
-    $('#Header').on('dblclick', function () {
-        $('html').addClass('debug');
-    });
 
 });

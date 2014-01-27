@@ -1,5 +1,5 @@
 /*jslint es5:true, white:false */
-/*globals jQuery, window */
+/*globals $, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 var TMP = (function (W, $) {
@@ -40,10 +40,25 @@ var TMP = (function (W, $) {
 
     function _test() {
         logHeights('body');
+
         makeMarks();
-        $('img').on('inview', function () {
-            C.log(this)
-        })
+
+        $('#Foo').on('inview', function (e, i, h, v) {
+            if (i) {
+                C.log(v);
+            } else {
+                C.log('bye');
+            }
+        });
+
+        $('.pager').on('inview', function (e, i, h, v) {
+            if (v === 'both') {
+                C.log('Do HOLES');
+            }
+            if (i === false) {
+                C.log('Reset HOLES');
+            }
+        });
     }
 
     self = {
@@ -56,8 +71,13 @@ var TMP = (function (W, $) {
 }(window, jQuery));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-if (jQuery('html').is('.debug.tmp')) {
-    var tmp = TMP.test();
+if ($('html').is('.debug.tmp')) {
+
+    var tmp;
+
+    $('#Header').on('dblclick', function () {
+        tmp = TMP.test();
+    });
 }
 
 /*

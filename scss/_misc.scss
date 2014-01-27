@@ -21,6 +21,25 @@ section {
 .hide {
     display: none !important;
 }
+#Wrap {
+    overflow-x: hidden;
+
+    .hscroll {
+        width: 9999px;
+    }
+    .pager {
+        background: red;
+        height: 333px;
+        overflow-x: scroll;
+
+        img {
+            margin: 0;
+        }
+        br {
+            display: none;
+        }
+    }
+}
 .shadow {
     box-shadow: 0 0 50px transparentize(black, 0.6);
 }
