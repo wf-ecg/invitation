@@ -22,10 +22,9 @@ $(function () {
         $W.on('scroll resize', function () {
             bg.redraw();
             if (!bg.isShowing()) {
-                _debug(2) && C.log('offscreen');
-                _debug(2) && C.log(i, bg._css.backgroundPosition);
+                _debug(2) && C.log('offscreen', i, bg._css.backgroundPosition);
             } else {
-                _debug(2) && C.debug('parallax', [i, bg._css, el]);
+                _debug(2) && C.log('offscreen', i, bg._css.backgroundPosition);
             }
 
         });

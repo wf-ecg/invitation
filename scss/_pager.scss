@@ -16,7 +16,8 @@
                 @include debugWith(yellow);
             }
             display: inline-block;
-            padding: 21em 10%;
+            padding: 10% 0;
+            width: 100%;
 
             a {
                 .debug & {

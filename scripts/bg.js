@@ -45,13 +45,13 @@ var Bg = (function (W, $) {
             this.data = {
                 image: this.$.data('f') || '0chrome/swatch.png',
                 height: this.$.data('h') || '100',
-                ratio: 100 / (this.$.data('r') || 1),
+                ratio: 100 / (this.$.data('r') || 0.001),
                 offby: this.$.data('o') || 0,
                 trans: this.$.data('t') || 'move',
             };
         },
         getTopof: function () {
-            return this.$.position().top | 0;
+            return this.$.position().top;
         },
         isShowing: function () { // vert only
             this.showing = !(this.above < 0 || this.beyond > this.height);
