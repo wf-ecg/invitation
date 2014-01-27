@@ -2,12 +2,10 @@
 
 .debug {
     #Wrap {
-        border: 1px solid lime;
-/*        margin: -1px;*/
+        @include debugWith(lime);
     }
     section {
-        border: 1px solid red;
-/*        margin: -1px;*/
+        @include debugWith(red);
     }
     .construct {
         background: url('../images/policetape.png') 0 0 repeat;

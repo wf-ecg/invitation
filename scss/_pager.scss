@@ -15,14 +15,14 @@
 
             .page {
                 .debug & {
-                    border: 1px solid yellow;
+                    @include debugWith(yellow);
                 }
                 display: inline-block;
                 padding: 22em 10%;
 
                 a {
                     .debug & {
-                        border: 1px solid red;
+                        @include debugWith(red);
                     }
                     display: inline-block;
                 }
