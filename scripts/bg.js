@@ -10,17 +10,20 @@ var Bg = (function (W, $) {
     }
 
     self = function Bg(ele, bounds) {
-        this.port = bounds;
-        this.$ = $(ele);
-        this.$.data(name, this);
-        this.readData();
-        this.$.css({
+        var my = this;
+        my.port = bounds;
+        my.$ = $(ele);
+        my.$.data(name, my);
+        my.readData();
+        my.$.css({
 //            height: this.data.height,
-            backgroundImage: 'url(images/' + this.data.image +')',
+            backgroundImage: 'url(images/' + my.data.image +')',
         });
-        this.measure();
-
-        debug(2) && C.debug(name, this);
+        my.measure();
+        my.$.on('dblclick', function () {
+            C.log(my);
+        });
+        debug(2) && C.debug(name, my);
     };
 
     self.prototype = {
