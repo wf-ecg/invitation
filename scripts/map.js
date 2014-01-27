@@ -1,7 +1,7 @@
 /*jslint es5:true, white:false */
-/*globals $, window */
+/*globals jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Map = (function (W) {
+var Map = (function (W, $) {
     var C = W.console,
         self, name = 'Map';
 
@@ -24,8 +24,10 @@ var Map = (function (W) {
         },
     };
  */
+    (W.debug > 0) && C.log([name]);
+
     return self;
-}(window));
+}(window, jQuery));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 

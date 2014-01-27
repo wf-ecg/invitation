@@ -20,7 +20,6 @@ $(function () {
         var el = this,
             bg = new Bg(el, $W.viewport);
         // cache em
-
         $W.on('scroll resize', function () {
             bg.redraw();
             if (!bg.isShowing()) {

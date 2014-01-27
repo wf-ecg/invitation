@@ -1,8 +1,8 @@
 /*jslint es5:true, white:false */
-/*globals $, console, window */
+/*globals jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-var Range = (function (W) {
+var Range = (function (W, $) {
     var self, name = 'Range',
         C = W.console;
 
@@ -50,7 +50,7 @@ var Range = (function (W) {
             makeBinding: function (nom, fn) {
                 if (fn) {
                     O[nom] = function () {
-                        return _[nom] = fn();
+                        return (_[nom] = fn());
                     };
                 }
                 return this;
@@ -70,14 +70,14 @@ var Range = (function (W) {
     function _test() {
         var port = makeRange(),
             B = $('body');
-        C.debug(name, 'port.maximum(44)', 'port.position(22)', port.maximum(44) && port.position(22));
-        C.debug(name, 'port.toPx()', port.toPx());
-        C.debug(name, 'port.toPx(25)', port.toPx(25));
-        C.debug(name, 'port.toPct()', port.toPct());
-        C.debug(name, 'port.toPct(33)', port.toPct(33));
+        C.debug(name, ['.maximum(44)', '.position(22)', port.maximum(44) && port.position(22)]);
+        C.debug(name, '.toPx()', port.toPx());
+        C.debug(name, '.toPx(25)', port.toPx(25));
+        C.debug(name, '.toPct()', port.toPct());
+        C.debug(name, '.toPct(33)', port.toPct(33));
 
         B.find('h1').on('click', function () {
-            $(this).hide()
+            $(this).hide();
         });
         port.makeBinding('position', function () {
             return B.scrollTop();
@@ -95,10 +95,12 @@ var Range = (function (W) {
     (W.debug > 0) && C.log([name]);
 
     return self;
-}(window));
+}(window, jQuery));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var range = Range.test();
+if (jQuery('html').is('.debug.range')) {
+    var range = Range.test();
+}
 
 /*
 

@@ -1,7 +1,7 @@
 /*jslint es5:true, white:false */
-/*globals $, window */
+/*globals jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Bg = (function (W) {
+var Bg = (function (W, $) {
     var C = W.console,
         self, name = 'Bg';
 
@@ -75,5 +75,7 @@ var Bg = (function (W) {
         },
     };
 
+    (W.debug > 0) && C.log([name]);
+
     return self;
-}(window));
+}(window, jQuery));

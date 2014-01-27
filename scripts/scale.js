@@ -1,8 +1,8 @@
 /*jslint es5:true, white:false */
-/*globals $, Arrayish, Util, console, window */
+/*globals Arrayish, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-var Scale = (function (W) {
+var Scale = (function (W, $) {
     var self, name = 'Scale',
         C = W.console,
         SCALE = 10;
@@ -13,6 +13,10 @@ var Scale = (function (W) {
 
     function def() {
         return (typeof arguments[0] !== 'undefined');
+    }
+
+    function flatten(arr) {
+        return arr.concat.apply([], arr);
     }
 
     function cleanPct(pct) {
@@ -30,7 +34,7 @@ var Scale = (function (W) {
         var arr = [],
             len = num - 1,
             grad, i;
-
+        //
         if (len < 1 || len > SCALE) { // need at least 1
             throw new Error('bad sample:' + num);
         }
@@ -39,22 +43,22 @@ var Scale = (function (W) {
         for (i = 0; i <= len; i++) {
             arr[i] = Math.round(i * grad); /// collect
         }
-
         debug(1) && C.debug(name, 'makeAnchors', num, 'nodes of', grad, arr);
-
+        //
         return arr;
     }
 
     function genSteps(n1, n2, steps) {
         steps = (steps || 1);
-
+        //
         var arr = [n1],
             inc = ((n2 - n1) / steps--) | 0,
             i;
-
+        //
         for (i = 0; i < steps; i++) {
             arr.push(arr[i] + inc);
         }
+        //
         return arr;
     }
 
@@ -63,32 +67,33 @@ var Scale = (function (W) {
         var neo = arr.concat(),
             len = arr.length - 1,
             steps, i, ii;
-
+        //
         for (i = 0; i < len; i++) {
             ii = i + 1;
             steps = idxs[ii] - idxs[i];
             neo[i] = genSteps(arr[i], arr[ii], steps);
         }
-        return new Arrayish(Util.flatten(neo));
+        //
+        return new Arrayish(flatten(neo));
     }
 
     function makeScaleFrom(arr) {
+        arr = arr || [0, 100];
         var tmp = spreadNums(arr, makeAnchors(arr.length));
         tmp.idx = 1;
 
-        // take a number and transform it
-        // by percent value along scale
-        // or with last index speced
-        //
+        // take a number and transform it by
+        // percent along scale or with last index speced
         tmp.transform = function (val, pct) {
             var factor;
-
+            //
             tmp.idx = def(pct) ? pctToIdx(pct) : tmp.idx;
             factor = tmp[tmp.idx] / 100;
-
+            //
             return (val * factor);
         };
-        tmp.mapt = function (val) { // make array with val transformed by each node
+        // make array with val transformed by each node
+        tmp.mapt = function (val) {
             return $.map(tmp.array(), function (e, i) {
                 tmp.idx = i;
                 return tmp.transform(val);
@@ -99,20 +104,18 @@ var Scale = (function (W) {
 
     function _doTest(arr) {
         var tmp = makeScaleFrom(arr);
-
+        //
         debug(1) && C.debug(name, 'test', tmp.toString(), 'from', arr);
-        debug(1) && C.debug(name, 'mapt', tmp.mapt(1000).toString());
+        debug(2) && C.debug(name, 'mapt', tmp.mapt(300).toString());
+        //
         return tmp;
     }
 
 
     function _test() {
-        _doTest([9, 99]);
-        _doTest([0, 3.9]);
-        _doTest([0, 1, 5.3, 1, 1, 1]);
-        _doTest([11, 111, 1]);
-        _doTest([0, 2, 4, 6, 8, 10]);
-        return _doTest([110, 10]);
+        _doTest([0, 3.3]);
+        _doTest([1, 1, 1, 99]);
+        return _doTest();
     }
 
     self = {
@@ -120,11 +123,15 @@ var Scale = (function (W) {
         test: _test,
     };
 
+    (W.debug > 0) && C.log([name]);
+
     return self;
-}(window));
+}(window, jQuery));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var scale = Scale.test();
+if (jQuery('html').is('.debug.scale')) {
+    var scale = Scale.test();
+}
 
 /*
 

@@ -1,7 +1,7 @@
 /*jslint es5:true, white:false */
-/*globals $, window */
+/*globals jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Port = (function (W) {
+var Port = (function (W, $) {
     var C = W.console,
         self, name = 'Port';
 
@@ -42,8 +42,10 @@ var Port = (function (W) {
         self.log('Init');
     };
 
+    (W.debug > 0) && C.log([name]);
+
     return self;
-}(window));
+}(window, jQuery));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
