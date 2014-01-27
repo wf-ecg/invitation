@@ -14,15 +14,15 @@ $green: #46a033;
     font-family: 'Archer SSm A', 'Archer SSm B', Georgia, serif;
     margin-top: 72px;
     text-align: center;
-
+    
     .ribbon {
         background-color: transparentize($green, 0.15);
         height: 100px;
-        padding: 50px 0;
+        padding: 40px 0;
         width: 100%;
 
         * {
-            line-height: 0;
+            line-height: 20px;
             margin: 0;
         }
     }

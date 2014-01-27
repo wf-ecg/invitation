@@ -1,0 +1,20 @@
+/* PAGER */
+
+#Wrap {
+    overflow-x: hidden;
+
+    .hscroll {
+        width: 9999px;
+    }
+    .pager {
+        height: 333px;
+        overflow-x: scroll;
+
+        img {
+            margin: 0;
+        }
+        br {
+            display: none;
+        }
+    }
+}

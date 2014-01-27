@@ -1,3 +1,7 @@
 @import "_ids";
+@import "_pager";
 @import "_para";
 @import "_misc";
+
+::-moz-selection{ background-color: transparent; color: inherit; text-shadow: none; }
+::selection { background-color: transparent; color: inherit; text-shadow: none; }

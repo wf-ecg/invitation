@@ -2,6 +2,23 @@
 
 $green: #46a033;
 
+body .marker {
+    border-top: 1px solid red;
+    height: 10px;
+    left: 2px;
+    line-height: 14px;
+    position: absolute;
+    text-align: right;
+    width: 50px;
+    z-index: 9999;
+
+    span {
+        background-color: rgba(255, 255, 155, 0.5);
+        color: green;
+        font-size: 11px;
+        padding: 0 5px;
+    }
+}
 section, div {
     box-sizing: border-box;
 }
@@ -20,25 +37,6 @@ section {
 }
 .hide {
     display: none !important;
-}
-#Wrap {
-    overflow-x: hidden;
-
-    .hscroll {
-        width: 9999px;
-    }
-    .pager {
-        background: red;
-        height: 333px;
-        overflow-x: scroll;
-
-        img {
-            margin: 0;
-        }
-        br {
-            display: none;
-        }
-    }
 }
 .shadow {
     box-shadow: 0 0 50px transparentize(black, 0.6);
@@ -85,20 +83,6 @@ section {
         border: 1px solid red;
     }
 }
-body .marker {
-    border-top: 1px solid red;
-    height: 10px;
-    left: 2px;
-    line-height: 14px;
-    position: absolute;
-    text-align: right;
-    width: 50px;
-    z-index: 9999;
-
-    span {
-        background-color: rgba(255, 255, 155, 0.5);
-        color: green;
-        font-size: 11px;
-        padding: 0 5px;
-    }
+.construct {
+    background: url('../images/policetape.png') 0 0 repeat;
 }
