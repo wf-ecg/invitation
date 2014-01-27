@@ -66,3 +66,20 @@ section {
         border: 1px solid red;
     }
 }
+body .marker {
+    border-top: 1px solid red;
+    height: 10px;
+    left: 2px;
+    line-height: 14px;
+    position: absolute;
+    text-align: right;
+    width: 50px;
+    z-index: 9999;
+
+    span {
+        background-color: rgba(255, 255, 155, 0.5);
+        color: green;
+        font-size: 11px;
+        padding: 0 5px;
+    }
+}

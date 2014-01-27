@@ -28,8 +28,25 @@ var TMP = (function (W, $) {
         arguments.callee(me.parent());
     }
 
+    function makeMarks() {
+        var B = $('body'),
+            D = $('<div>').addClass('marker').append('<span>'),
+            H = B.outerHeight(),
+            i, x;
+            //
+        for (i = 250; i < H; i += 250) {
+            x = D.clone()
+            .appendTo(B)
+            .css('top', i)
+            .find('span')
+            .text(i);
+            C.debug(i, x);
+        }
+    }
+
     function _test() {
         logHeights('body');
+        makeMarks();
     }
 
     self = {
