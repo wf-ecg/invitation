@@ -71,12 +71,12 @@ var TMP = (function (W, $) {
 }(window, jQuery));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-if ($('html').is('.debug.tmp')) {
+if ($('html').is('.tmp')) {
 
-    var tmp;
+    var tmp = TMP.test();
 
     $('#Header').on('dblclick', function () {
-        tmp = TMP.test();
+        $('html').toggleClass('debug');
     });
 }
 

@@ -9,37 +9,38 @@
     background-color: setTrans($color, $opacity);
 }
 
-.debug body {
-    background: url('../images/test/parallax.png');
-    /* no-repeat scroll center top transparent */
-    padding-right: 15em;
+.debug {
+    #Wrap {
+        border: 1px solid lime;
+    }
+    section {
+        border: 1px solid red;
+    }
+    .construct {
+        background: url('../images/policetape.png') 0 0 repeat;
+    }
+    body .marker {
+        border-top: 1px solid red;
+        display: block;
+        height: 10px;
+        left: 2px;
+        line-height: 14px;
+        position: absolute;
+        text-align: right;
+        width: 50px;
+        z-index: 9999;
+
+        span {
+            background-color: rgba(255, 255, 155, 0.5);
+            color: green;
+            font-size: 11px;
+            padding: 0 5px;
+        }
+    }
+    #Chrome {
+        background: url('../images/policetape.png') 0 0 repeat;
+    }
 }
-.debug #Map {
-    background: rgba(255, 255, 255, 0.6);
-    border: 3px solid gray;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 15em;
-    height: 100%;
-}
-.debug section.background {
-    border: 1px solid red;
-}
-.debug section {
-    -webkit-transition: all 0.12s ease-out;
-    -moz-transition: all 0.12s ease-out;
-    -o-transition: all 0.12s ease-out;
-    transition: all 0.12s ease-out;
-}
-.debug #Wrap {
-    background: rgba(111, 111, 111, 0.9);
-    border: 2px solid green;
-}
-.debug #D1,
-.debug #D2,
-.debug #D3,
-.debug #D5,
-.debug #D6 {
-    background-color: lime;
+.marker {
+    display: none;
 }
