@@ -7,7 +7,7 @@ var Scale = (function (W, $) {
         C = W.console,
         SCALE = 10;
 
-    function debug(n) {
+    function _debug(n) {
         return W.debug >= (n || 0);
     }
 
@@ -43,7 +43,7 @@ var Scale = (function (W, $) {
         for (i = 0; i <= len; i++) {
             arr[i] = Math.round(i * grad); /// collect
         }
-        debug(1) && C.debug(name, 'makeAnchors', num, 'nodes of', grad, arr);
+        _debug(1) && C.debug(name, 'makeAnchors', num, 'nodes of', grad, arr);
         //
         return arr;
     }
@@ -105,8 +105,8 @@ var Scale = (function (W, $) {
     function _doTest(arr) {
         var tmp = makeScaleFrom(arr);
         //
-        debug(1) && C.debug(name, 'test', tmp.toString(), 'from', arr);
-        debug(2) && C.debug(name, 'mapt', tmp.mapt(300).toString());
+        _debug(1) && C.debug(name, 'test', tmp.toString(), 'from', arr);
+        _debug(2) && C.debug(name, 'mapt', tmp.mapt(300).toString());
         //
         return tmp;
     }
@@ -123,7 +123,7 @@ var Scale = (function (W, $) {
         test: _test,
     };
 
-    (W.debug > 0) && C.log([name]);
+    _debug() && C.log([name]);
 
     return self;
 }(window, jQuery));

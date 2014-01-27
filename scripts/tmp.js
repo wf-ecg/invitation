@@ -10,7 +10,7 @@ var TMP = (function (W, $) {
         return (typeof arguments[0] === 'undefined');
     }
 
-    function debug(n) {
+    function _debug(n) {
         return W.debug >= (n || 0);
     }
 
@@ -35,7 +35,7 @@ var TMP = (function (W, $) {
         //
         for (i = 250; i < H; i += 250) {
             x = M.clone().appendTo(D).css('top', i).find('i').text(i);
-            debug(2) && C.debug(i, x);
+            _debug(2) && C.debug(i, x);
         }
     }
 
@@ -58,7 +58,7 @@ var TMP = (function (W, $) {
         test: _test,
     };
 
-    (W.debug > 0) && C.log([name]);
+    _debug() && C.log([name]);
 
     return self;
 }(window, jQuery));

@@ -1,7 +1,6 @@
 /*jslint es5:true, white:false */
 /*globals $, Port, Bg, document, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-window.debug = 1;
 var $W;
 
 $(function () {
@@ -12,7 +11,7 @@ $(function () {
     $W = $(W);
     $W.viewport = new Port($W);
 
-    function debug(n) {
+    function _debug(n) {
         return W.debug >= (n || 0);
     }
 
@@ -23,10 +22,10 @@ $(function () {
         $W.on('scroll resize', function () {
             bg.redraw();
             if (!bg.isShowing()) {
-                debug(2) && C.log('offscreen');
-                debug(2) && C.log(i, bg._css.backgroundPosition);
+                _debug(2) && C.log('offscreen');
+                _debug(2) && C.log(i, bg._css.backgroundPosition);
             } else {
-                debug(2) && C.debug('parallax', [i, bg._css, el]);
+                _debug(2) && C.debug('parallax', [i, bg._css, el]);
             }
 
         });

@@ -5,6 +5,10 @@ var Port = (function (W, $) {
     var C = W.console,
         self, name = 'Port';
 
+    function _debug(n) {
+        return W.debug >= (n || 0);
+    }
+
     self = function Port(jq) {
         this._ = {};
         this._.J = jq;
@@ -16,7 +20,7 @@ var Port = (function (W, $) {
 
     self.prototype.log = function (str) {
         this.reset();
-        (W.debug > 0) && C.debug(name, (str || 'access'), this.all);
+        _debug() && C.debug(name, (str || 'access'), this.all);
     };
     self.prototype.reset = function () {
         return (this.all = {
@@ -42,7 +46,7 @@ var Port = (function (W, $) {
         self.log('Init');
     };
 
-    (W.debug > 0) && C.log([name]);
+    _debug() && C.log([name]);
 
     return self;
 }(window, jQuery));

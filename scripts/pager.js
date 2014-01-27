@@ -32,6 +32,10 @@ var Pager = (function (W, $) {
 
      */
 
+    function _debug(n) {
+        return W.debug >= (n || 0);
+    }
+
     function _init() {
         $('section .pager').on('inview', function (e, i, h, v) {
             C.log('pager', i, v);
@@ -44,7 +48,7 @@ var Pager = (function (W, $) {
         init: _init,
     };
 
-    (W.debug > 0) && C.log([name]);
+    _debug() && C.debug([name]);
 
     return self;
 }(window, jQuery));

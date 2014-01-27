@@ -5,7 +5,7 @@ var Bg = (function (W, $) {
     var C = W.console,
         self, name = 'Bg';
 
-    function debug(n) {
+    function _debug(n) {
         return W.debug >= (n || 0);
     }
 
@@ -23,7 +23,7 @@ var Bg = (function (W, $) {
         my.$.on('dblclick', function () {
             C.log(my);
         });
-        debug(2) && C.debug(name, my);
+        _debug(2) && C.debug(name, my);
     };
 
     self.prototype = {
@@ -78,7 +78,7 @@ var Bg = (function (W, $) {
         },
     };
 
-    (W.debug > 0) && C.log([name]);
+    _debug() && C.log([name]);
 
     return self;
 }(window, jQuery));

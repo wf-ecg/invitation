@@ -12,7 +12,7 @@ var Map = (function (W, $) {
         this.$ = $(ele);
         this.$.data(name, this);
 
-        (W.debug > 0) && C.debug(name, this);
+        _debug() && C.debug(name, this);
     };
 
     self.prototype = {
@@ -24,7 +24,7 @@ var Map = (function (W, $) {
         },
     };
  */
-    (W.debug > 0) && C.log([name]);
+    _debug() && C.log([name]);
 
     return self;
 }(window, jQuery));
