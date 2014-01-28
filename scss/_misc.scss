@@ -10,11 +10,41 @@
 .shadow {
     box-shadow: 0 0 50px transparentize(black, 0.6);
 }
-.teach {
-    background-color: #f1f1f1;
-    background: url('../images/4comm/teach.png') 14px 17px no-repeat #f1f1f1;
+.btnLabel {
+    color: $red;
+    float: right;
+    font-size: 80%;
+    font-weight: 900;
+    margin: -0.5em;
+    text-transform: uppercase;
+    word-spacing: 3px;
+
+    button {
+        vertical-align: middle;
+    }
+}
+.callout {
+    color: $green;
     display: inline-block;
-    margin: 22em auto auto 1em;
+    font-size: 20px;
+    line-height: 26px;
+    margin: 15em auto auto 1em;
+    max-width: 22em;
+    padding: 1em;
+    position: absolute;
+
+    p {
+        font-weight: 500;
+        text-align: left;
+    }
+}
+.reading {
+    background: url('../images/4comm/par.png') 1em 0.5em no-repeat #ffffff;
+    padding-top: 5em;
+}
+.teach {
+    background: url('../images/4comm/teach.png') 1em 1em no-repeat #f1f1f1;
+    padding-top: 2em;
 }
 .center {
     display: block;
