@@ -30,9 +30,12 @@ $red: #C00029;
 @import "_misc";
 @import "_text";
 
-::-moz-selection{ background-color: transparent; color: inherit; text-shadow: none; }
-::selection { background-color: transparent; color: inherit; text-shadow: none; }
 
+html, body {
+    background-color: $green;
+    font-size: 10px;
+    margin: 0;
+}
 img {
     display: block;
 }
@@ -66,3 +69,6 @@ footer {
     padding: 5px 15px;
     z-index: 3;
 }
+
+::-moz-selection{ background-color: transparent; color: inherit; text-shadow: none; }
+::selection { background-color: transparent; color: inherit; text-shadow: none; }
