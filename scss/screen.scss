@@ -1,3 +1,7 @@
+// SCREEN
+
+$green: #46a033;
+$red: #C00029;
 
 @function setTrans($color, $opacity: 0.5) {
     @return rgba($color, $opacity);
@@ -15,6 +19,7 @@
 }
 
 @import "_debug";
+@import "_green";
 @import "_ids";
 @import "_pager";
 @import "_para";
