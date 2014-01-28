@@ -25,10 +25,10 @@ $red: #C00029;
 
 @import "_debug";
 @import "_green";
-@import "_ids";
 @import "_pager";
 @import "_para";
 @import "_misc";
+@import "_text";
 
 ::-moz-selection{ background-color: transparent; color: inherit; text-shadow: none; }
 ::selection { background-color: transparent; color: inherit; text-shadow: none; }
