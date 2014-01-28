@@ -67,9 +67,18 @@ var TMP = (function (W, $) {
 if ($('html').is('.tmp')) {
 
     var tmp = TMP.test();
+    $('body').fitText(10);
 
     $('#Chrome').on('dblclick', function () {
         $('html').toggleClass('debug');
+
+        if ($('html').is('.debug')) {
+            $(window).off('.fittext');
+            $('body').css('font-size', '');
+        } else {
+            $('body').fitText(10);
+        }
+
     });
 }
 
