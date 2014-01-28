@@ -43,7 +43,7 @@ var Bg = (function (W, $) {
         },
         readData: function () {
             this.data = {
-                image: this.$.data('f') || '0chrome/swatch.png',
+                image: this.$.data('f') || 'misc/swatch.png',
                 height: this.$.data('h') || '100',
                 ratio: 100 / (this.$.data('r') || 0.001),
                 offby: this.$.data('o') || 0,
