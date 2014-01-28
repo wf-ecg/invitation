@@ -1,7 +1,7 @@
 /* PAGER */
 
 #Wrap {
-    .holes {
+    .course {
         .pager {
             .debug & {
                 height: 99%;
@@ -38,7 +38,7 @@
         width: 45px;
 
         &:hover {
-            box-shadow: 0 0 50px transparentize($green, 0.6);
+            box-shadow: 0 0 50px transparentize(yellow, 0.6);
             opacity: 1;
         }
         &:active {

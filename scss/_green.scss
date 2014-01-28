@@ -96,8 +96,14 @@
         margin-bottom: 1em;
     }
     a {
+        color: white;
         display: block;
         font-size: 22px;
+
+        &:hover {
+            background-color: $red;
+            text-decoration: none;
+        }
     }
     &:hover {
         height: 90%;
