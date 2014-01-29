@@ -1,0 +1,46 @@
+/* CHAMPS */
+
+$greenA: #5f7d0b;
+$greenB: #7c9439;
+$greenC: #6b7f45;
+
+$greenA4: transparentize($greenA, 0.3);
+$greenB6: transparentize($greenB, 0.4);
+$greenC3: transparentize($greenC, 0.5);
+
+#Wrap .champs {
+    background-color: $greenA4;
+    margin: 2em 10em;
+    padding: 2em;
+
+    h1 {
+        font-size: 3em;
+        letter-spacing: 0.1em;
+        margin: 0.2em;
+    }
+
+    table {
+        border-collapse: separate;
+        border-spacing: 0 0.15em;
+        font-size: 2.5em;
+        margin: auto;
+
+        td {
+            background-color: $greenB6;
+            padding: 0.1em 0.35em 0.05em;
+
+            &:first-child, &:last-child {
+                background-color: $greenC3;
+            }
+            &:first-child {
+                color: #ffc614;
+                font-weight: 500;
+            }
+            &:nth-child(2) {
+                padding-left: 1em;
+                text-align: left;
+                width: 11em;
+            }
+        }
+    }
+}
