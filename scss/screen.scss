@@ -16,6 +16,12 @@ $red: #C00029;
     background-color: lighten($color, percentage($opacity/2)); /* fallback1 */
     background-color: setTrans($color, $opacity);
 }
+@mixin setEase($a, $b, $c) {
+    -webkit-transition: $a $b $c;
+    -moz-transition: $a $b $c;
+    -o-transition: $a $b $c;
+    transition: $a $b $c;
+}
 @mixin debugWith($color) {
     border: 1px solid $color;
     margin-right: -1px;
