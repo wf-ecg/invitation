@@ -26,7 +26,6 @@ $(function () {
             } else {
                 _debug(2) && C.log('offscreen', i, bg._css.backgroundPosition);
             }
-
         });
     });
     // touch
