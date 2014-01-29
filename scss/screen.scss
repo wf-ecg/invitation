@@ -28,6 +28,12 @@ $red: #C00029;
     margin-bottom: -2px;
     margin-left: -1px;
 }
+@mixin oldAlpha($color) {
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.6);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+    -ms-filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)';
+}
 
 @import "_debug";
 @import "_green";
