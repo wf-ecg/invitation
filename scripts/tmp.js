@@ -3,8 +3,10 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 var TMP = (function (W, $) {
-    var self, name = 'TMP',
-        C = W.console;
+    var C, self, name;
+
+    name = 'TMP';
+    C = W.console;
 
     function undef() {
         return (typeof arguments[0] === 'undefined');
@@ -27,31 +29,30 @@ var TMP = (function (W, $) {
     }
 
     function _makeMarks() {
-        var B = $('body'),
-            D = $('#Chrome'),
-            M = $('<span>').addClass('marker').append('<i>'),
-            H = B.outerHeight(),
-            i, x;
+        var bod, div, dup, mrk, pix, i;
         //
-        for (i = 250; i < H; i += 250) {
-            x = M.clone().appendTo(D).css('top', i).find('i').text(i);
-            _debug(2) && C.debug(i, x);
+        bod = $('body');
+        div = $('#Chrome');
+        pix = bod.outerHeight();
+        mrk = $('<span>').addClass('marker').append('<i>');
+        //
+        for (i = 250; i < pix; i += 250) {
+            dup = mrk.clone().appendTo(div).css('top', i).find('i').text(i);
+            _debug(2) && C.debug(i, dup);
         }
     }
 
     function _test() {
         logHeights('body');
-
         W.setTimeout(_makeMarks, 999);
-
-        $('#Foo').on('inview', function (e, i, h, v) {
-            if (i) {
-                C.log(v);
+        //
+        $('#Foo').on('inview', function (evt, yes, hsides, vsides) {
+            if (yes) {
+                C.log(vsides);
             } else {
                 C.log('bye');
             }
         });
-
     }
 
     self = {
@@ -65,22 +66,28 @@ var TMP = (function (W, $) {
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 if ($('html').is('.tmp')) {
+    (function(){
+        var html, wrap;
+        //
+        TMP.test();
+        html = $('html');
+        wrap = $('#Wrap');
+        //
+        wrap.fitText(10);
+        wrap.find('section .padded').wrap('<div class="baggie">')
+        //
+        $('#Chrome').on('dblclick', function () {
+            html.toggleClass('debug');
 
-    var tmp = TMP.test();
-    $('body').fitText(10);
-    $('#Wrap section .padded').wrap('<div class="baggie">')
+            if (html.is('.debug')) {
+                $.fitText.off();
+                wrap.css('font-size', '');
+            } else {
+                wrap.fitText(10);
+            }
 
-    $('#Chrome').on('dblclick', function () {
-        $('html').toggleClass('debug');
-
-        if ($('html').is('.debug')) {
-            $(window).off('.fittext');
-            $('body').css('font-size', '');
-        } else {
-            $('body').fitText(10);
-        }
-
-    });
+        });
+    }())
 }
 
 /*
