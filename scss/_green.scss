@@ -22,14 +22,41 @@
     }
     .ribbon {
         background-color: transparentize($green, 0.15);
-        font-size: 90%;
+        font-size: 1em;
         height: 8em;
         padding: 3em 0;
         width: 100%;
 
-        * {
-            line-height: 20px;
+        h2, h3 {
+            font-weight: 200;
+            line-height: 0.9em;
             margin: 0;
+
+            b {
+                font-weight: 500;
+            }
+        }
+        &.whiten {
+            background-color: transparentize(white, 0.15);
+
+            img {
+                display: inline;
+                vertical-align: middle;
+                height: 66px;
+                width: 66px;
+                margin: -1.5em 0;
+            }
+            h2 {
+                color: black;
+                font-weight: 500;
+                font-size: 2em;
+
+                b {
+                    font-size: 1.5em;
+                    font-weight: 600;
+                    color: $red;
+                }
+            }
         }
     }
     .padded {
