@@ -1,19 +1,5 @@
 /* MISC */
 
-$green: #46a033;
-
-section, div {
-    box-sizing: border-box;
-}
-img {
-    display: inline-block;
-}
-section {
-    -webkit-transition: all 0.125s ease-out;
-    -moz-transition: all 0.125s ease-out;
-    -o-transition: all 0.125s ease-out;
-    transition: all 0.125s ease-out;
-}
 .bottom {
     position: absolute;
     bottom: 0;
@@ -21,84 +7,49 @@ section {
 .hide {
     display: none !important;
 }
-#Wrap {
-    overflow-x: hidden;
-
-    .hscroll {
-        width: 9999px;
-    }
-    .pager {
-        background: red;
-        height: 333px;
-        overflow-x: scroll;
-
-        img {
-            margin: 0;
-        }
-        br {
-            display: none;
-        }
-    }
-}
 .shadow {
     box-shadow: 0 0 50px transparentize(black, 0.6);
 }
-.teach {
-    background-color: #f1f1f1;
-    background: url('../images/4comm/teach.png') 14px 17px no-repeat #f1f1f1;
-    display: inline-block;
-    margin: 22em auto auto 1em;
-}
-.arrow {
-    border: 0;
-    border-radius: 3em;
-    display: inline-block;
-    height: 45px;
-    opacity: 0.8;
-    padding: 0;
-    width: 45px;
+.btnLabel {
+    color: $red;
+    float: right;
+    font-size: 80%;
+    font-weight: 900;
+    margin: -0.5em;
+    text-transform: uppercase;
+    word-spacing: 3px;
 
-    &:hover {
-        background-color: rgba(255, 255, 155, 0.4) !important;
-        box-shadow: 0 0 50px transparentize(#333, 0.6);
-        opacity: 1;
+    button {
+        vertical-align: middle;
     }
-    &:active {
-        box-shadow: 0 10px 20px transparentize(white, 0.8);
+}
+.callout {
+    color: $green;
+    display: inline-block;
+    font-size: 2.0em;
+    line-height: 1.3em;
+    margin: 15em auto auto 1em;
+    max-width: 22em;
+    padding: 1em;
+    position: absolute;
+
+    p {
+        font-weight: 500;
+        text-align: left;
     }
-    &.left {
-        background: url('../images/0chrome/arrows.png') 0 0 no-repeat;
-    }
-    &.right {
-        background: url('../images/0chrome/arrows.png') -45px 0 no-repeat;
-    }
+}
+.reading {
+    background: url('../images/misc/par.png') 1em 0.5em no-repeat #ffffff;
+    padding-top: 110px;
+}
+.teach {
+    background: url('../images/misc/teach.png') 1em 1em no-repeat #f1f1f1;
+    padding-top: 50px;
 }
 .center {
     display: block;
     margin: auto;
 }
-.debug {
-    #Wrap {
-        border: 1px solid lime;
-    }
-    section {
-        border: 1px solid red;
-    }
-}
-body .marker {
-    border-top: 1px solid red;
-    height: 10px;
-    left: 2px;
-    line-height: 14px;
-    position: absolute;
-    text-align: right;
-    width: 50px;
-    z-index: 9999;
-
-    span {
-        background-color: rgba(255, 255, 155, 0.5);
-        color: green;
-        font-size: 11px;
-        padding: 0 5px;
-    }
+.marker {
+    display: none;
 }

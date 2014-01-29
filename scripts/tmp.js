@@ -3,14 +3,16 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 var TMP = (function (W, $) {
-    var self, name = 'TMP',
-        C = W.console;
+    var C, self, name;
+
+    name = 'TMP';
+    C = W.console;
 
     function undef() {
         return (typeof arguments[0] === 'undefined');
     }
 
-    function debug(n) {
+    function _debug(n) {
         return W.debug >= (n || 0);
     }
 
@@ -22,65 +24,108 @@ var TMP = (function (W, $) {
         }
         if (me.length) {
             C.log(me[0].tagName, 'height innerH outerH', me.height(), me.innerHeight(), me.outerHeight());
+            C.log(me[0].tagName, 'client offset scroll', me[0].clientHeight, me[0].offsetHeight, me[0].scrollHeight);
         }
         arguments.callee(me.parent());
     }
 
-    function makeMarks() {
-        var B = $('body'),
-            D = $('<div>').addClass('marker').append('<span>'),
-            H = B.outerHeight(),
-            i, x;
+    function _makeMarks() {
+        var bod, div, dup, mrk, pix, i;
         //
-        for (i = 250; i < H; i += 250) {
-            x = D.clone().appendTo(B).css('top', i).find('span').text(i);
-            debug(2) && C.debug(i, x);
+        bod = $('body');
+        div = $('#Chrome');
+        pix = bod.outerHeight();
+        mrk = $('<span>').addClass('marker').append('<i>');
+        //
+        for (i = 250; i < pix; i += 250) {
+            dup = mrk.clone().appendTo(div).css('top', i).find('i').text(i);
+            _debug(2) && C.debug(i, dup);
         }
     }
 
     function _test() {
-        logHeights('body');
-
-        makeMarks();
-
-        $('#Foo').on('inview', function (e, i, h, v) {
-            if (i) {
-                C.log(v);
+        logHeights('#Wrap');
+        W.setTimeout(_makeMarks, 999);
+        //
+        $('#Foo').on('inview', function (evt, yes, hsides, vsides) {
+            if (yes) {
+                C.log(vsides);
             } else {
                 C.log('bye');
             }
         });
+    }
 
-        $('.pager').on('inview', function (e, i, h, v) {
-            if (v === 'both') {
-                C.log('Do HOLES');
-            }
-            if (i === false) {
-                C.log('Reset HOLES');
-            }
+    function _mapScroll() {
+        var map, els;
+        //
+        map = $('#Menu');
+        els = map.find('a');
+
+        // each link
+        // capture default action
+        // replace it with Util.scroll
+
+        els.on('click', function (evt) {
+            var anc = $(this).attr('href');
+            C.error(anc);
+
+            evt.preventDefault();
+            Util.scroll(anc);
         });
     }
 
+    function _init() {
+        var html, wrap;
+        //
+        html = $('html');
+        wrap = $('#Wrap');
+        //
+        wrap.fitText(10);
+        wrap.find('section .padded').wrap('<div class="baggie">')
+        //
+        $('#Chrome').on('dblclick', function () {
+            html.toggleClass('debug');
+
+            if (html.is('.debug')) {
+                $.fitText.off();
+                wrap.css('font-size', '');
+            } else {
+                wrap.fitText(10);
+            }
+        });
+
+        TMP.test();
+        _mapScroll();
+    }
+
     self = {
+        init: _init,
         test: _test,
     };
 
-    (W.debug > 0) && C.log([name]);
+    _debug() && C.log([name]);
 
     return self;
 }(window, jQuery));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-if ($('html').is('.debug.tmp')) {
-
-    var tmp;
-
-    $('#Header').on('dblclick', function () {
-        tmp = TMP.test();
-    });
+if ($('html').is('.tmp')) {
+    TMP.init();
 }
 
 /*
 
+    var sample = {
+        time: window.setInterval(function () {
+            var my = sample;
+            my.div = $('#X2a');
+            my.data = (my.data || my.div.data('Bg'));
+            my.num = my.num || 1;
+            console.debug(my.num++, my.data.topof);
+            if (my.num > 90) my.div.trigger('measure');
+            if (my.num > 99) window.clearInterval(my.time);
+        }, 5)
+    };
 
  */

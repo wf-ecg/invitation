@@ -1,0 +1,69 @@
+/* GREEN */
+
+#Wrap {
+    background: url('../images/misc/policetape.png') 0 0 repeat;
+    color: white;
+    font-family: 'Archer', 'Archer SSm A', 'Archer SSm B', Georgia, serif;
+    margin-top: 72px;
+    overflow: hidden;
+
+    section {
+        background: url('../images/misc/swatch.png') 50% 0 no-repeat fixed;
+        background-size: cover !important;
+        box-shadow: 0 0 50px rgba(0,0,0,0.3);
+        padding: 0px;
+        position: relative;
+        text-align: center;
+        width: 100%;
+
+        .baggie {
+            padding: 15% 0;
+        }
+    }
+    .ribbon {
+        background-color: transparentize($green, 0.15);
+        font-size: 90%;
+        height: 10em;
+        padding: 4em 0;
+        width: 100%;
+
+        * {
+            line-height: 20px;
+            margin: 0;
+        }
+    }
+    .padded {
+        margin: auto;
+        max-width: 88em;
+    }
+    .tbox {
+        border: 3px solid white;
+        border-radius: 2px;
+        display: inline-block;
+        margin-bottom: 1em;
+        text-transform: uppercase;
+
+        h1 {
+            margin: 0.25em 0.75em 0.2em;
+        }
+        &.v1 {
+            background-color: transparentize(#eee, 0.75);
+
+            h1 {
+                color: white;
+            }
+        }
+        &.v2 {
+            background-color: transparentize(#eee, 0.25);
+            box-shadow: 0 0 50px transparentize(black, 0.6);
+
+            h1 {
+                color: $green;
+            }
+        }
+    }
+}
+#X0 article {
+    left: 5%;
+    top: 22em;
+}

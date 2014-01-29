@@ -10,7 +10,7 @@ var Range = (function (W, $) {
         return (typeof arguments[0] === 'undefined');
     }
 
-    function debug(n) {
+    function _debug(n) {
         return W.debug >= (n || 0);
     }
 
@@ -92,7 +92,7 @@ var Range = (function (W, $) {
         test: _test,
     };
 
-    (W.debug > 0) && C.log([name]);
+    _debug() && C.log([name]);
 
     return self;
 }(window, jQuery));

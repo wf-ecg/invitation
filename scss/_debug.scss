@@ -1,0 +1,33 @@
+/* DEBUG */
+
+.debug {
+    overflow-x: hidden;
+
+    #Wrap {
+        @include debugWith(lime);
+    }
+    section {
+        @include debugWith(red);
+    }
+    .construct {
+        background: url('../images/misc/policetape.png') 0 0 repeat;
+    }
+    body .marker {
+        border-top: 1px solid red;
+        display: block;
+        height: 10px;
+        left: 2px;
+        line-height: 14px;
+        position: absolute;
+        text-align: right;
+        width: 50px;
+        z-index: 9999;
+
+        * {
+            background-color: rgba(255, 255, 155, 0.5);
+            color: green;
+            font-size: 11px;
+            padding: 0 5px;
+        }
+    }
+}

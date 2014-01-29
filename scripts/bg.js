@@ -5,22 +5,33 @@ var Bg = (function (W, $) {
     var C = W.console,
         self, name = 'Bg';
 
-    function debug(n) {
+    function _debug(n) {
         return W.debug >= (n || 0);
     }
 
     self = function Bg(ele, bounds) {
-        this.port = bounds;
-        this.$ = $(ele);
-        this.$.data(name, this);
-        this.readData();
-        this.$.css({
-//            height: this.data.height,
-            backgroundImage: 'url(images/' + this.data.image +')',
+        var my = this;
+        my.port = bounds;
+        my.$ = $(ele);
+        my.$.data(name, my);
+        my.readData();
+        my.$.css({
+            height: this.data.height,
+            backgroundImage: 'url(images/' + my.data.image +')',
         });
-        this.measure();
 
-        debug(2) && C.debug(name, this);
+        my.$.on('dblclick.' + name, function () {
+            C.log(my);
+        });
+        $.PS_sub('resize', function () {
+            my.measure();
+            $W.scroll()
+        });
+//        my.$.on('measure.' + name, function () {
+//            my.measure();
+//            C.log(my.topof);
+//        });
+        _debug(2) && C.debug(name, my);
     };
 
     self.prototype = {
@@ -40,15 +51,15 @@ var Bg = (function (W, $) {
         },
         readData: function () {
             this.data = {
-                image: this.$.data('f') || '0chrome/swatch.png',
+                image: this.$.data('f') || 'misc/swatch.png',
                 height: this.$.data('h') || '100',
-                ratio: 100 / (this.$.data('r') || 1),
+                ratio: 100 / (this.$.data('r') || 0.001),
                 offby: this.$.data('o') || 0,
                 trans: this.$.data('t') || 'move',
             };
         },
         getTopof: function () {
-            return this.$.position().top | 0;
+            return this.$.position().top;
         },
         isShowing: function () { // vert only
             this.showing = !(this.above < 0 || this.beyond > this.height);
@@ -75,7 +86,7 @@ var Bg = (function (W, $) {
         },
     };
 
-    (W.debug > 0) && C.log([name]);
+    _debug() && C.log([name]);
 
     return self;
 }(window, jQuery));

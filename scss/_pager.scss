@@ -1,0 +1,55 @@
+/* PAGER */
+
+#Wrap {
+    .course {
+        .pager {
+            .debug & {
+                height: 99%;
+            }
+            height: 102%;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            white-space: nowrap;
+        }
+        .page {
+            .debug & {
+                @include debugWith(yellow);
+            }
+            display: inline-block;
+            padding: 10% 0;
+            width: 100%;
+
+            a {
+                .debug & {
+                    @include debugWith(red);
+                }
+                display: inline-block;
+            }
+        }
+    }
+
+    .arrow {
+        border: 0;
+        border-radius: 3em;
+        display: inline-block;
+        height: 45px;
+        opacity: 0.8;
+        padding: 0;
+        width: 45px;
+
+        &:hover {
+            box-shadow: 0 0 50px transparentize(yellow, 0.6);
+            opacity: 1;
+        }
+        &:active {
+            box-shadow: 0 10px 20px transparentize(white, 0.8);
+        }
+        &.left {
+            background: url('../images/btns/arrows.png') 0 0 no-repeat;
+        }
+        &.right {
+            background: url('../images/btns/arrows.png') -45px 0 no-repeat;
+        }
+    }
+
+}
