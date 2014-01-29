@@ -54,22 +54,10 @@ var TMP = (function (W, $) {
             }
         });
     }
+    function _init() {
 
-    self = {
-        test: _test,
-    };
-
-    _debug() && C.log([name]);
-
-    return self;
-}(window, jQuery));
-
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-if ($('html').is('.tmp')) {
-    (function(){
         var html, wrap;
         //
-        TMP.test();
         html = $('html');
         wrap = $('#Wrap');
         //
@@ -85,9 +73,24 @@ if ($('html').is('.tmp')) {
             } else {
                 wrap.fitText(10);
             }
-
         });
-    }())
+
+        TMP.test();
+    }
+
+    self = {
+        init: _init,
+        test: _test,
+    };
+
+    _debug() && C.log([name]);
+
+    return self;
+}(window, jQuery));
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+if ($('html').is('.tmp')) {
+    TMP.init();
 }
 
 /*
