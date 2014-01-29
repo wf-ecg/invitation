@@ -1,0 +1,61 @@
+/* MENU */
+
+#Menu {
+    background-color: $green;
+    border-radius: 1em;
+    box-shadow: 0 0 10px transparentize(black, 0.3);
+    color: white;
+    height: 2.75em;
+    opacity: 0.5;
+    overflow: hidden;
+    padding-top: 0.7em;
+    position: fixed;
+    right: 1em;
+    text-align: center;
+    top: 1em;
+    width: 10em;
+    z-index: 12;
+
+    @include setEase(all, 1s, ease-in);
+
+    h2 {
+        font-size: 15px;
+        margin-bottom: 1em;
+    }
+    a {
+        background-color: transparentize($green, 0.3);
+        border: 1px solid $green;
+        border-radius: 0em;
+        box-shadow: 0px 0 6px transparentize(black, 0.3);
+        color: white;
+        display: inline-block;
+        font-size: 22px;
+        height: 28px;
+        margin: 5px;
+        overflow: hidden;
+        padding: 2px;
+        text-decoration: none;
+        text-shadow: 1px 1px 1px gray, 0 1px 1px white;
+        width: 28px;
+        @include setEase(all, .5s, ease-in);
+
+        &:hover {
+            background: url('../images/btns/ball.png') 50% 50% repeat white;
+            border-color: gray;
+            border-radius: 11em;
+            box-shadow: 0px 3px 6px transparentize(black, 0.3);
+            color: $red;
+            text-shadow: 1px -1px 1px white, -1px 1px 1px gray;
+        }
+    }
+    p {
+        clear: both;
+        margin: 2em 0 1em;
+    }
+    &:hover {
+        height: 90%;
+        opacity: 0.9;
+        width: 11em;
+        @include setEase(all, 1s, ease-out);
+    }
+}
