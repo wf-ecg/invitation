@@ -3,7 +3,6 @@
 #Menu {
     background-color: $green;
     border-radius: 1em;
-    box-shadow: 0 0 10px transparentize(black, 0.3);
     color: white;
     height: 2.75em;
     opacity: 0.5;
@@ -26,6 +25,7 @@
         margin: 2em 0 1em;
     }
     &:hover {
+        box-shadow: 0 0 10px transparentize(black, 0.3);
         height: 90%;
         opacity: 0.9;
         width: 11em;
@@ -35,7 +35,7 @@
         background-color: transparentize($green, 0.3);
         border: 1px solid $green;
         border-radius: 0.1em;
-        box-shadow: 0px 0 6px transparentize(black, 0.3);
+        box-shadow: 0px 0 6px transparentize(black, 0.5);
         color: white;
         display: inline-block;
         font-size: 22px;
