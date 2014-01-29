@@ -15,6 +15,7 @@ var Port = (function (W, $) {
         this._.T = 0;
         this._.V = 0;
         this.all = null;
+        this.Df = {};
         this.init();
     };
 
@@ -29,13 +30,23 @@ var Port = (function (W, $) {
             bottom: this._.T + this._.V,
         });
     };
+    self.prototype.relog = function (nom, ms) {
+        var my = this;
+
+        W.clearTimeout(my.Df[nom]);
+
+        my.Df[nom] = W.setTimeout(function () {
+            my.log(nom);
+            $.PS_pub(nom);
+        }, ms);
+    };
     self.prototype.init = function () {
         var self = this,
             jq = this._.J;
 
         jq.resize(function () {
             self._.V = jq.height() | 0;
-            self.log('resize');
+            self.relog('resize', 333);
         });
         jq.scroll(function () {
             self._.T = jq.scrollTop() | 0;

@@ -20,8 +20,15 @@ var Bg = (function (W, $) {
             backgroundImage: 'url(images/' + my.data.image +')',
         });
         my.measure();
-        my.$.on('dblclick', function () {
+        my.$.on('dblclick.' + name, function () {
             C.log(my);
+        });
+        $.PS_sub('resize', function () {
+            my.measure();
+        });
+        my.$.on('measure.' + name, function () {
+            my.measure();
+            C.log(my.topof);
         });
         _debug(2) && C.debug(name, my);
     };
