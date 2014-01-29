@@ -24,6 +24,7 @@ var TMP = (function (W, $) {
         }
         if (me.length) {
             C.log(me[0].tagName, 'height innerH outerH', me.height(), me.innerHeight(), me.outerHeight());
+            C.log(me[0].tagName, 'client offset scroll', me[0].clientHeight, me[0].offsetHeight, me[0].scrollHeight);
         }
         arguments.callee(me.parent());
     }
@@ -43,7 +44,7 @@ var TMP = (function (W, $) {
     }
 
     function _test() {
-        logHeights('body');
+        logHeights('#Wrap');
         W.setTimeout(_makeMarks, 999);
         //
         $('#Foo').on('inview', function (evt, yes, hsides, vsides) {
@@ -54,8 +55,27 @@ var TMP = (function (W, $) {
             }
         });
     }
-    function _init() {
 
+    function _mapScroll() {
+        var map, els;
+        //
+        map = $('#Menu');
+        els = map.find('a');
+
+        // each link
+        // capture default action
+        // replace it with Util.scroll
+
+        els.on('click', function (evt) {
+            var anc = $(this).attr('href');
+            C.error(anc);
+
+            evt.preventDefault();
+            Util.scroll(anc);
+        });
+    }
+
+    function _init() {
         var html, wrap;
         //
         html = $('html');
@@ -76,6 +96,7 @@ var TMP = (function (W, $) {
         });
 
         TMP.test();
+        _mapScroll();
     }
 
     self = {

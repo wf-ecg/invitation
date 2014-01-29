@@ -13,7 +13,7 @@ var Util = (function (W, $) {
     // CONSTANTS
     easing = {
         easeInBack: function (x, t, b, c, d, s) {
-            if (s == undefined) s = 1.70158;
+            if (s == undefined) s = 0.5;
             return c * (t /= d) * t * ((s + 1) * t - s) + b;
         },
     };
@@ -77,7 +77,7 @@ var Util = (function (W, $) {
 
             bod.stop().animate({
                 scrollTop: ele.offset().top + add,
-            }, 333, 'easeInBack', function () {
+            }, 666, 'easeInBack', function () {
                 ele.removeClass(':target');
             });
         }
