@@ -24,18 +24,22 @@
     }
 }
 .callout {
+    background-color: #ffffff;
     color: $green;
     display: inline-block;
-    font-size: 2.0em;
+    font-size: 1.2em;
     line-height: 1.3em;
     margin: 15em auto auto 1em;
-    max-width: 22em;
+    max-width: 40em;
     padding: 1em;
     position: absolute;
 
     p {
-        font-weight: 500;
+        font-weight: 200;
         text-align: left;
+    }
+    sup {
+        font-size: 0.6em;
     }
 }
 .reading {
@@ -43,7 +47,7 @@
     padding-top: 110px;
 }
 .teach {
-    background: url('../images/misc/teach.png') 1em 1em no-repeat #f1f1f1;
+/*    background: url('../images/misc/teach.png') 1em 1em no-repeat #f1f1f1;*/
     padding-top: 50px;
 }
 .center {
