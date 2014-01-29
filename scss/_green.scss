@@ -5,10 +5,16 @@
     color: white;
     font-family: 'Archer', 'Archer SSm A', 'Archer SSm B', Georgia, serif;
     margin-top: 72px;
+    overflow: hidden;
 
     section {
-        text-align: center;
+        background: url('../images/misc/swatch.png') 50% 0 no-repeat fixed;
+        background-size: cover !important;
+        box-shadow: 0 0 50px rgba(0,0,0,0.3);
         padding: 0px;
+        position: relative;
+        text-align: center;
+        width: 100%;
 
         .baggie {
             padding: 15% 0;
