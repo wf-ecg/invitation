@@ -3,11 +3,21 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 var Util = (function (W, $) {
-    var C, name, self;
+    var C, name, self, easing;
 
     C = W.console;
     self = {};
     name = 'Util';
+
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    // CONSTANTS
+    easing = {
+        easeInBack: function (x, t, b, c, d, s) {
+            if (s == undefined) s = 1.70158;
+            return c * (t /= d) * t * ((s + 1) * t - s) + b;
+        },
+    };
+    $.extend($.easing, easing);
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
@@ -49,12 +59,36 @@ var Util = (function (W, $) {
         }
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    function _scroll(ele, add) {
+
+        add = add || 0;
+        if (typeof ele === 'number') {
+            add = ele;
+            ele = 'body';
+        }
+        ele = $(ele || 'body').first();
+
+        var bod = $('body');
+
+        C_() && C.debug(name + '_scroll', '\n', add + 'px', [ele]);
+
+        if (ele.length) {
+            ele.addClass(':target');
+
+            bod.stop().animate({
+                scrollTop: ele.offset().top + add,
+            }, 333, 'easeInBack', function () {
+                ele.removeClass(':target');
+            });
+        }
+    }
 
     self = {
         arg: _arg,
         flatten: _flatcat,
         isDef: _undef,
         I: _reflect,
+        scroll: _scroll,
     };
 
     $.extend(W, {
