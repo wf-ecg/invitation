@@ -12,12 +12,20 @@
     color: white;
     font-family: 'Archer', 'Archer SSm A', 'Archer SSm B', Georgia, serif;
     margin-top: 72px;
-    text-align: center;
 
+    section {
+        text-align: center;
+        padding: 0px;
+
+        .baggie {
+            padding: 15% 0;
+        }
+    }
     .ribbon {
         background-color: transparentize($green, 0.15);
-        height: 100px;
-        padding: 40px 0;
+        font-size: 90%;
+        height: 10em;
+        padding: 4em 0;
         width: 100%;
 
         * {
@@ -26,7 +34,8 @@
         }
     }
     .padded {
-        margin: 15% auto 0;
+        margin: auto;
+        max-width: 88em;
     }
     .tbox {
         border: 3px solid white;

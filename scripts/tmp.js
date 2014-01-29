@@ -68,6 +68,7 @@ if ($('html').is('.tmp')) {
 
     var tmp = TMP.test();
     $('body').fitText(10);
+    $('#Wrap section .padded').wrap('<div class="baggie">')
 
     $('#Chrome').on('dblclick', function () {
         $('html').toggleClass('debug');
@@ -84,5 +85,16 @@ if ($('html').is('.tmp')) {
 
 /*
 
+    var sample = {
+        time: window.setInterval(function () {
+            var my = sample;
+            my.div = $('#X2a');
+            my.data = (my.data || my.div.data('Bg'));
+            my.num = my.num || 1;
+            console.debug(my.num++, my.data.topof);
+            if (my.num > 90) my.div.trigger('measure');
+            if (my.num > 99) window.clearInterval(my.time);
+        }, 5)
+    };
 
  */

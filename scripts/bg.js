@@ -16,20 +16,21 @@ var Bg = (function (W, $) {
         my.$.data(name, my);
         my.readData();
         my.$.css({
-//            height: this.data.height,
+            height: this.data.height,
             backgroundImage: 'url(images/' + my.data.image +')',
         });
-        my.measure();
+
         my.$.on('dblclick.' + name, function () {
             C.log(my);
         });
         $.PS_sub('resize', function () {
             my.measure();
+            $W.scroll()
         });
-        my.$.on('measure.' + name, function () {
-            my.measure();
-            C.log(my.topof);
-        });
+//        my.$.on('measure.' + name, function () {
+//            my.measure();
+//            C.log(my.topof);
+//        });
         _debug(2) && C.debug(name, my);
     };
 
