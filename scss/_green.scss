@@ -10,7 +10,7 @@
     section {
         background: url('../images/misc/swatch.png') 50% 0 no-repeat fixed;
         background-size: cover !important;
-        box-shadow: 0 0 50px rgba(0,0,0,0.3);
+        box-shadow: 0 0 50px transparentize(black, .2);
         padding: 0px;
         position: relative;
         text-align: center;
@@ -26,6 +26,7 @@
         height: 8em;
         padding: 3em 0;
         width: 100%;
+        z-index: 1;
 
         h2, h3 {
             font-weight: 200;
