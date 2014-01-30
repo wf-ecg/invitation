@@ -24,7 +24,7 @@
     }
 }
 .callout {
-    background-color: #ffffff;
+    background-color: $whitish;
     color: $green;
     display: inline-block;
     font-size: 1.2em;
@@ -40,7 +40,7 @@
     }
 }
 .reading {
-    background: url('../images/misc/par.png') 1em 0.5em no-repeat #ffffff;
+    background: url('../images/misc/par.png') 1em 0.5em no-repeat $whitish;
     padding-top: 110px;
 }
 .teach {

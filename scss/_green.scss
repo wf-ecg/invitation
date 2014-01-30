@@ -42,7 +42,7 @@
             }
         }
         &.whiten {
-            background-color: transparentize(white, 0.15);
+            background-color: $whitish;
 
             img {
                 display: inline;
