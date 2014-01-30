@@ -11,12 +11,21 @@ $whitish: transparentize(white, 0.1);
     background-color: lighten($color, percentage($opacity/2)); /* fallback1 */
     background-color: setTrans($color, $opacity);
 }
-@mixin setEase($a, $b, $c) {
-    -webkit-transition: $a $b $c;
-    -moz-transition: $a $b $c;
-    -o-transition: $a $b $c;
-    transition: $a $b $c;
+@mixin setEase($a) {
+    -webkit-transition: $a;
+       -moz-transition: $a;
+        -ms-transition: $a;
+         -o-transition: $a;
+            transition: $a;
 }
+@mixin setTransform($a) {
+     -webkit-transform: $a;
+        -moz-transform: $a;
+         -ms-transform: $a;
+          -o-transform: $a;
+             transform: $a;
+}
+
 @mixin debugWith($color) {
     border: 1px solid $color;
     margin-right: -1px;

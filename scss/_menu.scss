@@ -14,7 +14,7 @@
     top: 1em;
     width: 7em;
     z-index: 12;
-    @include setEase(all, 1s, ease-in);
+    @include setEase(all 1s ease-in);
 
     h2 {
         font-size: 15px;
@@ -29,7 +29,7 @@
         height: 90%;
         opacity: 0.9;
         width: 11em;
-        @include setEase(all, 1s, ease-out);
+        @include setEase(all 1s ease-out);
     }
     a {
         background-color: transparentize($green, 0.3);
@@ -46,7 +46,7 @@
         text-decoration: none;
         text-shadow: 1px 1px 1px gray, 0 1px 1px white;
         width: 28px;
-        @include setEase(all, .5s, ease-in);
+        @include setEase(all .5s ease-in);
 
         &:hover {
             background: url('../images/btns/ball.png') 50% 50% repeat white;

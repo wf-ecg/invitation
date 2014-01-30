@@ -8,8 +8,8 @@
     @extend %abscent;
 
     img {
-        @include setEase(all, 1.5s, ease-out);
         border: 1px solid transparentize(gray, 0.8);
+        @include setEase(all 1.5s ease-out);
         display: inline-block;
         margin: 1.5em;
         position: relative;

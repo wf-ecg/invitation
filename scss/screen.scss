@@ -29,7 +29,7 @@ section, div {
     box-sizing: border-box;
 }
 section {
-    @include setEase(all, 0.125s, ease-out);
+    @include setEase(all 0.125s ease-out);
 }
 sup {
     font-size: 0.6em;
