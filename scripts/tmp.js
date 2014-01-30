@@ -46,10 +46,18 @@ var TMP = (function (W, $) {
     function _test() {
         logHeights('#Wrap');
         W.setTimeout(_makeMarks, 999);
-        //
-        $('#Foo').on('inview', function (evt, yes, hsides, vsides) {
-            if (yes) {
+    }
+
+    function _bindGallery() {
+        $('#Gallery').on('inview', function (evt, showing, hsides, vsides) {
+            if (showing) {
                 C.log(vsides);
+                if (vsides  === 'both') {
+                   $(this).find('img').addClass('grid');
+                   Util.scroll('#X3b');
+                } else {
+                    $(this).find('img').removeClass('grid');
+                }
             } else {
                 C.log('bye');
             }
@@ -97,6 +105,7 @@ var TMP = (function (W, $) {
 
         TMP.test();
         _mapScroll();
+        _bindGallery();
     }
 
     self = {

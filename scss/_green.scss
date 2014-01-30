@@ -22,12 +22,6 @@
         &.darken .baggie {
             background-color: transparentize(black, 0.4);
             height: 100%;
-
-            img {
-                display: inline-block;
-                margin: 1em;
-                width: 25%;
-            }
         }
     }
     .ribbon {

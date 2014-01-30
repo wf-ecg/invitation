@@ -37,6 +37,7 @@ $red: #C00029;
 
 @import "_debug";
 @import "_champs";
+@import "_gallery";
 @import "_green";
 @import "_pager";
 @import "_menu";
@@ -57,10 +58,7 @@ section, div {
     box-sizing: border-box;
 }
 section {
-    -webkit-transition: all 0.125s ease-out;
-    -moz-transition: all 0.125s ease-out;
-    -o-transition: all 0.125s ease-out;
-    transition: all 0.125s ease-out;
+    @include setEase(all, 0.125s, ease-out);
 }
 sup {
     font-size: 0.6em;
