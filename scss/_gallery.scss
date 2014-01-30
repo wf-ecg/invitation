@@ -27,7 +27,7 @@
         }
         &:hover {
             @include setEase(all 0.25s ease-out 0.5s);
-            @include setTransform( scale(1.5) );
+            @include setTransform( scale(1.66) );
             background-color: $red;
             opacity: 0.8;
             width: 30%;

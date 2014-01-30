@@ -103,11 +103,22 @@ var TMP = (function (W, $) {
         });
     }
 
+    function _ticker() {
+        $.PS_pub('resize');
+    }
+    function _startTicker() {
+        W.setInterval(_ticker, 3333);
+    }
+
     function _init() {
         var html, wrap;
         //
         html = $('html');
         wrap = $('#Wrap');
+
+        html.on('click', '.touch', function () {
+            $(this).toggleClass('hover');
+        });
         //
         wrap.fitText(10);
         //
@@ -130,6 +141,7 @@ var TMP = (function (W, $) {
         _mapScroll();
         _bindGallery();
         _sectionStick();
+        _startTicker();
     }
 
     self = {
