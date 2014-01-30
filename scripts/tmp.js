@@ -19,7 +19,7 @@ var TMP = (function (W, $) {
     function logHeights(ele) { // Util.heights =
         var me = $(ele);
         //
-        if (!me.length || me.is(document)) {
+        if (!me.length || me.is(W.document)) {
             return;
         }
         if (me.length) {
@@ -50,11 +50,13 @@ var TMP = (function (W, $) {
 
     function _bindGallery() {
         $('#Gallery').on('inview', function (evt, showing, hsides, vsides) {
+            var my = $(this);
+            //
             if (showing) {
                 C.log(vsides);
                 if (vsides  === 'both') {
                     $(this).find('img').addClass('grid');
-                    Util.scroll('#X3b', OFF);
+                    Util.scroll(my.closest('section'), OFF);
                 } else {
                     $(this).find('img').removeClass('grid');
                 }
@@ -67,7 +69,7 @@ var TMP = (function (W, $) {
     function _sectionStick() {
         $('.filler > *').on('inview', _.debounce(function (evt, showing, hsides, vsides) {
             var my = $(this);
-
+            //
             if (showing) {
                 C.log('hi', this);
                 if (vsides === 'both') {
