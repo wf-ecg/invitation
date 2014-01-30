@@ -64,6 +64,9 @@ var TMP = (function (W, $) {
                 C.log('bye');
             }
         });
+        $('#Gallery img').on('click', function () {
+            $(this).toggleClass('zoom');
+        });
     }
 
     function _sectionStick() {
