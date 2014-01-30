@@ -3,7 +3,7 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 var TMP = (function (W, $) {
-    var C, self, name;
+    var C, self, name, OFF = 24;
 
     name = 'TMP';
     C = W.console;
@@ -53,8 +53,8 @@ var TMP = (function (W, $) {
             if (showing) {
                 C.log(vsides);
                 if (vsides  === 'both') {
-                   $(this).find('img').addClass('grid');
-                   Util.scroll('#X3b');
+                    $(this).find('img').addClass('grid');
+                    Util.scroll('#X3b', OFF);
                 } else {
                     $(this).find('img').removeClass('grid');
                 }
@@ -62,6 +62,21 @@ var TMP = (function (W, $) {
                 C.log('bye');
             }
         });
+    }
+
+    function _sectionStick() {
+        $('.filler > *').on('inview', _.debounce(function (evt, showing, hsides, vsides) {
+            var my = $(this);
+
+            if (showing) {
+                C.log('hi', this);
+                if (vsides === 'both') {
+                    Util.scroll(my.closest('section'), OFF);
+                }
+            } else {
+                C.log('bye', this);
+            }
+        }, 333));
     }
 
     function _mapScroll() {
@@ -79,7 +94,7 @@ var TMP = (function (W, $) {
             C.error(anc);
 
             evt.preventDefault();
-            Util.scroll(anc);
+            Util.scroll(anc, OFF);
         });
     }
 
@@ -109,6 +124,7 @@ var TMP = (function (W, $) {
         TMP.test();
         _mapScroll();
         _bindGallery();
+        _sectionStick();
     }
 
     self = {

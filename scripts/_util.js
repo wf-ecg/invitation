@@ -77,7 +77,7 @@ var Util = (function (W, $) {
 
             bod.stop().animate({
                 scrollTop: ele.offset().top + add,
-            }, 666, 'easeInBack', function () {
+            }, 666, function () { // 'easeInBack', 555
                 ele.removeClass(':target');
             });
         }
