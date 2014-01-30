@@ -15,14 +15,6 @@
         position: relative;
         text-align: center;
         width: 100%;
-
-        .baggie {
-            padding: 15% 0;
-        }
-        &.darken .baggie {
-            background-color: transparentize(black, 0.4);
-            height: 100%;
-        }
     }
     .ribbon {
         background-color: transparentize($green, 0.15);
@@ -90,8 +82,4 @@
             }
         }
     }
-}
-#X0 article {
-    left: 5%;
-    top: 22em;
 }

@@ -54,6 +54,9 @@
 .marker {
     display: none;
 }
+.darken > * {
+    background-color: transparentize(black, 0.4);
+}
 .pad1 {
     margin: 10% 5%;
 }
@@ -62,4 +65,15 @@
 }
 .pad3 {
     margin: 30% 15%;
+}
+.filler {
+    height: 100%;
+    width: 100%;
+    padding: 1px;
+}
+.champs {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    right: 10%;
 }

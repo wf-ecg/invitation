@@ -5,8 +5,7 @@
     $neg: -1 * $pos;
 
     width: 90%; height: 60%;
-    // absolute center
-    position: absolute; top: 0; right: 0; bottom: 0; left: 0; margin: auto;
+    @extend %abscent;
 
     img {
         @include setEase(all, 1.5s, ease-out);
