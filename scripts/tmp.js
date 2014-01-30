@@ -90,7 +90,10 @@ var TMP = (function (W, $) {
         wrap = $('#Wrap');
         //
         wrap.fitText(10);
-        wrap.find('section .padded').wrap('<div class="baggie">')
+        //
+        C.debug(wrap.find('section').each(function () {
+            $(this).children().not('.ribbon').wrapAll('<div class="filler">');
+        }));
         //
         $('#Chrome').on('dblclick', function () {
             html.toggleClass('debug');
