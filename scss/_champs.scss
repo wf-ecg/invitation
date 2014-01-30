@@ -1,12 +1,12 @@
 /* CHAMPS */
 
-$greenA: #5f7d0b;
-$greenB: #7c9439;
-$greenC: #6b7f45;
+$greenA: #5e8206;
+$greenB: #000;
+$greenC: #000;
 
-$greenA4: transparentize($greenA, 0.3);
-$greenB6: transparentize($greenB, 0.4);
-$greenC3: transparentize($greenC, 0.5);
+$greenA4: transparentize($greenA, 0.2);
+$greenB6: transparentize($greenB, 0.8);
+$greenC3: transparentize($greenC, 0.6);
 
 #Wrap .champs {
     background-color: $greenA4;
@@ -22,7 +22,7 @@ $greenC3: transparentize($greenC, 0.5);
     table {
         border-collapse: separate;
         border-spacing: 0 0.15em;
-        font-size: 2.5em;
+        font-size: 2.3em;
         margin: auto;
 
         td {
