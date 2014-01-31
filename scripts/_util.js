@@ -70,7 +70,7 @@ var Util = (function (W, $) {
 
         var bod = $('body');
 
-        C_() && C.debug(name + '_scroll', '\n', add + 'px', [ele]);
+        C_(2) && C.debug(name + '_scroll', '\n', add + 'px', [ele]);
 
         if (ele.length) {
             ele.addClass(':target');

@@ -53,7 +53,7 @@ var TMP = (function (W, $) {
             var my = $(this);
             //
             if (showing) {
-                C.log(vsides);
+                _debug(2) && C.log(name, vsides);
                 if (vsides  === 'both') {
                     $(this).find('img').addClass('grid');
                     Util.scroll(my.closest('section'), OFF);
@@ -61,7 +61,7 @@ var TMP = (function (W, $) {
                     $(this).find('img').removeClass('grid');
                 }
             } else {
-                C.log('bye');
+                _debug(2) && C.log('bye');
             }
         });
         $('#Gallery img').on('click', function () {
@@ -74,12 +74,12 @@ var TMP = (function (W, $) {
             var my = $(this);
             //
             if (showing) {
-                C.log('hi', this);
+                _debug(2) && C.log(name, 'hi', this);
                 if (vsides === 'both') {
                     Util.scroll(my.closest('section'), OFF);
                 }
             } else {
-                C.log('bye', this);
+                _debug(2) && C.log(name, 'bye', this);
             }
         }, 333));
     }
