@@ -4,9 +4,9 @@ $greenA: #5e8206;
 $greenB: #000;
 $greenC: #000;
 
-$greenA4: transparentize($greenA, 0.2);
-$greenB6: transparentize($greenB, 0.8);
-$greenC3: transparentize($greenC, 0.6);
+$greenA4: adjTrans($greenA, -0.2);
+$greenB6: adjTrans($greenB, -0.8);
+$greenC3: adjTrans($greenC, -0.6);
 
 #Wrap .champs {
     background-color: $greenA4;

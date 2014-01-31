@@ -41,7 +41,7 @@ header, footer {
     width: 100%;
 }
 header {
-    box-shadow: 0 0 50px transparentize(black, 0.6);
+    box-shadow: 0 0 50px adjTrans(black, -0.6);
     height: 72px;
     padding: 12px 0;
     top: 0;
@@ -49,7 +49,7 @@ header {
 }
 footer {
     bottom: 0;
-    box-shadow: 0 0 15px transparentize(black, 0.8);
+    box-shadow: 0 0 15px adjTrans(black, -0.8);
     height: 36px;
     font-size: 9pt;
     padding: 12px 15px;

@@ -8,7 +8,7 @@ $neg: -1 * $pos;
     @extend %abscent;
 
     img {
-        border: 1px solid transparentize($green, 0.8);
+        border: 1px solid adjTrans($green, -0.8);
         display: inline-block;
         height: 11em;
         margin: 1.5% 2%;

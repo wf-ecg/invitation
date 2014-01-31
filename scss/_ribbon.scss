@@ -2,7 +2,7 @@
 
 #Wrap {
     .ribbon {
-        background-color: transparentize($green, 0.15);
+        background-color: adjTrans($green, -0.15);
         font-size: 1em;
         height: 7.5em;
         padding: 2.5em 0;
@@ -29,8 +29,8 @@
                 display: block;
 
                 * {
-                    color: transparentize(white, 0.5);
-                    text-shadow: 0 0 3px transparentize(black, 0.5);
+                    color: adjTrans(white, -0.5);
+                    text-shadow: 0 0 3px adjTrans(black, -0.5);
                 }
             }
         }

@@ -21,7 +21,7 @@
     h2 {
         font-size: 15px;
         margin-bottom: 1em;
-        text-shadow: 0 0 3px transparentize(black, 0.3);
+        text-shadow: 0 0 3px adjTrans(black, -0.3);
     }
     p {
         clear: both;
@@ -34,17 +34,17 @@
     &.hover {
         background-color: gray;
         bottom: 66px;
-        box-shadow: 0 0 10px transparentize(black, 0.3);
+        box-shadow: 0 0 10px adjTrans(black, -0.3);
         max-height: 90%;
         right: 3em;
         width: 11em;
         @include setEase(all 1s ease-out 0.3s);
     }
     a {
-        background-color: transparentize($green, 0.3);
+        background-color: adjTrans($green, -0.3);
         border: 1px solid $green;
         border-radius: 0.1em;
-        box-shadow: 0px 0 6px transparentize(black, 0.5);
+        box-shadow: 0px 0 6px adjTrans(black, -0.5);
         color: white;
         display: inline-block;
         font-size: 22px;
@@ -61,7 +61,7 @@
             background: url('../images/btns/ball.png') 50% 50% repeat white;
             border-color: gray;
             border-radius: 11em;
-            box-shadow: 0px 3px 6px transparentize(black, 0.3);
+            box-shadow: 0px 3px 6px adjTrans(black, -0.3);
             color: $red;
             text-shadow: 1px -1px 1px white, -1px 1px 1px gray;
         }
