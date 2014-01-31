@@ -11,7 +11,7 @@ $neg: -1 * $pos;
         border: 1px solid transparentize($green, 0.8);
         display: inline-block;
         height: 11em;
-        margin: 1em 1.5em;
+        margin: 1.5% 2%;
         position: relative;
         vertical-align: middle;
         z-index: 1;
@@ -32,7 +32,7 @@ $neg: -1 * $pos;
             opacity: 0.8;
             z-index: 10;
             @include setEase(all 0.25s ease-out 0.5s);
-/*            @include setTransform( scale(1.33) );*/
+            @include setTransform( scale(1.33) );
         }
         &.zoom {
             background-color: black;
