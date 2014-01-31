@@ -24,27 +24,38 @@
     }
 }
 .callout {
+    background-color: $whitish;
+    bottom: 9em;
     color: $green;
     display: inline-block;
-    font-size: 2.0em;
+    font-size: 1.2em;
     line-height: 1.3em;
     margin: 15em auto auto 1em;
-    max-width: 22em;
+    max-width: 36em;
     padding: 1em;
     position: absolute;
 
     p {
-        font-weight: 500;
+        font-weight: 200;
         text-align: left;
     }
 }
 .reading {
-    background: url('../images/misc/par.png') 1em 0.5em no-repeat #ffffff;
-    padding-top: 110px;
+    background: url('../images/misc/par.png') 1em 0.5em no-repeat $whitish;
+    background-size: 35%;
+    padding-top: 5em;
 }
-.teach {
-    background: url('../images/misc/teach.png') 1em 1em no-repeat #f1f1f1;
-    padding-top: 50px;
+.succeed {
+    background: url('../images/misc/succeeding.png') 1em 1em no-repeat $whitish;
+    background-size: 35%;
+    padding-top: 4em;
+}
+.tending {
+    bottom: 14em;
+    width: 22em;
+    h4 {
+        text-align: left;
+    }
 }
 .center {
     display: block;
@@ -52,4 +63,24 @@
 }
 .marker {
     display: none;
+}
+.darken > * {
+    background-color: transparentize(black, 0.4);
+}
+.padded {
+    @extend %abscent;
+}
+.filler {
+    height: 100%;
+    width: 100%;
+    padding: 1px;
+}
+.champs {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    right: 10%;
+}
+._bname, ._cname {
+    text-transform: uppercase;
 }

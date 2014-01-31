@@ -1,25 +1,43 @@
 /*jslint es5:true, white:false */
-/*globals $, jQuery, window */
+/*globals $, $W, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 var TMP = (function (W, $) {
-    var C, self, name;
+    var C, self, name, OFF = 24;
+
+    var goingwas = 0;
+
+    function _going() {
+        var current, going;
+
+        current = $W.viewport.all.top;
+
+        if (current > goingwas) {
+            going = 'down';
+        } else {
+            going = 'up';
+        }
+        goingwas = current;
+
+        return going;
+    }
+    //    $W.scroll(_going);
 
     name = 'TMP';
     C = W.console;
-
-    function undef() {
-        return (typeof arguments[0] === 'undefined');
-    }
 
     function _debug(n) {
         return W.debug >= (n || 0);
     }
 
+    function undef() {
+        return (typeof arguments[0] === 'undefined');
+    }
+
     function logHeights(ele) { // Util.heights =
         var me = $(ele);
         //
-        if (!me.length || me.is(document)) {
+        if (!me.length || me.is(W.document)) {
             return;
         }
         if (me.length) {
@@ -46,14 +64,50 @@ var TMP = (function (W, $) {
     function _test() {
         logHeights('#Wrap');
         W.setTimeout(_makeMarks, 999);
+    }
+
+    function _bindGallery() {
+        var gal, all;
         //
-        $('#Foo').on('inview', function (evt, yes, hsides, vsides) {
-            if (yes) {
-                C.log(vsides);
+        gal = $('#Gallery');
+        all = gal.find('img');
+        //
+        gal.on('inview', function (evt, showing, hsides, vsides) {
+            if (showing) {
+                _debug(2) && C.log(name, vsides);
+                if (vsides === 'top' || vsides === 'both') {
+                    all.addClass('grid');
+                    Util.scroll(gal.closest('section'), OFF);
+                } else {
+                    all.removeClass('grid');
+                }
             } else {
-                C.log('bye');
+                _debug(2) && C.log('bye');
             }
         });
+        all.on('click', function () {
+            var me = $(this),
+                zoomed = me.is('.zoom');
+            if (!zoomed) {
+                all.removeClass('zoom');
+            }
+            me.toggleClass('zoom');
+        });
+    }
+
+    function _sectionStick() {
+        $('.filler > *').on('inview', _.debounce(function (evt, showing, hsides, vsides) {
+            var my = $(this);
+            //
+            if (showing) {
+                _debug(2) && C.log(name, 'hi', this);
+                if (vsides === 'both') {
+                    Util.scroll(my.closest('section'), OFF);
+                }
+            } else {
+                _debug(2) && C.log(name, 'bye', this);
+            }
+        }, 333));
     }
 
     function _mapScroll() {
@@ -71,7 +125,7 @@ var TMP = (function (W, $) {
             C.error(anc);
 
             evt.preventDefault();
-            Util.scroll(anc);
+            Util.scroll(anc, OFF);
         });
     }
 
@@ -80,9 +134,18 @@ var TMP = (function (W, $) {
         //
         html = $('html');
         wrap = $('#Wrap');
+
+        html.on('click', '.touch', function () {
+            $(this).toggleClass('hover');
+        });
         //
-        wrap.fitText(10);
-        wrap.find('section .padded').wrap('<div class="baggie">')
+        wrap.fitText(10, {
+            'minFontSize' : 7
+        });
+        //
+        C.debug(wrap.find('section').each(function () {
+            $(this).children().not('.ribbon').wrapAll('<div class="filler">');
+        }));
         //
         $('#Chrome').on('dblclick', function () {
             html.toggleClass('debug');
@@ -97,6 +160,9 @@ var TMP = (function (W, $) {
 
         TMP.test();
         _mapScroll();
+        _bindGallery();
+        _sectionStick();
+        Util.scroll('#X1a');
     }
 
     self = {

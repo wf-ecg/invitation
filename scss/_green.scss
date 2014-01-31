@@ -1,7 +1,8 @@
 /* GREEN */
 
 #Wrap {
-    background: url('../images/misc/policetape.png') 0 0 repeat;
+    /* background: url('../images/misc/policetape.png') 0 0 repeat;*/
+    background-color: $green;
     color: white;
     font-family: 'Archer', 'Archer SSm A', 'Archer SSm B', Georgia, serif;
     margin-top: 72px;
@@ -10,31 +11,11 @@
     section {
         background: url('../images/misc/swatch.png') 50% 0 no-repeat fixed;
         background-size: cover !important;
-        box-shadow: 0 0 50px rgba(0,0,0,0.3);
+        box-shadow: 0 0 50px transparentize(black, .2);
         padding: 0px;
         position: relative;
         text-align: center;
         width: 100%;
-
-        .baggie {
-            padding: 15% 0;
-        }
-    }
-    .ribbon {
-        background-color: transparentize($green, 0.15);
-        font-size: 90%;
-        height: 10em;
-        padding: 4em 0;
-        width: 100%;
-
-        * {
-            line-height: 20px;
-            margin: 0;
-        }
-    }
-    .padded {
-        margin: auto;
-        max-width: 88em;
     }
     .tbox {
         border: 3px solid white;
@@ -62,8 +43,4 @@
             }
         }
     }
-}
-#X0 article {
-    left: 5%;
-    top: 22em;
 }

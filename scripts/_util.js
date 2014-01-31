@@ -70,14 +70,14 @@ var Util = (function (W, $) {
 
         var bod = $('body');
 
-        C_() && C.debug(name + '_scroll', '\n', add + 'px', [ele]);
+        C_(2) && C.debug(name + '_scroll', '\n', add + 'px', [ele]);
 
         if (ele.length) {
             ele.addClass(':target');
 
             bod.stop().animate({
                 scrollTop: ele.offset().top + add,
-            }, 666, 'easeInBack', function () {
+            }, 666, function () { // 'easeInBack', 555
                 ele.removeClass(':target');
             });
         }

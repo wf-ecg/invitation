@@ -1,0 +1,51 @@
+/* DEF */
+$green: #46a033;
+$red: #C00029;
+$whitish: transparentize(white, 0.1);
+
+@function setTrans($color, $opacity: 0.5) {
+    @return rgba($color, $opacity);
+}
+@mixin setTrans($color, $opacity: 0.5) {
+    background-color: $color; /* fallback2 */
+    background-color: lighten($color, percentage($opacity/2)); /* fallback1 */
+    background-color: setTrans($color, $opacity);
+}
+@mixin setEase($a) {
+    -webkit-transition: $a;
+       -moz-transition: $a;
+        -ms-transition: $a;
+         -o-transition: $a;
+            transition: $a;
+}
+@mixin setTransform($a) {
+     -webkit-transform: $a;
+        -moz-transform: $a;
+         -ms-transform: $a;
+          -o-transform: $a;
+             transform: $a;
+}
+
+@mixin debugWith($color) {
+    border: 1px solid $color;
+    margin-right: -1px;
+    margin-bottom: -2px;
+    margin-left: -1px;
+}
+@mixin oldAlpha($color) {
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.6);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+    -ms-filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)';
+}
+/* absolute centering */
+%abscent {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    max-width: 90%;
+    max-height: 90%;
+}

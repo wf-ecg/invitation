@@ -1,0 +1,50 @@
+/* GALLERY */
+
+$pos: 666px;
+$neg: -1 * $pos;
+
+#Gallery {
+    width: 90%; height: 60%;
+    @extend %abscent;
+
+    img {
+        border: 1px solid transparentize($green, 0.8);
+        display: inline-block;
+        height: 11em;
+        margin: 1em 1.5em;
+        position: relative;
+        vertical-align: middle;
+        z-index: 1;
+        @include setEase(all 1.25s ease-out);
+
+        &:not(.grid) {
+            opacity: 0;
+            height: 5% !important;
+        }
+        &.grid {
+            left: inherit;
+            opacity: 0.6;
+            top: initial;
+        }
+        &:hover {
+            background-color: $red;
+/*            height: 14em;*/
+            opacity: 0.8;
+            z-index: 10;
+            @include setEase(all 0.25s ease-out 0.5s);
+/*            @include setTransform( scale(1.33) );*/
+        }
+        &.zoom {
+            background-color: black;
+            top: -15% !important;
+            height: initial;
+            opacity: 1;
+            position: absolute;
+            width: 95%;
+            z-index: 11;
+        }
+    }
+    .pic1 { left: $neg; top: $neg; } .pic2 { left: 0px; top: $neg; } .pic3 { left: $pos; top: $neg; }
+    .pic4 { left: $neg; top:  0px; } .pic5 { left: 0px; top:  0px; } .pic6 { left: $pos; top:  0px; }
+    .pic7 { left: $neg; top: $pos; } .pic8 { left: 0px; top: $pos; } .pic9 { left: $pos; top: $pos; }
+}

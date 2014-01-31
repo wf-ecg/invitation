@@ -6,9 +6,11 @@
         <title>WFC Invitation</title>
         <link rel="stylesheet" href="styles/reset.css">
         <link rel="stylesheet" href="styles/screen.css">
-<!--        <link rel="stylesheet" href="fonts.css">-->
+        <link rel="stylesheet" href="fonts.css">
         <script>debug = 1</script>
         <script src="http://www.wellsfargomedia.com/lib/js/req.js"></script>
+        <script src="/lib/underscore/js-1.4.4/underscore.js"></script>
+        <script src="/lib/ie/jquery.history.js"></script>
         <script src="lib/jq-fittext.js"></script>
         <script src="lib/jq-inview.js"></script>
         <script src="lib/jq-pubsub.js"></script>
@@ -24,74 +26,89 @@ WRAP
     DRIVE
                 -->
                 <!-- | | | | -->
-                <section id="X1a" data-F="sqrs/_orange.jpg" data-H="500" data-R="10" data-O="0" data-T="move">
-                    <div class="padded">
-                        <h3>[CUSTOMER NAME]</h3>
+                <section id="X1a" data-F="sqrs/_orange.jpg" data-H="0" data-R="10" data-O="0" data-T="move">
+                    <div class="padded" style="height: 30%;">
+                        <h3 class="_cname">[CUSTOMER NAME]</h3>
                         <div class="tbox v1">
                             <h1>You’re Invited</h1>
                         </div>
-                        <h3>[Monday, April 28 – Sunday, May 4, 2014]</h3>
+                        <h3 class="_dates">[Monday, April 28 – Sunday, May 4, 2014]</h3>
                         <br>
                         <h4>Scroll down to discover more.</h4>
                         <br>
-                        <a href="#X1b">
-                            <img src="images/btns/down.png" alt="Scroll down to discover more.">
-                        </a>
+                        <img src="images/btns/down.png" alt="Scroll down to discover more.">
                     </div>
                 </section>
-                <section id="X1b" data-F="sqrs/_drive.jpg" data-H="500" data-R="10" data-O="0" data-T="move">
-                    <div class="padded">
+                <section id="X1b" data-F="sqrs/_01.jpg" data-H="0" data-R="10" data-O="0" data-T="move">
+                    <div class="padded" style="height: 10%;">
                         <div class="tbox v2">
-                            <h1>EXPERIENCE DRIVE</h1>
+                            <h1>EXPERIENCE COMPETITION</h1>
                         </div>
                     </div>
                     <br>
                     <div class="ribbon bottom shadow">
                         <h2><b>FedEx Cup Points:</b> 500 &nbsp; &nbsp; &nbsp;
-                            <b>Par:</b> 36–36–72 &nbsp; &nbsp; &nbsp;
+                            <b>Purse:</b> $6,900,000 &nbsp; &nbsp; &nbsp;
                             <b>Yardage:</b> 7,469</h2>
                     </div>
                 </section>
             </div>
-            <div class="course">
-                <!-- | | | | -->
-                <!--
-    COURSE
-                -->
-                <!-- | | | | -->
-                <section id="X2a" data-F="sqrs/_course1.jpg" data-H="500" data-R="10" data-O="0" data-T="move">
-                    <div id="H0" class="page"><a href="#H1"><img src="images/course/intro.png" alt="Intro Text" class="shadow"></a></div>
-                </section>
-                <section id="X2b" data-F="sqrs/_course2.jpg" data-H="500" data-R="10" data-O="66" data-T="move">
-                    <div class="pager construct">
-                        <div id="H1" class="page"><a href="#H2"><img src="images/course/hole1.png" alt="Intro Text" class=""></a></div>
-                        <div id="H2" class="page"><a href="#H3"><img src="images/course/intro.png" alt="Intro Text" class=""></a></div>
-                        <div id="H3" class="page"><a href="#H4"><img src="images/course/hole1.png" alt="Intro Text" class=""></a></div>
-                        <div id="H4" class="page"><a href="#H5"><img src="images/course/intro.png" alt="Intro Text" class=""></a></div>
-                        <div id="H5" class="page"><a href="#H0"><img src="images/course/hole1.png" alt="Intro Text" class=""></a></div>
-                        <button class="arrow left"></button><button class="arrow right"></button>
-                    </div>
-                </section>
-            </div>
+            <section id="X2a" data-F="sqrs/_02.jpg" data-H="0" data-R="10" data-O="0" data-T="move">
+                <div class="champs">
+                    <h1>PAST CHAMPIONS</h1>
+                    <table>
+                        <tr> <td> 2013 </td> <td> Derek Ernst   </td> <td> - 8  </td> </tr>
+                        <tr> <td> 2012 </td> <td> Rickie Fowler </td> <td> - 14 </td> </tr>
+                        <tr> <td> 2011 </td> <td> Lucas Glover  </td> <td> - 15 </td> </tr>
+                        <tr> <td> 2010 </td> <td> Rory McIlroy  </td> <td> - 16 </td> </tr>
+                        <tr> <td> 2009 </td> <td> Sean O’Hair   </td> <td> - 11 </td> </tr>
+                        <tr> <td> 2008 </td> <td> Anthony Kim   </td> <td> - 16 </td> </tr>
+                        <tr> <td> 2007 </td> <td> Tiger Woods   </td> <td> - 13 </td> </tr>
+                        <tr> <td> 2006 </td> <td> Jim Furyk     </td> <td> - 12 </td> </tr>
+                        <tr> <td> 2005 </td> <td> Vijay Singh   </td> <td> - 12 </td> </tr>
+                        <tr> <td> 2004 </td> <td> Joey Sindelar </td> <td> - 11 </td> </tr>
+                        <tr> <td> 2003 </td> <td> David Toms    </td> <td> - 10 </td> </tr>
+                    </table>
+                </div>
+                <br>
+                <div class="ribbon bottom whiten">
+                    <h2><b>Broadcast partners:</b> &nbsp; &nbsp; &nbsp;
+                        <img src="images/misc/golfChannel.png" alt="The Gold Channel logo">
+                         &nbsp; &nbsp; &nbsp;
+                        <img src="images/misc/CBS.png" alt="CBS logo">
+                         &nbsp; &nbsp; &nbsp;
+                    </h2>
+                </div>
+            </section>
             <div class="beauty">
                 <!-- | | | | -->
                 <!--
     BEAUTY
                 -->
                 <!-- | | | | -->
-                <section id="X3a" data-F="sqrs/_beauty1.jpg" data-H="500" data-R="10" data-O="0" data-T="move">
-                    <div class="padded">
+                <section id="X3a" data-F="sqrs/_quail.jpg" data-H="0" data-R="10" data-O="0" data-T="move">
+                    <div class="padded" style="height: 10%;">
                         <div class="tbox v2">
                             <h1>EXPERIENCE BEAUTY</h1>
                         </div>
                     </div>
                 </section>
-                <section id="X3b" data-F="sqrs/_beauty2.jpg" data-H="500" data-R="10" data-O="66" data-T="move">
-                    <br>
-                </section>
-                <section id="X3c" data-F="sqrs/_beauty3.jpg" data-H="500" data-R="10" data-O="132" data-T="move">
-                    <div class="padded construct shadow">
-                        <img id="Foo" src="images/pics/6up.png" alt="6up" class="shadow">
+                <section id="X3b" data-F="sqrs/_quail.jpg" data-H="0" data-R="10" data-O="0" data-T="move" class="darken">
+                    <div id="Gallery" style="height: 60%;">
+                        <img src="images/pics/_OB26021.jpg"  alt="pic1" class="shadow pic1">
+                        <img src="images/pics/_any.jpg"      alt="pic2" class="shadow pic2">
+                        <img src="images/pics/_any.jpg"      alt="pic3" class="shadow pic3">
+                        <br>
+                        <img src="images/pics/_any.jpg"      alt="pic4" class="shadow pic4">
+                        <img src="images/pics/_end.jpg"      alt="pic5" class="shadow pic5">
+                        <img src="images/pics/_any.jpg"      alt="pic6" class="shadow pic6">
+                        <br>
+                        <img src="images/pics/_any.jpg"      alt="pic7" class="shadow pic7">
+                        <img src="images/pics/_any.jpg"      alt="pic8" class="shadow pic8">
+                        <img src="images/pics/_11C1781.jpg"  alt="pic9" class="shadow pic9">
+                    </div>
+                    <div class="ribbon bottom overlay">
+                        <h3>Click photos to zoom in/out</h3>
                     </div>
                 </section>
             </div>
@@ -101,8 +118,8 @@ WRAP
     COMMUNITY
                 -->
                 <!-- | | | | -->
-                <section id="X4a" data-F="sqrs/_comm1.jpg" data-H="500" data-R="10" data-O="0" data-T="move">
-                    <div class="padded">
+                <section id="X4a" data-F="sqrs/_comm1.jpg" data-H="0" data-R="10" data-O="0" data-T="move">
+                    <div class="padded" style="height: 10%;">
                         <div class="tbox v2">
                             <h1>EXPERIENCE COMMUNITY</h1>
                         </div>
@@ -113,23 +130,53 @@ WRAP
                             <b>$16 million</b> to charity.</h3>
                     </div>
                 </section>
-                <section id="X4b" data-F="sqrs/_comm2.jpg" data-H="500" data-R="10" data-O="0" data-T="move">
-                    <div class="reading callout shadow" style="bottom: 6em; right: 2em;">
-                        <p>READING ABOVE PAR is a community program created by Wells Fargo
-                            to support the importance of childhood reading literacy.</p>
-                        <span class="btnLabel"> Learn More <button class="arrow right"></button> </span>
+                <section id="X4b" data-F="sqrs/_comm3.jpg" data-H="0" data-R="10" data-O="0" data-T="move">
+                    <div class="reading callout shadow" style="left: 2em;">
+                        <p> Reading Above Par<sup>®</sup> is a community program by Wells Fargo to support the importance of childhood reading literacy.
+                            The program was expanded last year to include a reading program with The First Tee of Charlotte.
+                            During the month of April, Wells Fargo Volunteers worked directly with students enrolled in The First Tee of Charlotte,
+                            meeting weekly to read together with the goal of completing a golf related book that reinforced character development
+                            in advance of tournament week. The program culminated on tournament week when Wells Fargo sent company leaders and
+                            PGA TOUR players Lucas Glover, Rickie Fowler, JJ Henry, and Scott Langley to The First Tee of Charlotte.
+                            Each PGA TOUR player read a page from “P is For Putt: A Golf Alphabet” that corresponds to the first letter
+                            of their name and also spent time speaking to students about the importance of education and reading.
+                            Afterwards the PGA TOUR players provided an interactive golf skills session for The First Tee of Charlotte students. </p>
                     </div>
                     <br>
                     <div class="ribbon bottom shadow">
-                        <h3>Reading Above Par® &nbsp; &nbsp; &nbsp;
+                        <h3>Reading Above Par<sup>®</sup> &nbsp; &nbsp; &nbsp;
                             Readers in <b>5,000 classrooms</b> &nbsp; &nbsp; &nbsp;
                             Over <b>1 million books</b> donated.</h3>
                     </div>
                 </section>
-                <section id="X4c" data-F="sqrs/_comm3.jpg" data-H="500" data-R="10" data-O="0" data-T="move">
-                    <div class="teach callout shadow" style="bottom: 6em; left: 2em;">
-                        <p>Teach For America is growing the movement of leaders who work to
-                            ensure that kids growing up in poverty get an excellent education.</p>
+                <section id="X4c" data-F="succeedingTogether.jpg" data-H="0" data-R="10" data-O="0" data-T="move">
+                    <div class="succeed callout shadow" style="right: 2em;">
+                        <p> Succeeding Together<sup>TM</sup> is a video essay contest created by Wells Fargo for teenage participants of
+                            The First Tee who want to share examples of how working together has shaped their lives so far.
+                            Beginning in March, interested candidates were asked to submit a short video of themselves addressing several questions.
+                            The videos submitted were voted on by the public, and then four videos were selected as finalists.
+                            The grand prize winner was awarded a trip to Charlotte to attend the Wells Fargo Championship and had the unique opportunity
+                            to play in the Wednesday ProAm with defending champion, Rickie Fowler. The other three runner-ups received a four-day,
+                            three-night trip to Charlotte to attend the Wells Fargo Championship and experience the event from inside the ropes as
+                            a guest of Wells Fargo.
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            The winner of last year’s contest was Reyhan Griffin (pictured), a 14-year-old member of The First Tee of San Francisco.
+                            As an eighth-grade student, Reyhan carries a 4.0 GPA and practices golf six days a week.
+                            His video essay cites integrity and golf as his two favorite core values of The First Tee program.</p>
+                    </div>
+                    <br>
+                    <div class="ribbon bottom shadow">
+                        <h3>Teach For America &nbsp; &nbsp; &nbsp;
+                            Over <b>37,000 volunteers</b> &nbsp; &nbsp; &nbsp;
+                            More than <b>4 million students</b> impacted</h3>
+                    </div>
+                </section>
+                <section id="X4d" data-F="supportingOurTroops.jpg" data-H="0" data-R="10" data-O="0" data-T="move">
+                    <div class="tending callout shadow" style="left: 2em;">
+                        <h4> TENDING THE FLAG ON 17 </h4>
+                        <p> The standard Wells Fargo Championship pin flag on Quail Hollow Club’s signature 17th hole was replaced this year with an American Flag.
+                            Each day, Thursday through Sunday, a different Wells Fargo Team Member who is an active reservist or military veteran was asked to tend the flag.
+                            This marks the first year Wells Fargo has adopted this program. </p>
                     </div>
                     <br>
                     <div class="ribbon bottom shadow">
@@ -145,35 +192,29 @@ WRAP
     CLOSER
                 -->
                 <!-- | | | | -->
-                <section id="X5a" data-F="sqrs/_closer1.jpg" data-H="500" data-R="10" data-O="0" data-T="move">
+                <section id="X5a" data-F="sqrs/_green.jpg" data-H="0" data-R="10" data-O="0" data-T="move">
+                    <div class="padded" style="height: 50%;">
+                        <h2><b class="_cname">[CUSTOMER NAME]</b></h2>
+                        <h2>
+                            This year’s Wells Fargo Championship will once again showcase some of the sport’s top golfers,
+                            and I hope you come experience their excellence, a beautifully designed course, and a tournament
+                            that positively impacts beyond the golf community. I look forward to seeing you there.
+                        </h2>
+                        <h2><b class="_bname">[BANKER NAME]</b></h2>
+                    </div>
                 </section>
-                <section id="X5b" data-F="sqrs/_closer2.jpg" data-H="500" data-R="10" data-O="66" data-T="move">
-                    <div class="padded">
+                <section id="X5b" data-F="sqrs/_closer2.jpg" data-H="0" data-R="10" data-O="66" data-T="move">
+                    <div class="padded" style="height: 30%;">
                         <h3>THE WELLS FARGO CHAMPIONSHIP</h3>
                         <div class="tbox v2">
                             <h1>Get Closer</h1>
                         </div>
-                        <h3>[Monday, April 28 - Sunday, May 4, 2014]</h3>
-                    </div>
-                </section>
-                <section id="X5c" data-F="sqrs/_green.jpg" data-H="500" data-R="10" data-O="0" data-T="move">
-                    <div class="padded">
-                        <h2><b>[CUSTOMER NAME]</b></h2>
-                        <h2>
-                            This year’s Wells Fargo Championship will once again showcase some of the sport’s top golfers,
-                            and I hope you come experience their excellence, a beautifully designed course, and a tournament
-                            that positively impacts beyond the golf community. I look forward to seeing you there.
-                        </h2>
-                        <h2><b>[BANKER NAME]</b></h2>
-                    </div>
-                </section>
-                <section id="X5d" data-F="sqrs/_orange.jpg" data-H="500" data-R="10" data-O="0" data-T="move">
-                    <div class="padded">
-                        <h3>[CUSTOMER NAME]</h3>
-                        <div class="tbox v1">
-                            <h1>Hope to see you there</h1>
-                        </div>
-                        <h3>[Monday, April 28 – Sunday, May 4, 2014]</h3>
+                        <h3 class="_dates">[Monday, April 28 - Sunday, May 4, 2014]</h3>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <img src="images/misc/pgatourFedEx.png" alt="FedEx logo">
                     </div>
                 </section>
             </div>
@@ -181,14 +222,13 @@ WRAP
         <!--
 MAP
         -->
-        <div id="Menu">
+        <div id="Menu" class="touch">
             <h2>MENU</h2>
             <p>DRIVE </p>   <a href="#X1a">A</a> <a href="#X1b">B</a>
-            <p>COURSE</p>   <a href="#X2a">A</a> <a href="#X2b">B</a>
-            <p>BEAUTY</p>   <a href="#X3a">A</a> <a href="#X3b">B</a> <a href="#X3c">C</a>
-            <p>COMMUNITY</p><a href="#X4a">A</a> <a href="#X4b">B</a> <a href="#X4c">C</a>
+            <p>COURSE</p>   <a href="#X2a">A</a>
+            <p>BEAUTY</p>   <a href="#X3a">A</a> <a href="#X3b">B</a>
+            <p>COMMUNITY</p><a href="#X4a">A</a> <a href="#X4b">B</a> <a href="#X4c">C</a> <a href="#X4d">D</a>
             <p>CLOSER</p>   <a href="#X5a">A</a> <a href="#X5b">B</a>
-            <br>            <a href="#X5c">C</a> <a href="#X5d">D</a>
         </div>
         <!--
 CHROME
@@ -207,10 +247,11 @@ SCRIPTS
         <div class="hide">
             <script src="scripts/_util.js"></script>
             <script src="scripts/bg.js"></script>
-            <script src="scripts/tmp.js"></script>
             <script src="scripts/pager.js"></script>
             <script src="scripts/port.js"></script>
+            <script src="scripts/url.js"></script>
             <script src="scripts/main.js"></script>
+            <script src="scripts/tmp.js"></script>
         </div>
         <script>
             /// etc
