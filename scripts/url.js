@@ -1,0 +1,74 @@
+/*jslint es5:true, white:false */
+/*globals $, $W, jQuery, window */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+var Url = (function (W, $) {
+    var C, self, name;
+    //
+    name = 'Url';
+    C = W.console;
+    //
+    function _debug(n) {
+        return W.debug >= (n || 0);
+    }
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    function _read() {
+        var str  = W.location.search;
+        str = str.slice(1, -1);
+        str = str.replace(/\//g, ' ');
+        str = str.replace(/&/g, '"');
+        return str;
+    }
+
+    function _write(str) {
+        str = str.replace(/\ /g, '/');
+        str = str.replace(/"/g, '&');
+        str = '?' + str + '/';
+        W.location.search = str;
+    }
+
+    function _datax(dat){
+        if (dat) {
+            _write(JSON.stringify(dat));
+        } else {
+            return eval(_read());
+        }
+    }
+    function _swaps() {
+        var arr, dat;
+        //
+        arr = ['_bname','_cname','_dates'];
+        dat = _datax();
+        //
+        $.each(arr, function(i, e) {
+            $('.' + e).text(dat[i]); //.removeClass(e);
+        });
+    }
+
+    function _init() {
+        if (W.location.search) {
+            _swaps();
+        } else {
+            _datax([
+                'Jon Banker',
+                'Jan Client',
+                'Monday, April 28 - Sunday, May 4, 2014'
+                ]);
+        }
+    }
+
+    self = {
+        init: _init,
+        read: _read,
+        write: _write,
+        datax: _datax,
+        swaps: _swaps,
+    };
+
+    _debug() && C.log([name]);
+
+    return self;
+}(window, jQuery));
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+Url.init();
