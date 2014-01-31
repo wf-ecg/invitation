@@ -21,7 +21,7 @@
         &.overlay {
             background-color: transparent;
             display: none;
-            height: 3%;
+            height: 5%;
             padding: 0;
             z-index: 9;
 
@@ -29,7 +29,8 @@
                 display: block;
 
                 * {
-                    color: transparentize(white, 0.8);
+                    color: transparentize(white, 0.5);
+                    text-shadow: 0 0 3px transparentize(black, 0.5);
                 }
             }
         }
