@@ -1,5 +1,5 @@
 /*jslint es5:true, white:false */
-/*globals $, $W, jQuery, window */
+/*globals $, $W, History, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 var Url = (function (W, $) {
@@ -13,16 +13,35 @@ var Url = (function (W, $) {
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     function _read() {
-        var str  = W.location.search;
+        var str = W.location.search;
+
+        History.pushState({}, '', '.');
         str = str.slice(1, -1);
-        str = str.replace(/\//g, ' ');
-        str = str.replace(/&/g, '"');
+        // brackets
+        str = str.replace(/\^/g, '["');
+        str = str.replace(/\$/g, '"]');
+        // spaces
+        str = str.replace(/\_/g, ' ');
+        str = str.replace(/\+/g, '. ');
+        str = str.replace(/\//g, ', ');
+        str = str.replace(/\-\-/g, ' – ');
+        // boundary
+        str = str.replace(/&/g, '","');
         return str;
     }
 
     function _write(str) {
-        str = str.replace(/\ /g, '/');
-        str = str.replace(/"/g, '&');
+        // brackets
+        str = str.replace(/\"\]/g, '$');
+        str = str.replace(/\[\"/g, '^');
+        // spaces
+        str = str.replace(/\ \–\ /g, '--');
+        str = str.replace(/\,\ /g, '/');
+        str = str.replace(/\.\ /g, '+');
+        str = str.replace(/\ /g, '_');
+        // boundary
+        str = str.replace(/\"\,\"/g, '&');
+
         str = '?' + str + '/';
         W.location.search = str;
     }
@@ -46,13 +65,13 @@ var Url = (function (W, $) {
     }
 
     function _init() {
-        if (W.location.search) {
+        if (W.location.search.length > 9) {
             _swaps();
         } else {
             _datax([
                 'Jon Banker',
-                'Jan Client',
-                'Monday, April 28 - Sunday, May 4, 2014'
+                'Jan D. Client',
+                'Monday, April 28 – Sunday, May 4, 2014'
                 ]);
         }
     }
