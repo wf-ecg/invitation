@@ -1,9 +1,27 @@
 /*jslint es5:true, white:false */
-/*globals $, jQuery, window */
+/*globals $, $W, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 var TMP = (function (W, $) {
     var C, self, name, OFF = 24;
+
+    var goingwas = 0;
+
+    function _going() {
+        var current, going;
+
+        current = $W.viewport.all.top;
+
+        if (current > goingwas) {
+            going = 'down';
+        } else {
+            going = 'up';
+        }
+        goingwas = current;
+
+        return going;
+    }
+    //    $W.scroll(_going);
 
     name = 'TMP';
     C = W.console;

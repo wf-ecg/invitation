@@ -1,6 +1,7 @@
 /* MENU */
 
 #Menu {
+    display: none;
     background-color: $green;
     border-radius: 1em;
     bottom: 3px;
@@ -28,7 +29,7 @@
     }
     &:hover {
         opacity: 0.9;
-    background-color: $red;
+        background-color: $red;
     }
     &.hover {
         background-color: gray;
