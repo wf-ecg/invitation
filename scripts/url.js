@@ -15,14 +15,31 @@ var Url = (function (W, $) {
     function _read() {
         var str  = W.location.search;
         str = str.slice(1, -1);
-        str = str.replace(/\//g, ' ');
-        str = str.replace(/&/g, '"');
+        // brackets
+        str = str.replace(/\^/g, '["');
+        str = str.replace(/\$/g, '"]');
+        // spaces
+        str = str.replace(/\_/g, ' ');
+        str = str.replace(/\+/g, '. ');
+        str = str.replace(/\//g, ', ');
+        str = str.replace(/\-\-/g, ' – ');
+        // boundary
+        str = str.replace(/&/g, '","');
         return str;
     }
 
     function _write(str) {
-        str = str.replace(/\ /g, '/');
-        str = str.replace(/"/g, '&');
+        // brackets
+        str = str.replace(/\"\]/g, '$');
+        str = str.replace(/\[\"/g, '^');
+        // spaces
+        str = str.replace(/\ \–\ /g, '--');
+        str = str.replace(/\,\ /g, '/');
+        str = str.replace(/\.\ /g, '+');
+        str = str.replace(/\ /g, '_');
+        // boundary
+        str = str.replace(/\"\,\"/g, '&');
+
         str = '?' + str + '/';
         W.location.search = str;
     }
@@ -51,8 +68,8 @@ var Url = (function (W, $) {
         } else {
             _datax([
                 'Jon Banker',
-                'Jan Client',
-                'Monday, April 28 - Sunday, May 4, 2014'
+                'Jan D. Client',
+                'Monday, April 28 – Sunday, May 4, 2014'
                 ]);
         }
     }
