@@ -49,23 +49,31 @@ var TMP = (function (W, $) {
     }
 
     function _bindGallery() {
-        $('#Gallery').on('inview', function (evt, showing, hsides, vsides) {
-            var my = $(this);
-            //
+        var gal, all;
+        //
+        gal = $('#Gallery');
+        all = gal.find('img');
+        //
+        gal.on('inview', function (evt, showing, hsides, vsides) {
             if (showing) {
                 _debug(2) && C.log(name, vsides);
                 if (vsides  === 'both') {
-                    $(this).find('img').addClass('grid');
-                    Util.scroll(my.closest('section'), OFF);
+                    all.addClass('grid');
+                    Util.scroll(gal.closest('section'), OFF);
                 } else {
-                    $(this).find('img').removeClass('grid');
+                    all.removeClass('grid');
                 }
             } else {
                 _debug(2) && C.log('bye');
             }
         });
-        $('#Gallery img').on('click', function () {
-            $(this).toggleClass('zoom');
+        all.on('click', function () {
+            var me = $(this),
+                zoomed = me.is('.zoom');
+            if (!zoomed) {
+                all.removeClass('zoom');
+            }
+            me.toggleClass('zoom');
         });
     }
 
