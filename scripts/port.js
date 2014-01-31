@@ -30,31 +30,24 @@ var Port = (function (W, $) {
             bottom: this._.T + this._.V,
         });
     };
-    self.prototype.relog = function (nom, ms) {
-        var my = this;
-
-        W.clearTimeout(my.Df[nom]);
-
-        my.Df[nom] = W.setTimeout(function () {
-            my.log(nom);
-            $.PS_pub(nom);
-        }, ms);
-    };
     self.prototype.init = function () {
-        var self = this,
+        var my = this,
             jq = this._.J;
 
-        jq.resize(function () {
-            self._.V = jq.height() | 0;
-            self.relog('resize', 333);
-        });
+        jq.resize(_.throttle(function () {
+            my.log('resize2');
+            my._.V = my._.J.height() | 0;
+            $.PS_pub('resize');
+        }, 500));
+
         jq.scroll(function () {
-            self._.T = jq.scrollTop() | 0;
-            self.reset();
+            my._.T = jq.scrollTop() | 0;
+            my.reset();
         });
         // touch
         jq.resize();
-        self.log('Init');
+        jq.resize();
+        my.log('Init');
     };
 
     _debug() && C.log([name]);

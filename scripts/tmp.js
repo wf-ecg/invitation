@@ -8,12 +8,12 @@ var TMP = (function (W, $) {
     name = 'TMP';
     C = W.console;
 
-    function undef() {
-        return (typeof arguments[0] === 'undefined');
-    }
-
     function _debug(n) {
         return W.debug >= (n || 0);
+    }
+
+    function undef() {
+        return (typeof arguments[0] === 'undefined');
     }
 
     function logHeights(ele) { // Util.heights =
@@ -103,13 +103,6 @@ var TMP = (function (W, $) {
         });
     }
 
-    function _ticker() {
-        $.PS_pub('resize');
-    }
-    function _startTicker() {
-        W.setInterval(_ticker, 3333);
-    }
-
     function _init() {
         var html, wrap;
         //
@@ -141,7 +134,6 @@ var TMP = (function (W, $) {
         _mapScroll();
         _bindGallery();
         _sectionStick();
-        _startTicker();
     }
 
     self = {
