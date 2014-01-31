@@ -10,7 +10,7 @@ $neg: -1 * $pos;
     img {
         border: 1px solid transparentize($green, 0.8);
         display: inline-block;
-        height: 133px;
+        height: 11em;
         margin: 1em 1.5em;
         position: relative;
         vertical-align: middle;
@@ -28,11 +28,11 @@ $neg: -1 * $pos;
         }
         &:hover {
             background-color: $red;
-            height: 166px;
+/*            height: 14em;*/
             opacity: 0.8;
             z-index: 10;
             @include setEase(all 0.25s ease-out 0.5s);
-            @include setTransform( scale(1.33) );
+/*            @include setTransform( scale(1.33) );*/
         }
         &.zoom {
             background-color: black;

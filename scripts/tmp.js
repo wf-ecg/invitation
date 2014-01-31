@@ -121,7 +121,9 @@ var TMP = (function (W, $) {
             $(this).toggleClass('hover');
         });
         //
-        wrap.fitText(10);
+        wrap.fitText(10, {
+            'minFontSize' : 7
+        });
         //
         C.debug(wrap.find('section').each(function () {
             $(this).children().not('.ribbon').wrapAll('<div class="filler">');
