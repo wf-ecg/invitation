@@ -57,7 +57,7 @@ var TMP = (function (W, $) {
         gal.on('inview', function (evt, showing, hsides, vsides) {
             if (showing) {
                 _debug(2) && C.log(name, vsides);
-                if (vsides  === 'both') {
+                if (vsides === 'top' || vsides === 'both') {
                     all.addClass('grid');
                     Util.scroll(gal.closest('section'), OFF);
                 } else {
@@ -142,6 +142,7 @@ var TMP = (function (W, $) {
         _mapScroll();
         _bindGallery();
         _sectionStick();
+        Util.scroll('#X1a');
     }
 
     self = {
