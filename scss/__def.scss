@@ -44,11 +44,11 @@
     margin-bottom: -2px;
     margin-left: -1px;
 }
-@mixin oldAlpha($color) {
-    background: rgb(0, 0, 0);
-    background: rgba(0, 0, 0, 0.6);
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-    -ms-filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)';
+@mixin test($color) {
+    position: absolute;
+    height: 100%;
+    font-size: 400%;
+    @include backTrans($color, -0.5);
 }
 /* absolute centering */
 %abscent {
@@ -65,3 +65,26 @@
 $green: #46a033;
 $red: #C00029;
 
+.foooo {
+    @include test(#cc0000);
+}
+// -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+// filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+// opacity: .5;
+/*
+    $R: red($color);
+    $G: green($color);
+    $B: blue($color);
+    $A: alpha($color);
+    r: $R;
+    g: $G;
+    b: $B;
+    a: $A;
+    ie: ie-hex-str($color);
+    st: setTrans($color);
+    at: adjTrans($color);
+    a-5: adjTrans($color, -0.5);
+    tpz: adjTrans($color, -0.1);
+    tpt: adjTrans($color, -0.1);
+    sim: simAlpha($color);
+*/

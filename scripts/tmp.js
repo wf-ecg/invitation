@@ -1,6 +1,8 @@
 /*jslint es5:true, white:false */
 /*globals $, $W, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+// TODO: abort parallax at 800px wide
+// TODO: smooth scroll
 
 var TMP = (function (W, $) {
     var C, self, name, OFF = 24;
