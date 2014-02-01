@@ -1,5 +1,5 @@
 /*jslint es5:true, white:false */
-/*globals $, $W, jQuery, window */
+/*globals $, $W, History, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 var Url = (function (W, $) {
@@ -13,7 +13,9 @@ var Url = (function (W, $) {
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     function _read() {
-        var str  = W.location.search;
+        var str = W.location.search;
+
+        History.pushState({}, '', '.');
         str = str.slice(1, -1);
         // brackets
         str = str.replace(/\^/g, '["');
@@ -63,7 +65,7 @@ var Url = (function (W, $) {
     }
 
     function _init() {
-        if (W.location.search) {
+        if (W.location.search.length > 9) {
             _swaps();
         } else {
             _datax([
