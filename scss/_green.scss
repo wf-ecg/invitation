@@ -28,14 +28,14 @@
             margin: 0.25em 0.75em 0.2em;
         }
         &.v1 {
-            background-color: adjTrans(#eee, -0.75);
+            @include backTrans(#eee, -0.75);
 
             h1 {
                 color: white;
             }
         }
         &.v2 {
-            background-color: adjTrans(#eee, -0.25);
+            @include backTrans(#eee, -0.25);
             box-shadow: 0 0 50px adjTrans(black, -0.6);
 
             h1 {

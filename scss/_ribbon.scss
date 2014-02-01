@@ -2,7 +2,7 @@
 
 #Wrap {
     .ribbon {
-        background-color: adjTrans($green, -0.15);
+        @include backTrans($green, -0.15);
         font-size: 1em;
         height: 7.5em;
         padding: 2.5em 0;
@@ -35,7 +35,7 @@
             }
         }
         &.whiten {
-            background-color: $whitish;
+            @include backTrans(white, -0.1);
 
             img {
                 display: inline;

@@ -24,7 +24,10 @@
     }
 }
 .callout {
-    background-color: $whitish;
+    @include backTrans(white, -0.1);
+    background-position: 1em 1em;
+    background-repeat: no-repeat;
+    background-size: 35%;
     bottom: 9em;
     color: $green;
     display: inline-block;
@@ -41,13 +44,12 @@
     }
 }
 .reading {
-    background: url('../images/misc/par.png') 1em 0.5em no-repeat $whitish;
-    background-size: 35%;
+    background-image: url('../images/misc/par.png');
+    background-position: 1em 0.5em;
     padding-top: 5em;
 }
 .succeed {
-    background: url('../images/misc/succeeding.png') 1em 1em no-repeat $whitish;
-    background-size: 35%;
+    background-image: url('../images/misc/succeeding.png');
     padding-top: 4em;
 }
 .tending {
@@ -65,7 +67,7 @@
     display: none;
 }
 .darken > * {
-    background-color: adjTrans(black, -0.4);
+    @include backTrans(black, -0.4);
 }
 .padded {
     @extend %abscent;

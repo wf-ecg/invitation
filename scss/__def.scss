@@ -1,8 +1,4 @@
 /* DEF */
-$green: #46a033;
-$red: #C00029;
-$whitish: transparentize(white, 0.1);
-
 @function setTrans($color, $amount: 0.1) { // pos only
     @return change-color($color, $alpha: $amount);
 }
@@ -65,3 +61,7 @@ $whitish: transparentize(white, 0.1);
     max-width: 90%;
     max-height: 90%;
 }
+
+$green: #46a033;
+$red: #C00029;
+
