@@ -33,5 +33,6 @@ $(function () {
     W.pager = Pager.init();
     W.Gallery && Gallery.init();
     W.Menu && Menu.init();
+    W.Marks && Marks.init();
 
 });

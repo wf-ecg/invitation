@@ -49,23 +49,8 @@ var TMP = (function (W, $) {
         arguments.callee(me.parent());
     }
 
-    function _makeMarks() {
-        var bod, div, dup, mrk, pix, i;
-        //
-        bod = $('body');
-        div = $('#Chrome');
-        pix = bod.outerHeight();
-        mrk = $('<span>').addClass('marker').append('<i>');
-        //
-        for (i = 250; i < pix; i += 250) {
-            dup = mrk.clone().appendTo(div).css('top', i).find('i').text(i);
-            _debug(2) && C.debug(i, dup);
-        }
-    }
-
     function _test() {
         logHeights('#Wrap');
-        W.setTimeout(_makeMarks, 999);
     }
 
     function _sectionStick() {
