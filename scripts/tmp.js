@@ -12,7 +12,7 @@ var TMP = (function (W, $) {
     function _going() {
         var current, going;
 
-        current = $W.viewport.all.top;
+        current = DRT.port.all.top;
 
         if (current > goingwas) {
             going = 'down';

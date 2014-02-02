@@ -5,19 +5,20 @@ var $W;
 
 $(function () {
     var W = window,
-        C = W.console;
+        C = W.console
+        DRT = {};
 
     // Cache the Window object
     $W = $(W);
-    $W.viewport = new Port($W);
+    DRT.port = new Port($W);
 
     function _debug(n) {
         return W.debug >= (n || 0);
     }
-
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     $('#Wrap section').each(function (i) {
         var el = this,
-            bg = new Bg(el, $W.viewport);
+            bg = new Bg(el, DRT.port);
         // cache em
         $W.on('scroll resize', function () {
             bg.redraw();
@@ -30,9 +31,10 @@ $(function () {
     });
     // touch
     $W.scroll();
-    W.pager = Pager.init();
-    W.Gallery && Gallery.init();
-    W.Menu && Menu.init();
-    W.Marks && Marks.init();
+    DRT.pager   = W.Pager   && Pager.init();
+    DRT.gallery = W.Gallery && Gallery.init();
+    DRT.menu    = W.Menu    && Menu.init();
+    DRT.marks   = W.Marks   && Marks.init();
+    DRT.debug   = W.Debug   && Debug.init();
 
 });

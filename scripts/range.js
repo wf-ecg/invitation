@@ -3,15 +3,17 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 var Range = (function (W, $) {
-    var self, name = 'Range',
-        C = W.console;
-
-    function undef() {
-        return (typeof arguments[0] === 'undefined');
-    }
-
+    var self, name, C;
+    //
+    name = 'Range';
+    C = W.console;
+    //
     function _debug(n) {
         return W.debug >= (n || 0);
+    }
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    function undef() {
+        return (typeof arguments[0] === 'undefined');
     }
 
     function makeAxsr(obj, nom, def) {

@@ -2,9 +2,11 @@
 /*globals jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Debug = (function (W, $) {
-    var C, self, name;
+    var C, self, name, html;
     //
     name = 'Debug';
+    html = $('html');
+    wrap = $('#Wrap');
     C = W.console;
     //
     function _debug(n) {
@@ -12,6 +14,7 @@ var Debug = (function (W, $) {
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     function _bind() {
+
         $('#Chrome').on('dblclick', function () {
             html.toggleClass('debug');
 

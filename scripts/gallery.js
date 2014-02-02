@@ -3,16 +3,16 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 var Gallery = (function (W, $) {
-    var C, self, name, OFF = 24;
-
+    var C, self, name, OFF;
+    //
     name = 'Gallery';
     C = W.console;
-
+    OFF = 24;
+    //
     function _debug(n) {
         return W.debug >= (n || 0);
     }
-
-
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     function _bindGallery() {
         var gal, all;
         //

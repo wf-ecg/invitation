@@ -2,9 +2,15 @@
 /*globals jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Marks = (function (W, $) {
-    var C = W.console,
-        self, name = 'Marks';
-
+    var C, self, name;
+    //
+    name = 'Marks';
+    C = W.console;
+    //
+    function _debug(n) {
+        return W.debug >= (n || 0);
+    }
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     function _makeMarks() {
         var bod, div, dup, mrk, pix, i;
         //

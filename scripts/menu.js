@@ -2,9 +2,15 @@
 /*globals jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Menu = (function (W, $) {
-    var C = W.console,
-        self, name = 'Menu';
-
+    var C, self, name;
+    //
+    name = 'Menu';
+    C = W.console;
+    //
+    function _debug(n) {
+        return W.debug >= (n || 0);
+    }
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     function _mapScroll() {
         var map, els;
         //
