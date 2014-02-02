@@ -7,10 +7,12 @@ var Marks = (function (W, $) {
     name = 'Marks';
     C = W.console;
     //
+
     function _debug(n) {
         return W.debug >= (n || 0);
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
     function _makeMarks() {
         var bod, div, dup, mrk, pix, i;
         //

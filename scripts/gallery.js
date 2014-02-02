@@ -1,18 +1,19 @@
 /*jslint es5:true, white:false */
-/*globals $, $W, jQuery, window */
+/*globals $, $W, DRT, Util, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 var Gallery = (function (W, $) {
-    var C, self, name, OFF;
+    var C, self, name;
     //
     name = 'Gallery';
     C = W.console;
-    OFF = 24;
     //
+
     function _debug(n) {
         return W.debug >= (n || 0);
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
     function _bindGallery() {
         var gal, all;
         //
@@ -24,7 +25,7 @@ var Gallery = (function (W, $) {
                 _debug(2) && C.log(name, vsides);
                 if (vsides === 'top' || vsides === 'both') {
                     all.addClass('grid');
-                    Util.scroll(gal.closest('section'), OFF);
+                    Util.scroll(gal.closest('section'), DRT.OFF);
                 } else {
                     all.removeClass('grid');
                 }
@@ -56,4 +57,3 @@ var Gallery = (function (W, $) {
 }(window, jQuery));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-

@@ -8,6 +8,7 @@ var Pager = (function (W, $) {
     name = 'Pager';
     C = W.console;
     //
+
     function _debug(n) {
         return W.debug >= (n || 0);
     }

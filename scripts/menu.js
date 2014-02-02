@@ -1,5 +1,5 @@
 /*jslint es5:true, white:false */
-/*globals jQuery, window */
+/*globals DRT, Util, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Menu = (function (W, $) {
     var C, self, name;
@@ -7,10 +7,12 @@ var Menu = (function (W, $) {
     name = 'Menu';
     C = W.console;
     //
+
     function _debug(n) {
         return W.debug >= (n || 0);
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
     function _mapScroll() {
         var map, els;
         //
@@ -20,13 +22,12 @@ var Menu = (function (W, $) {
         // each link
         // capture default action
         // replace it with Util.scroll
-
         els.on('click', function (evt) {
             var anc = $(this).attr('href');
             C.error(anc);
 
             evt.preventDefault();
-            Util.scroll(anc, OFF);
+            Util.scroll(anc, DRT.OFF);
         });
     }
 

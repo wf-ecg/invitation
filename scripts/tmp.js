@@ -1,13 +1,20 @@
 /*jslint es5:true, white:false */
-/*globals $, $W, jQuery, window */
+/*globals $, $W, DRT, Util, jQuery, window, _ */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 // TODO: abort parallax at 800px wide
 // TODO: smooth scroll
 
 var TMP = (function (W, $) {
-    var C, self, name, OFF = 24;
+    var C, self, name, goingwas;
 
-    var goingwas = 0;
+    name = 'TMP';
+    C = W.console;
+    goingwas = 0;
+
+    function _debug(n) {
+        return W.debug >= (n || 0);
+    }
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _going() {
         var current, going;
@@ -24,17 +31,6 @@ var TMP = (function (W, $) {
         return going;
     }
     //    $W.scroll(_going);
-
-    name = 'TMP';
-    C = W.console;
-
-    function _debug(n) {
-        return W.debug >= (n || 0);
-    }
-
-    function undef() {
-        return (typeof arguments[0] === 'undefined');
-    }
 
     function logHeights(ele) { // Util.heights =
         var me = $(ele);
@@ -60,7 +56,7 @@ var TMP = (function (W, $) {
             if (showing) {
                 _debug(2) && C.log(name, 'hi', this);
                 if (vsides === 'both') {
-                    Util.scroll(my.closest('section'), OFF);
+                    Util.scroll(my.closest('section'), DRT.OFF);
                 }
             } else {
                 _debug(2) && C.log(name, 'bye', this);
@@ -79,14 +75,13 @@ var TMP = (function (W, $) {
         });
         //
         wrap.fitText(10, {
-            'minFontSize' : 7
+            'minFontSize': 7
         });
         //
         C.debug(wrap.find('section').each(function () {
             $(this).children().not('.ribbon').wrapAll('<div class="filler">');
         }));
         //
-
         TMP.test();
         _sectionStick();
         Util.scroll('#X1a');

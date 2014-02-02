@@ -1,12 +1,16 @@
 /*jslint es5:true, white:false */
-/*globals $, Port, Bg, document, window */
+/*globals $, Pager, Gallery, Menu, Marks, Debug, Port, Bg, document, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var $W;
 
 $(function () {
-    var W = window,
-        C = W.console
-        DRT = {};
+    var W, C, DRT;
+
+    W = window;
+    C = W.console;
+    DRT = {
+        OFF: 24,
+    };
 
     // Cache the Window object
     $W = $(W);
@@ -38,3 +42,4 @@ $(function () {
     DRT.debug   = W.Debug   && Debug.init();
 
 });
+

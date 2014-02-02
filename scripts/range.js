@@ -8,10 +8,12 @@ var Range = (function (W, $) {
     name = 'Range';
     C = W.console;
     //
+
     function _debug(n) {
         return W.debug >= (n || 0);
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
     function undef() {
         return (typeof arguments[0] === 'undefined');
     }
@@ -46,8 +48,10 @@ var Range = (function (W, $) {
     }
 
     function makeRange(max, num) {
-        var _ = {},
-            O = {
+        var _, O;
+        //
+        _ = {};
+        O = {
             _: _,
             makeBinding: function (nom, fn) {
                 if (fn) {
@@ -108,4 +112,3 @@ if (jQuery('html').is('.debug.range')) {
 
 
  */
-
