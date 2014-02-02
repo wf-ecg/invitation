@@ -68,35 +68,6 @@ var TMP = (function (W, $) {
         W.setTimeout(_makeMarks, 999);
     }
 
-    function _bindGallery() {
-        var gal, all;
-        //
-        gal = $('#Gallery');
-        all = gal.find('img');
-        //
-        gal.on('inview', function (evt, showing, hsides, vsides) {
-            if (showing) {
-                _debug(2) && C.log(name, vsides);
-                if (vsides === 'top' || vsides === 'both') {
-                    all.addClass('grid');
-                    Util.scroll(gal.closest('section'), OFF);
-                } else {
-                    all.removeClass('grid');
-                }
-            } else {
-                _debug(2) && C.log('bye');
-            }
-        });
-        all.on('click', function () {
-            var me = $(this),
-                zoomed = me.is('.zoom');
-            if (!zoomed) {
-                all.removeClass('zoom');
-            }
-            me.toggleClass('zoom');
-        });
-    }
-
     function _sectionStick() {
         $('.filler > *').on('inview', _.debounce(function (evt, showing, hsides, vsides) {
             var my = $(this);
@@ -162,7 +133,6 @@ var TMP = (function (W, $) {
 
         TMP.test();
         _mapScroll();
-        _bindGallery();
         _sectionStick();
         Util.scroll('#X1a');
     }

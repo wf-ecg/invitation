@@ -31,5 +31,6 @@ $(function () {
     // touch
     $W.scroll();
     W.pager = Pager.init();
+    W.Gallery && Gallery.init();
 
 });
