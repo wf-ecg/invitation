@@ -86,16 +86,6 @@ var TMP = (function (W, $) {
             $(this).children().not('.ribbon').wrapAll('<div class="filler">');
         }));
         //
-        $('#Chrome').on('dblclick', function () {
-            html.toggleClass('debug');
-
-            if (html.is('.debug')) {
-                $.fitText.off();
-                wrap.css('font-size', '');
-            } else {
-                wrap.fitText(10);
-            }
-        });
 
         TMP.test();
         _sectionStick();
