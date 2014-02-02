@@ -83,25 +83,6 @@ var TMP = (function (W, $) {
         }, 333));
     }
 
-    function _mapScroll() {
-        var map, els;
-        //
-        map = $('#Menu');
-        els = map.find('a');
-
-        // each link
-        // capture default action
-        // replace it with Util.scroll
-
-        els.on('click', function (evt) {
-            var anc = $(this).attr('href');
-            C.error(anc);
-
-            evt.preventDefault();
-            Util.scroll(anc, OFF);
-        });
-    }
-
     function _init() {
         var html, wrap;
         //
@@ -132,7 +113,6 @@ var TMP = (function (W, $) {
         });
 
         TMP.test();
-        _mapScroll();
         _sectionStick();
         Util.scroll('#X1a');
     }

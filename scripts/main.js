@@ -32,5 +32,6 @@ $(function () {
     $W.scroll();
     W.pager = Pager.init();
     W.Gallery && Gallery.init();
+    W.Menu && Menu.init();
 
 });
