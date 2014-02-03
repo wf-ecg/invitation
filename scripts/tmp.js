@@ -5,49 +5,16 @@
 // TODO: smooth scroll
 
 var TMP = (function (W, $) {
-    var C, self, name, goingwas;
+    var C, self, name, currentSection, cb;
 
     name = 'TMP';
     C = W.console;
-    goingwas = 0;
 
     function _debug(n) {
         return W.debug >= (n || 0);
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-    function _going() {
-        var current, going;
-
-        current = $$.port.all.top;
-
-        if (current > goingwas) {
-            going = 'down';
-        } else {
-            going = 'up';
-        }
-        goingwas = current;
-
-        return going;
-    }
-    //    $W.scroll(_going);
-
-    function logHeights(ele) { // Util.heights =
-        var me = $(ele);
-        //
-        if (!me.length || me.is(W.document)) {
-            return;
-        }
-        if (me.length) {
-            C.log(me[0].tagName, 'height innerH outerH', me.height(), me.innerHeight(), me.outerHeight());
-            C.log(me[0].tagName, 'client offset scroll', me[0].clientHeight, me[0].offsetHeight, me[0].scrollHeight);
-        }
-        arguments.callee(me.parent());
-    }
-
-    function _test() {
-        logHeights('#Wrap');
-    }
 
     function _sectionStick() {
         $('.filler > *').on('inview', _.debounce(function (evt, showing, hsides, vsides) {
@@ -82,14 +49,12 @@ var TMP = (function (W, $) {
             $(this).children().not('.ribbon').wrapAll('<div class="filler">');
         }));
         //
-        TMP.test();
         _sectionStick();
         Util.scroll('#X1a');
     }
 
     self = {
         init: _init,
-        test: _test,
     };
 
     _debug() && C.log([name]);
@@ -101,19 +66,3 @@ var TMP = (function (W, $) {
 if ($('html').is('.tmp')) {
     TMP.init();
 }
-
-/*
-
-    var sample = {
-        time: window.setInterval(function () {
-            var my = sample;
-            my.div = $('#X2a');
-            my.data = (my.data || my.div.data('Bg'));
-            my.num = my.num || 1;
-            console.debug(my.num++, my.data.topof);
-            if (my.num > 90) my.div.trigger('measure');
-            if (my.num > 99) window.clearInterval(my.time);
-        }, 5)
-    };
-
- */
