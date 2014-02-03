@@ -1,7 +1,7 @@
 /*jslint es5:true, white:false */
 /*globals Bg, Debug, Gallery, Port, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var $W, DRT;
+var $W, $$;
 
 var Main = (function (W, $) {
     var C, self, name;
@@ -11,7 +11,7 @@ var Main = (function (W, $) {
 
     // Cache the Window object
     $W = $(W);
-    DRT = {
+    $$ = {
         OFF: 24,
     };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -21,11 +21,11 @@ var Main = (function (W, $) {
     }
 
     function _init() {
-        DRT.port = new Port($W);
+        $$.port = new Port($W);
 
         $('#Wrap section').each(function (i) {
             var el = this,
-                bg = new Bg(el, DRT.port);
+                bg = new Bg(el, $$.port);
 
             // cache em
             $W.on('scroll resize', function () {
@@ -41,8 +41,8 @@ var Main = (function (W, $) {
         // touch
         $W.scroll();
 
-        DRT.debug   = W.Debug   && Debug.init();
-        DRT.gallery = W.Gallery && Gallery.init();
+        $$.gallery = W.Gallery && Gallery.init();
+        $$.debug   = W.Debug   && Debug.init();
 
         return self;
     }

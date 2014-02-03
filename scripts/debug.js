@@ -1,5 +1,5 @@
 /*jslint es5:true, white:false */
-/*globals Marks, Menu, Pager, jQuery, window */
+/*globals $$, Marks, Menu, Pager, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Debug = (function (W, $) {
     var C, self, name, html, wrap;
@@ -30,9 +30,10 @@ var Debug = (function (W, $) {
 
     function _init() {
         _bind();
-        DRT.marks   = W.Marks   && Marks.init();
-        DRT.menu    = W.Menu    && Menu.init();
-        // DRT.pager   = W.Pager   && Pager.init();
+        $$.marks   = W.Marks   && Marks.init();
+        $$.menu    = W.Menu    && Menu.init();
+        // $$.pager   = W.Pager   && Pager.init();
+        return self;
     }
 
     self = {

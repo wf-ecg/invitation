@@ -1,5 +1,5 @@
 /*jslint es5:true, white:false */
-/*globals $, $W, DRT, Util, jQuery, window, _ */
+/*globals $$, $W, Util, jQuery, window, _ */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 // TODO: abort parallax at 800px wide
 // TODO: smooth scroll
@@ -19,7 +19,7 @@ var TMP = (function (W, $) {
     function _going() {
         var current, going;
 
-        current = DRT.port.all.top;
+        current = $$.port.all.top;
 
         if (current > goingwas) {
             going = 'down';
@@ -56,7 +56,7 @@ var TMP = (function (W, $) {
             if (showing) {
                 _debug(2) && C.log(name, 'hi', this);
                 if (vsides === 'both') {
-                    Util.scroll(my.closest('section'), DRT.OFF);
+                    Util.scroll(my.closest('section'), $$.OFF);
                 }
             } else {
                 _debug(2) && C.log(name, 'bye', this);

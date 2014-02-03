@@ -1,5 +1,5 @@
 /*jslint es5:true, white:false */
-/*globals DRT, Util, jQuery, window */
+/*globals $$, Util, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Menu = (function (W, $) {
     var C, self, name;
@@ -27,12 +27,13 @@ var Menu = (function (W, $) {
             C.error(anc);
 
             evt.preventDefault();
-            Util.scroll(anc, DRT.OFF);
+            Util.scroll(anc, $$.OFF);
         });
     }
 
     function _init() {
         _mapScroll();
+        return self;
     }
 
     self = {

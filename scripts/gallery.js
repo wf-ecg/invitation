@@ -1,5 +1,5 @@
 /*jslint es5:true, white:false */
-/*globals $, $W, DRT, Util, jQuery, window */
+/*globals $$, $W, Util, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 var Gallery = (function (W, $) {
@@ -25,7 +25,7 @@ var Gallery = (function (W, $) {
                 _debug(2) && C.log(name, vsides);
                 if (vsides === 'top' || vsides === 'both') {
                     all.addClass('grid');
-                    Util.scroll(gal.closest('section'), DRT.OFF);
+                    Util.scroll(gal.closest('section'), $$.OFF);
                 } else {
                     all.removeClass('grid');
                 }
@@ -45,6 +45,7 @@ var Gallery = (function (W, $) {
 
     function _init() {
         _bindGallery();
+        return self;
     }
 
     self = {

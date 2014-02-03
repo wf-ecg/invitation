@@ -29,6 +29,7 @@ var Marks = (function (W, $) {
 
     function _init() {
         W.setTimeout(_makeMarks, 999);
+        return self;
     }
 
     self = {
