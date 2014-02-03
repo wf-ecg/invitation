@@ -1,5 +1,5 @@
 /*jslint es5:true, white:false */
-/*globals jQuery, window */
+/*globals _, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Port = (function (W, $) {
     var C = W.console,

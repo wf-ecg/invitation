@@ -32,7 +32,7 @@ var Debug = (function (W, $) {
         _debug() && C.log([name]);
 
         _bind();
-        $$.marks   = W.Marks   && Marks.init();
+        $$.marks = W.Marks && Marks.init();
 
         return self;
     }

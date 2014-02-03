@@ -26,21 +26,27 @@ var Util = (function (W, $) {
     function _debug(n) {
         return W.debug >= (n || 0);
     }
+
     function _flatcat(arr) {
         return arr.concat.apply([], arr);
     }
+
     function _reflect() {
         return arguments[0];
     }
+
     function _args() {
         return arguments;
     }
+
     function _echo() {
         C.log([name], arguments);
     }
+
     function _undef() {
         return (typeof arguments[0] === 'undefined');
     }
+
     function _defined(x) {
         return !_undef(x);
     }
@@ -49,9 +55,11 @@ var Util = (function (W, $) {
     // returns function that slices and returns args array
     // on num means gimme that arg number
     // two nums mean apply slice (the way splice numbers it)
+
+
     function _arg(n1, n2) {
         // n2 = _undef(n2) ? 99 : n2;
-        if (_undef(n2)){
+        if (_undef(n2)) {
             n2 = n1;
             n1 = 0;
         }
@@ -61,6 +69,7 @@ var Util = (function (W, $) {
         };
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
     function _scroll(ele, add) {
 
         add = add || 0;
@@ -73,7 +82,7 @@ var Util = (function (W, $) {
         var bod = $('body');
 
         _debug(2) && C.debug(name + '_scroll', '\n', add + 'px', [ele]);
-        _debug(1) && C.debug(name + '_scroll', ele[0]&&ele[0].id);
+        _debug(1) && C.debug(name + '_scroll', ele[0] && ele[0].id);
 
         if (ele.length) {
             ele.addClass(':target');

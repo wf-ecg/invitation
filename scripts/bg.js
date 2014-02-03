@@ -1,5 +1,5 @@
 /*jslint es5:true, white:false */
-/*globals jQuery, window */
+/*globals $W, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Bg = (function (W, $) {
     var C = W.console,
@@ -17,7 +17,7 @@ var Bg = (function (W, $) {
         my.readData();
         my.$.css({
             height: this.data.height,
-            backgroundImage: 'url(images/' + my.data.image +')',
+            backgroundImage: 'url(images/' + my.data.image + ')',
         });
 
         my.$.on('dblclick.' + name, function () {
@@ -25,20 +25,22 @@ var Bg = (function (W, $) {
         });
         $.PS_sub('resize', function () {
             my.measure();
-            $W.scroll()
+            $W.scroll();
         });
-//        my.$.on('measure.' + name, function () {
-//            my.measure();
-//            C.log(my.topof);
-//        });
+        //        my.$.on('measure.' + name, function () {
+        //            my.measure();
+        //            C.log(my.topof);
+        //        });
         _debug(2) && C.debug(name, my);
     };
 
     self.prototype = {
         _y: 0,
         _css: 0,
-        above: null,  // how much above port.scroll.bottom (height)
-        beyond: null, // how much beyond port.scroll.top (0)
+        above: null,
+        // how much above port.scroll.bottom (height)
+        beyond: null,
+        // how much beyond port.scroll.top (0)
         height: null,
         inited: null,
         data: null,

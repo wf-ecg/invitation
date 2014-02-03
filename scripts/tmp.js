@@ -5,7 +5,7 @@
 // TODO: smooth scroll
 
 var TMP = (function (W, $) {
-    var C, self, name, currentSection, cb;
+    var C, self, name;
 
     name = 'TMP';
     C = W.console;
@@ -72,6 +72,4 @@ var TMP = (function (W, $) {
 }(window, jQuery));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-if ($('html').is('.tmp')) {
-    TMP.init();
-}
+TMP.init();

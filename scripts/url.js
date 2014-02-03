@@ -1,4 +1,4 @@
-/*jslint es5:true, white:false */
+/*jslint es5:true, white:false, evil:true */
 /*globals $, $W, History, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
@@ -8,10 +8,12 @@ var Url = (function (W, $) {
     name = 'Url';
     C = W.console;
     //
+
     function _debug(n) {
         return W.debug >= (n || 0);
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
     function _clear() {
         History.pushState({}, 'WFC Invitation', '.');
     }
@@ -19,7 +21,7 @@ var Url = (function (W, $) {
     function _read() {
         var str = W.location.search;
 
-        str = str.slice(1, -1);
+        str = str.slice(1, - 1);
         // brackets
         str = str.replace(/\^/g, '["');
         str = str.replace(/\$/g, '"]');
@@ -49,7 +51,7 @@ var Url = (function (W, $) {
         W.location.search = str;
     }
 
-    function _datax(dat){
+    function _datax(dat) {
         if (dat) {
             _write(JSON.stringify(dat));
         } else {
@@ -60,10 +62,10 @@ var Url = (function (W, $) {
     function _swaps() {
         var arr, dat;
         //
-        arr = ['_bname','_cname','_dates'];
+        arr = ['_bname', '_cname', '_dates'];
         dat = _datax();
         //
-        $.each(arr, function(i, e) {
+        $.each(arr, function (i, e) {
             $('.' + e).text(dat[i]); //.removeClass(e);
         });
     }
