@@ -22,15 +22,9 @@ var Gallery = (function (W, $) {
         //
         gal.on('inview', function (evt, showing, hsides, vsides) {
             if (showing) {
-                _debug(2) && C.log(name, vsides);
-                if (vsides === 'top' || vsides === 'both') {
-                    all.addClass('grid');
-                    Util.scroll(gal.closest('section'), $$.OFF);
-                } else {
-                    all.removeClass('grid');
-                }
+                all.addClass('grid');
             } else {
-                _debug(2) && C.log('bye');
+                all.removeClass('grid');
             }
         });
         all.on('click', function () {
