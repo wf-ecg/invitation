@@ -17,10 +17,25 @@
 @import "_misc";
 @import "_text";
 
-html, body {
-    background-color: $green;
+html.desktop {
+    body, .fixed {
+        min-width: 1000px;
+        max-width: 1800px;
+    }
+}
+html.mobile {
+    body, .fixed {
+        min-width: 480px;
+        max-width: 960px;
+    }
+}
+html {
+    background-color: darken($green, 10%);
+}
+body {
+    background-color: black;
     font-size: 10px;
-    margin: 0;
+    margin: auto;
 }
 img {
     display: block;

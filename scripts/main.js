@@ -4,10 +4,11 @@
 var $W, $$;
 
 var Main = (function (W, $) {
-    var C, self, name;
+    var C, self, name, desktop;
 
     C = W.console;
     name = 'Main';
+    desktop = false;
 
     // Cache the Window object
     $W = $(W);
@@ -20,18 +21,44 @@ var Main = (function (W, $) {
         return W.debug >= (n || 0);
     }
 
+    function _updatePlatform() {
+        if (desktop) {
+            $('html').addClass('desktop');
+            $('html').removeClass('mobile');
+        } else {
+            $('html').removeClass('desktop');
+            $('html').addClass('mobile');
+        }
+    }
+    function _isMobile() {
+        desktop = ($$.port.all.wide > 960);
+        return !desktop;
+    }
+    function _setPlatform() {
+        // desktop changed by _isMobile (=== order is important)
+        if (desktop === _isMobile()) {
+            _updatePlatform();
+            C.warn('_isMobile change');
+        }
+        return desktop ? 'desktop' : 'mobile';
+    }
+
     function _init() {
         _debug() && C.log([name]);
 
         $$.port = new Port($W);
 
         $('#Wrap section').each(function (i) {
-            var el = this,
-                bg = new Bg(el, $$.port);
-
+            var el, bg;
+            //
+            el = this;
+            bg = new Bg(el, $$.port);
             // cache em
             $W.on('scroll resize', function () {
                 bg.redraw();
+
+                _setPlatform();
+
                 if (!bg.isShowing()) {
                     _debug(2) && C.log('offscreen', i, bg._css.backgroundPosition);
                 } else {
@@ -52,6 +79,7 @@ var Main = (function (W, $) {
 
     self = {
         init: _init,
+        platform: _setPlatform,
     };
 
     return self.init();
