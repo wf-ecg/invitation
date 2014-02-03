@@ -28,15 +28,16 @@ var Marks = (function (W, $) {
     }
 
     function _init() {
+        _debug() && C.log([name]);
+
         W.setTimeout(_makeMarks, 999);
+
         return self;
     }
 
     self = {
         init: _init,
     };
-
-    _debug() && C.log([name]);
 
     return self;
 }(window, jQuery));

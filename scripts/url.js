@@ -69,6 +69,8 @@ var Url = (function (W, $) {
     }
 
     function _init() {
+        _debug() && C.log([name]);
+
         if (W.location.search.length > 9) {
             _swaps();
         } else {
@@ -78,6 +80,8 @@ var Url = (function (W, $) {
                 'Monday, April 28 – Sunday, May 4, 2014'
                 ]);
         }
+
+        return self;
     }
 
     self = {
@@ -89,10 +93,7 @@ var Url = (function (W, $) {
         clear: _clear,
     };
 
-    _debug() && C.log([name]);
-
     return self;
 }(window, jQuery));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-Url.init();

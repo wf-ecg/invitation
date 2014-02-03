@@ -32,15 +32,16 @@ var Menu = (function (W, $) {
     }
 
     function _init() {
+        _debug() && C.log([name]);
+
         _mapScroll();
+
         return self;
     }
 
     self = {
         init: _init,
     };
-
-    _debug() && C.log([name]);
 
     return self;
 }(window, jQuery));

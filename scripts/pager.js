@@ -43,14 +43,13 @@ var Pager = (function (W, $) {
             C.log('pager', i, v);
         });
 
+        _debug() && C.debug([name]);
         return Df.init();
     }
 
     self = {
         init: _init,
     };
-
-    _debug() && C.debug([name]);
 
     return self;
 }(window, jQuery));

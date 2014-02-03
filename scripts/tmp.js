@@ -11,10 +11,10 @@ var TMP = (function (W, $) {
     C = W.console;
     currentSection = 'Wrap';
 
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     function _debug(n) {
         return W.debug >= (n || 0);
     }
-    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _stickTo() {
         Util.scroll(currentSection, $$.OFF);
@@ -39,6 +39,8 @@ var TMP = (function (W, $) {
     }
 
     function _init() {
+        _debug() && C.log([name]);
+
         var html, wrap;
         //
         html = $('html');
@@ -47,7 +49,6 @@ var TMP = (function (W, $) {
         html.on('click', '.touch', function () {
             $(this).toggleClass('hover');
         });
-        //
         wrap.fitText(10, {
             'minFontSize': 7
         });
@@ -58,13 +59,16 @@ var TMP = (function (W, $) {
         //
         $('.filler > *').on('inview', _sectionStick);
         Util.scroll('#Wrap');
+
+        W.setTimeout(Url.clear, 999);
+
+        return self;
     }
 
     self = {
         init: _init,
     };
 
-    _debug() && C.log([name]);
 
     return self;
 }(window, jQuery));

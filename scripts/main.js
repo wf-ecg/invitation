@@ -21,6 +21,8 @@ var Main = (function (W, $) {
     }
 
     function _init() {
+        _debug() && C.log([name]);
+
         $$.port = new Port($W);
 
         $('#Wrap section').each(function (i) {
@@ -42,6 +44,7 @@ var Main = (function (W, $) {
         $W.scroll();
 
         $$.gallery = W.Gallery && Gallery.init();
+        $$.url     = W.Url     && Url.init();
         $$.debug   = W.Debug   && Debug.init();
 
         return self;
@@ -50,8 +53,6 @@ var Main = (function (W, $) {
     self = {
         init: _init,
     };
-
-    _debug() && C.log([name]);
 
     return self.init();
 }(window, jQuery));

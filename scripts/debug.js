@@ -29,17 +29,19 @@ var Debug = (function (W, $) {
     }
 
     function _init() {
+        _debug() && C.log([name]);
+
         _bind();
         $$.marks   = W.Marks   && Marks.init();
         $$.menu    = W.Menu    && Menu.init();
         // $$.pager   = W.Pager   && Pager.init();
+
         return self;
     }
 
     self = {
         init: _init,
     };
-    _debug() && C.log([name]);
 
     return self;
 }(window, jQuery));
