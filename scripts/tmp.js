@@ -9,26 +9,33 @@ var TMP = (function (W, $) {
 
     name = 'TMP';
     C = W.console;
+    currentSection = 'Wrap';
 
     function _debug(n) {
         return W.debug >= (n || 0);
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
+    function _stickTo() {
+        Util.scroll(currentSection, $$.OFF);
+        //
+        _debug() && C.debug('_stickTo', currentSection[0].id);
+    }
 
-    function _sectionStick() {
-        $('.filler > *').on('inview', _.debounce(function (evt, showing, hsides, vsides) {
-            var my = $(this);
+    cb = _.debounce(_stickTo, 1111);
+
+    function _sectionStick(e, showing, h, vsides) {
+        var my = $(this);
+        //
+        cb();
+        if (showing){
+            _debug() && C.debug('_sectionStick', my.parent().parent()[0].id, vsides);
+            currentSection = my.closest('section');
             //
-            if (showing) {
-                _debug(2) && C.log(name, 'hi', this);
-                if (vsides === 'both') {
-                    Util.scroll(my.closest('section'), $$.OFF);
-                }
-            } else {
-                _debug(2) && C.log(name, 'bye', this);
+            if (vsides === 'both' || (vsides === 'top' && my.is('.sticky'))) {
+                cb();
             }
-        }, 333));
+        }
     }
 
     function _init() {
@@ -49,8 +56,8 @@ var TMP = (function (W, $) {
             $(this).children().not('.ribbon').wrapAll('<div class="filler">');
         }));
         //
-        _sectionStick();
-        Util.scroll('#X1a');
+        $('.filler > *').on('inview', _sectionStick);
+        Util.scroll('#Wrap');
     }
 
     self = {
