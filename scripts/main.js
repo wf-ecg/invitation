@@ -1,45 +1,65 @@
 /*jslint es5:true, white:false */
-/*globals $, Pager, Gallery, Menu, Marks, Debug, Port, Bg, document, window */
+/*globals Bg, Debug, Gallery, Port, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var $W;
+var $W, DRT;
 
-$(function () {
-    var W, C, DRT;
+var Main = (function (W, $) {
+    var C, self, name;
 
-    W = window;
     C = W.console;
-    DRT = {
-        OFF: 24,
-    };
+    name = 'Main';
 
     // Cache the Window object
     $W = $(W);
-    DRT.port = new Port($W);
+    DRT = {
+        OFF: 24,
+    };
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _debug(n) {
         return W.debug >= (n || 0);
     }
-    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-    $('#Wrap section').each(function (i) {
-        var el = this,
-            bg = new Bg(el, DRT.port);
-        // cache em
-        $W.on('scroll resize', function () {
-            bg.redraw();
-            if (!bg.isShowing()) {
-                _debug(2) && C.log('offscreen', i, bg._css.backgroundPosition);
-            } else {
-                _debug(2) && C.log('offscreen', i, bg._css.backgroundPosition);
-            }
+
+    function _init() {
+        DRT.port = new Port($W);
+
+        $('#Wrap section').each(function (i) {
+            var el = this,
+                bg = new Bg(el, DRT.port);
+
+            // cache em
+            $W.on('scroll resize', function () {
+                bg.redraw();
+                if (!bg.isShowing()) {
+                    _debug(2) && C.log('offscreen', i, bg._css.backgroundPosition);
+                } else {
+                    _debug(2) && C.log('offscreen', i, bg._css.backgroundPosition);
+                }
+            });
         });
-    });
-    // touch
-    $W.scroll();
-    DRT.pager   = W.Pager   && Pager.init();
-    DRT.gallery = W.Gallery && Gallery.init();
-    DRT.menu    = W.Menu    && Menu.init();
-    DRT.marks   = W.Marks   && Marks.init();
-    DRT.debug   = W.Debug   && Debug.init();
 
-});
+        // touch
+        $W.scroll();
 
+        DRT.debug   = W.Debug   && Debug.init();
+        DRT.gallery = W.Gallery && Gallery.init();
+
+        return self;
+    }
+
+    self = {
+        init: _init,
+    };
+
+    _debug() && C.log([name]);
+
+    return self.init();
+}(window, jQuery));
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/*
+
+
+
+ */
