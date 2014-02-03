@@ -12,10 +12,13 @@ var Url = (function (W, $) {
         return W.debug >= (n || 0);
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    function _clear() {
+        History.pushState({}, 'WFC Invitation', '.');
+    }
+
     function _read() {
         var str = W.location.search;
 
-        History.pushState({}, '', '.');
         str = str.slice(1, -1);
         // brackets
         str = str.replace(/\^/g, '["');
@@ -53,6 +56,7 @@ var Url = (function (W, $) {
             return eval(_read());
         }
     }
+
     function _swaps() {
         var arr, dat;
         //
@@ -82,6 +86,7 @@ var Url = (function (W, $) {
         write: _write,
         datax: _datax,
         swaps: _swaps,
+        clear: _clear,
     };
 
     _debug() && C.log([name]);
