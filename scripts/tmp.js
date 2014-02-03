@@ -19,21 +19,19 @@ var TMP = (function (W, $) {
     function _stickTo() {
         Util.scroll(currentSection, $$.OFF);
         //
-        _debug() && C.debug('_stickTo', currentSection[0].id);
+        _debug(2) && C.error('_stickTo', currentSection[0].id);
     }
 
-    cb = _.debounce(_stickTo, 1111);
+    $(window).scroll(_.debounce(_stickTo, 1111));
 
     function _sectionStick(e, showing, h, vsides) {
         var my = $(this);
         //
-        cb();
         if (showing){
             _debug() && C.debug('_sectionStick', my.parent().parent()[0].id, vsides);
-            currentSection = my.closest('section');
             //
             if (vsides === 'both' || (vsides === 'top' && my.is('.sticky'))) {
-                cb();
+                currentSection = my.closest('section');
             }
         }
     }
