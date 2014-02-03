@@ -13,7 +13,9 @@ var Util = (function (W, $) {
     // CONSTANTS
     easing = {
         easeInBack: function (x, t, b, c, d, s) {
-            if (s == undefined) s = 0.5;
+            if (s == undefined) {
+                s = 0.5;
+            }
             return c * (t /= d) * t * ((s + 1) * t - s) + b;
         },
     };
@@ -55,8 +57,8 @@ var Util = (function (W, $) {
         }
         return function () {
             var arr = Array.prototype.slice.apply(arguments);
-            return arr.slice(n1, n2)
-        }
+            return arr.slice(n1, n2);
+        };
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     function _scroll(ele, add) {
@@ -70,14 +72,15 @@ var Util = (function (W, $) {
 
         var bod = $('body');
 
-        C_(2) && C.debug(name + '_scroll', '\n', add + 'px', [ele]);
+        _debug(2) && C.debug(name + '_scroll', '\n', add + 'px', [ele]);
+        _debug(1) && C.debug(name + '_scroll', ele[0]&&ele[0].id);
 
         if (ele.length) {
             ele.addClass(':target');
 
             bod.stop().animate({
                 scrollTop: ele.offset().top + add,
-            }, 666, function () { // 'easeInBack', 555
+            }, 333, function () { // 'easeInBack', 555
                 ele.removeClass(':target');
             });
         }
@@ -92,12 +95,12 @@ var Util = (function (W, $) {
     };
 
     $.extend(W, {
-        C_: _debug,
+        args: _args,
         echo: _echo,
         isDef: _defined,
     });
 
-    C_() && C.log([name]);
+    _debug() && C.log([name]);
 
     return self;
 }(window, jQuery));
