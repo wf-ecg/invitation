@@ -87,7 +87,6 @@ var Main = (function (W, $) {
 
     function _activeSection(i) {
         var bg = new Bg(this, $$.port);
-        C.error($$.port.all, _isMobile())
         //
         $W[_isMobile() ? 'one' : 'on']('scroll resize', function () {
             bg.redraw();
@@ -107,10 +106,16 @@ var Main = (function (W, $) {
 
         $W.on('resize', _.debounce(_setPlatform, 333));
     }
+
+    function _cleanup() {
+        Url.clear();
+        Util.scroll('#Wrap');
+        _debug() && C.log([name], $.now() / 1000 | 0);
+    }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _init() {
-        _debug() && C.log([name]);
+        _debug() && C.log([name], $.now() / 1000 | 0);
 
         $$.port = new Port($W);
         $$.gallery = W.Gallery && Gallery.init();
@@ -119,9 +124,8 @@ var Main = (function (W, $) {
         $W.resize().scroll();
 
         _bindAll();
-        Util.scroll('#Wrap');
-        W.setTimeout(Url.clear, 999);
 
+        W.setTimeout(_cleanup, 2222);
         return self;
     }
 
