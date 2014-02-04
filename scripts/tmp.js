@@ -13,9 +13,25 @@ var TMP = (function (W, $) {
         return W.debug >= (n || 0);
     }
 
+    function _bind() {
+        var champs = $('.champs')
+
+        $('#X2a .ribbon').on('inview', function (e, showing, h, vsides) {
+            C.error('ribbon', vsides);
+
+            if (showing){
+                champs.addClass('fixed');
+            } else {
+                champs.removeClass('fixed');
+            }
+        });
+
+    }
+
     function _init() {
         _debug() && C.log([name]);
 
+        _bind();
 
         return self;
     }

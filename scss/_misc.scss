@@ -93,6 +93,6 @@
     margin: 0.5em;
 }
 .fixed {
-    position: fixed;
-    width: 100%;
+    position: fixed !important;
+    margin: 0 !important;
 }
