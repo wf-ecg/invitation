@@ -3,9 +3,11 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 var Util = (function (W, $) {
-    var C, name, self, easing;
+    var C, D, DE, name, self, easing;
 
     C = W.console;
+    D = W.document;
+    DE = D.documentElement;
     self = {};
     name = 'Util';
 
@@ -51,6 +53,19 @@ var Util = (function (W, $) {
         return !_undef(x);
     }
 
+    function _dom() {
+        var obj = _dom.Obj;
+        //
+        if (!obj) {
+            obj = D.body; // default
+            if (!$.browser.webkit) {
+                obj = DE;
+            }
+            _dom.Obj = obj = $(obj);
+        }
+        return obj;
+    }
+
     // reflect function takes number arg (def 1) (0 = *)
     // returns function that slices and returns args array
     // on num means gimme that arg number
@@ -71,7 +86,7 @@ var Util = (function (W, $) {
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _scroll(ele, add) {
-        var bod, nom, off, top;
+        var nom, off, top;
 
         add = add || 0;
         if (typeof ele === 'number') {
@@ -79,25 +94,28 @@ var Util = (function (W, $) {
             ele = 'body';
         }
         ele = $(ele || 'body').first();
-
-        bod = $('body');
         nom = (ele[0] && ele[0].id || ele);
 
         if (ele.length) {
             top = ele.offset().top;
-            off = Math.abs($('body').scrollTop() - top);
+            off = Math.abs(_dom().scrollTop() - top);
 
-            if (off > 25) {
-                _debug(1) && C.debug(name, '_scroll start', nom, off + 'px');
+            if (off - add > 25) {
+                _debug(1) && C.debug(name, '_scroll start', nom, off + 'px', add);
                 ele.addClass(':target');
+                // W.location.hash = nom;
 
                 off = (off > 1111 ? off / 5 : off / 2) + 250;
 
-                bod.stop().animate({
+                _dom().stop().animate({
                     scrollTop: top + add,
-                }, off, function () { // 'easeInBack', 555
-                    ele.removeClass(':target');
-                    _debug(2) && C.debug(name, '_scroll done', nom, off + 'ms');
+                }, {
+                    duration: off,
+                    complete: function () { // 'easeInBack', 555
+                        ele.removeClass(':target');
+                        _debug(2) && C.debug(name, '_scroll done', nom, off + 'ms');
+                    },
+                    //step: function (now, fx) { var x = Math.abs(now - fx.end) | 0; C.warn(x, [fx]); }
                 });
             }
         }
@@ -105,6 +123,7 @@ var Util = (function (W, $) {
 
     self = {
         arg: _arg,
+        dom: _dom,
         flatten: _flatcat,
         isDef: _undef,
         I: _reflect,

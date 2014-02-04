@@ -35,7 +35,7 @@ var Main = (function (W, $) {
             var my = $(this);
             //
             if (showing) {
-                _debug() && C.debug('_sectionStick', my.parent().parent()[0].id, vsides);
+                _debug(1) && C.debug('_sectionStick', my.parent().parent()[0].id, vsides);
                 //
                 if (vsides === 'both' || (vsides === 'top' && my.is('.sticky'))) {
                     currentSection = my.closest('section');
