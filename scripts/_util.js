@@ -71,6 +71,7 @@ var Util = (function (W, $) {
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _scroll(ele, add) {
+        var bod, nom, off, top;
 
         add = add || 0;
         if (typeof ele === 'number') {
@@ -79,19 +80,26 @@ var Util = (function (W, $) {
         }
         ele = $(ele || 'body').first();
 
-        var bod = $('body');
-
-        _debug(2) && C.debug(name + '_scroll', '\n', add + 'px', [ele]);
-        _debug(1) && C.debug(name + '_scroll', ele[0] && ele[0].id);
+        bod = $('body');
+        nom = (ele[0] && ele[0].id || ele);
 
         if (ele.length) {
-            ele.addClass(':target');
+            top = ele.offset().top;
+            off = Math.abs($('body').scrollTop() - top);
 
-            bod.stop().animate({
-                scrollTop: ele.offset().top + add,
-            }, 333, function () { // 'easeInBack', 555
-                ele.removeClass(':target');
-            });
+            if (off > 25) {
+                _debug(1) && C.debug(name, '_scroll start', nom, off + 'px');
+                ele.addClass(':target');
+
+                off = (off > 1111 ? off / 5 : off / 2) + 250;
+
+                bod.stop().animate({
+                    scrollTop: top + add,
+                }, off, function () { // 'easeInBack', 555
+                    ele.removeClass(':target');
+                    _debug(2) && C.debug(name, '_scroll done', nom, off + 'ms');
+                });
+            }
         }
     }
 
