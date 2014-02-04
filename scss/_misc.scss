@@ -63,6 +63,9 @@
     display: block;
     margin: auto;
 }
+.nowrap {
+    white-space: nowrap;
+}
 .marker {
     display: none;
 }
@@ -85,4 +88,7 @@
 }
 ._bname, ._cname {
     text-transform: uppercase;
+}
+.facts span {
+    margin: 0.5em;
 }

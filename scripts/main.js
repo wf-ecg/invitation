@@ -54,9 +54,14 @@ var Main = (function (W, $) {
             if (desktop) {
                 $('html').addClass('desktop');
                 $('html').removeClass('mobile');
+                wrap.fitText(10, {
+                    'minFontSize': 7
+                });
             } else {
                 $('html').removeClass('desktop');
                 $('html').addClass('mobile');
+                $.fitText.off();
+                $('#Wrap').css('font-size', '');
             }
         }
 
@@ -69,7 +74,7 @@ var Main = (function (W, $) {
             // desktop changed by _isMobile (=== order is important)
             if (desktop === _isMobile()) {
                 _updatePlatform();
-                C.warn('_isMobile change');
+                C.warn('_isMobile change', desktop ? 'desktop' : 'mobile');
             }
             return desktop ? 'desktop' : 'mobile';
         }
@@ -82,15 +87,10 @@ var Main = (function (W, $) {
 
     function _activeSection(i) {
         var bg = new Bg(this, $$.port);
+        C.error($$.port.all, _isMobile())
         //
-        $W.on('scroll resize', function () {
+        $W[_isMobile() ? 'one' : 'on']('scroll resize', function () {
             bg.redraw();
-
-            if (!bg.isShowing()) {
-                _debug(2) && C.log('offscreen', i, bg._css.backgroundPosition);
-            } else {
-                _debug(2) && C.log('offscreen', i, bg._css.backgroundPosition);
-            }
         });
     }
 
@@ -98,13 +98,14 @@ var Main = (function (W, $) {
         html.on('click', '.touch', function () {
             $(this).toggleClass('hover');
         });
+        _setPlatform();
 
         wrap.find('section') //
         .each(_activeSection) //
         .each(_bubbleWrap) //
         .find('.filler > *').on('inview', _sectionStick);
 
-        $W.on('resize', _setPlatform).scroll();
+        $W.on('resize', _.debounce(_setPlatform, 333));
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
@@ -115,14 +116,12 @@ var Main = (function (W, $) {
         $$.gallery = W.Gallery && Gallery.init();
         $$.url = W.Url && Url.init();
         $$.debug = W.Debug && Debug.init();
+        $W.resize().scroll();
 
         _bindAll();
         Util.scroll('#Wrap');
         W.setTimeout(Url.clear, 999);
 
-        wrap.fitText(10, {
-            'minFontSize': 7
-        });
         return self;
     }
 
