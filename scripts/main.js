@@ -31,8 +31,6 @@ var Main = (function (W, $) {
             _debug(2) && C.error('_stickTo', currentSection[0].id);
         }
 
-        $(W).scroll(_.debounce(_stickTo, 1111));
-
         function _sectionStick(e, showing, h, vsides) {
             var my = $(this);
             //
@@ -103,6 +101,7 @@ var Main = (function (W, $) {
         .each(_activeSection) //
         .each(_bubbleWrap);
 
+        $W.scroll(_.debounce(_stickTo, 1111));
         $W.on('resize', _.debounce(_setPlatform, 333));
     }
 
@@ -110,6 +109,7 @@ var Main = (function (W, $) {
         Url.clear();
         Util.scroll('#Wrap');
         $('section .bubble > *').on('inview', _sectionStick);
+
         _debug() && C.log([name], $.now() / 1000 | 0);
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -117,7 +117,7 @@ var Main = (function (W, $) {
     function _init() {
         _debug() && C.log([name], $.now() / 1000 | 0);
 
-        $$.port = new Port($W);
+        $$.port = W.Port = new Port($W);
         $$.gallery = W.Gallery && Gallery.init();
         $$.url = W.Url && Url.init();
         $$.debug = W.Debug && Debug.init();
@@ -125,7 +125,7 @@ var Main = (function (W, $) {
 
         _bindAll();
 
-        W.setTimeout(_cleanup, 2222);
+        W.setTimeout(_cleanup, 1333);
         return self;
     }
 
