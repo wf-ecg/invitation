@@ -2,8 +2,12 @@
 
 #Wrap .champs {
     @include backTrans(#5e8206, -0.2);
+    top: 10%;
+    left: 10%;
     margin: 2em 5%;
     padding: 2em;
+    position: absolute;
+    right: 10%;
 
     h1 {
         font-size: 3em;

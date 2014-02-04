@@ -17,8 +17,6 @@ var TMP = (function (W, $) {
         var champs = $('.champs')
 
         $('#X2a .ribbon').on('inview', function (e, showing, h, vsides) {
-            C.error('ribbon', vsides);
-
             if (showing){
                 champs.addClass('fixed');
             } else {

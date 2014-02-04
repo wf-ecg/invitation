@@ -3,7 +3,7 @@
 #Chrome {
     header, footer {
         background-color: white;
-        box-sizing: border-box;
+        @include box-sizing(border-box);
         width: 100%;
     }
     header {

@@ -1,4 +1,5 @@
 /* SCREEN */
+@import "compass/css3";
 @import "_def";
 
 //  font-weights
@@ -29,7 +30,7 @@ img {
     margin: auto;
 }
 section, div {
-    box-sizing: border-box;
+    @include box-sizing(border-box);
 }
 section {
     @include setEase(all 0.125s ease-out);
