@@ -82,7 +82,7 @@ var Main = (function (W, $) {
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _bubbleWrap() {
-        $(this).children().not('.ribbon').wrapAll('<div class="filler">');
+        $(this).children().not('.ribbon').wrapAll('<div class="bubble">');
     }
 
     function _activeSection(i) {
@@ -101,8 +101,7 @@ var Main = (function (W, $) {
 
         wrap.find('section') //
         .each(_activeSection) //
-        .each(_bubbleWrap) //
-        .find('.filler > *').on('inview', _sectionStick);
+        .each(_bubbleWrap);
 
         $W.on('resize', _.debounce(_setPlatform, 333));
     }
@@ -110,6 +109,7 @@ var Main = (function (W, $) {
     function _cleanup() {
         Url.clear();
         Util.scroll('#Wrap');
+        $('section .bubble > *').on('inview', _sectionStick);
         _debug() && C.log([name], $.now() / 1000 | 0);
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
