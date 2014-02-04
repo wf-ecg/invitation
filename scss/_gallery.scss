@@ -11,7 +11,7 @@ $neg: -1 * $pos;
         border: 1px solid adjTrans($green, -0.8);
         display: inline-block;
         height: 11em;
-        margin: 1.5% 2%;
+        margin: 2em 2%;
         position: relative;
         vertical-align: middle;
         z-index: 1;
@@ -24,6 +24,7 @@ $neg: -1 * $pos;
         &.grid {
             left: inherit;
             opacity: 0.6;
+            top: 0;
             top: initial;
         }
         &:hover {

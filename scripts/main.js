@@ -47,12 +47,13 @@ var Main = (function (W, $) {
 
     if ('PLATFORM') {
         var desktop = false;
+        var fontsize = $.browser.safari ? 12 : 10;
 
         function _updatePlatform() {
             if (desktop) {
                 $('html').addClass('desktop');
                 $('html').removeClass('mobile');
-                wrap.fitText(10, {
+                wrap.fitText(fontsize, {
                     'minFontSize': 7
                 });
             } else {

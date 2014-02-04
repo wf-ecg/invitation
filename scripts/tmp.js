@@ -17,7 +17,7 @@ var TMP = (function (W, $) {
         var champs = $('.champs')
 
         $('#X2a .ribbon').on('inview', function (e, showing, h, vsides) {
-            if (showing){
+            if (showing && !$.browser.msie){
                 champs.addClass('fixed');
             } else {
                 champs.removeClass('fixed');
