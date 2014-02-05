@@ -109,6 +109,8 @@ var Main = (function (W, $) {
         Util.scroll('#Wrap');
         $('section .bubble > div').on('inview', _sectionStick);
 
+        Gallery.lazy();
+
         _debug() && C.log([name], $.now() / 1000 | 0);
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
