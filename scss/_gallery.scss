@@ -8,10 +8,10 @@ $neg: -1 * $pos;
     @extend %abscent;
 
     img {
-        border: 1px solid transparentize($green, 0.8);
+        border: 1px solid adjTrans($green, -0.8);
         display: inline-block;
         height: 11em;
-        margin: 1em 1.5em;
+        margin: 2em 2%;
         position: relative;
         vertical-align: middle;
         z-index: 1;
@@ -24,6 +24,7 @@ $neg: -1 * $pos;
         &.grid {
             left: inherit;
             opacity: 0.6;
+            top: 0;
             top: initial;
         }
         &:hover {
@@ -32,12 +33,12 @@ $neg: -1 * $pos;
             opacity: 0.8;
             z-index: 10;
             @include setEase(all 0.25s ease-out 0.5s);
-/*            @include setTransform( scale(1.33) );*/
+            @include setTransform( scale(1.33) );
         }
         &.zoom {
             background-color: black;
             top: -15% !important;
-            height: initial;
+            height: initial !important;
             opacity: 1;
             position: absolute;
             width: 95%;

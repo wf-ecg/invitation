@@ -4,14 +4,15 @@
     /* background: url('../images/misc/policetape.png') 0 0 repeat;*/
     background-color: $green;
     color: white;
-    font-family: 'Archer', 'Archer SSm A', 'Archer SSm B', Georgia, serif;
+    font-family: 'Archer A', 'Archer B', 'Archer', 'Archer SSm A', 'Archer SSm B', Georgia, serif;
+    font-style: normal;
     margin-top: 72px;
     overflow: hidden;
 
     section {
         background: url('../images/misc/swatch.png') 50% 0 no-repeat fixed;
         background-size: cover !important;
-        box-shadow: 0 0 50px transparentize(black, .2);
+        box-shadow: 0 0 50px adjTrans(black, -.2);
         padding: 0px;
         position: relative;
         text-align: center;
@@ -28,15 +29,15 @@
             margin: 0.25em 0.75em 0.2em;
         }
         &.v1 {
-            background-color: transparentize(#eee, 0.75);
+            @include backTrans(#eee, -0.75);
 
             h1 {
                 color: white;
             }
         }
         &.v2 {
-            background-color: transparentize(#eee, 0.25);
-            box-shadow: 0 0 50px transparentize(black, 0.6);
+            @include backTrans(#eee, -0.25);
+            box-shadow: 0 0 50px adjTrans(black, -0.6);
 
             h1 {
                 color: $green;

@@ -38,11 +38,11 @@
         width: 45px;
 
         &:hover {
-            box-shadow: 0 0 50px transparentize(yellow, 0.6);
+            box-shadow: 0 0 50px adjTrans(yellow, -0.6);
             opacity: 1;
         }
         &:active {
-            box-shadow: 0 10px 20px transparentize(white, 0.8);
+            box-shadow: 0 10px 20px adjTrans(white, -0.8);
         }
         &.left {
             background: url('../images/btns/arrows.png') 0 0 no-repeat;

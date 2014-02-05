@@ -1,5 +1,5 @@
 /*jslint es5:true, white:false */
-/*globals jQuery, window */
+/*globals _, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Port = (function (W, $) {
     var C = W.console,
@@ -27,6 +27,7 @@ var Port = (function (W, $) {
         return (this.all = {
             top: this._.T,
             high: this._.V,
+            wide: this._.H,
             bottom: this._.T + this._.V,
         });
     };
@@ -35,8 +36,9 @@ var Port = (function (W, $) {
             jq = this._.J;
 
         jq.resize(_.throttle(function () {
-            my.log('resize2');
+            my.log('resize');
             my._.V = my._.J.height() | 0;
+            my._.H = my._.J.width() | 0;
             $.PS_pub('resize');
         }, 500));
 

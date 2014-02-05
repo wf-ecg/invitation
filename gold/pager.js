@@ -3,10 +3,16 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 var Pager = (function (W, $) {
-    var self, name = 'Pager',
-    C = W.console,
-    Df;
+    var self, name, C, Df;
+    //
+    name = 'Pager';
+    C = W.console;
+    //
 
+    function _debug(n) {
+        return W.debug >= (n || 0);
+    }
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     Df = {
         div: 'section .pager',
         arrows: null,
@@ -32,23 +38,18 @@ var Pager = (function (W, $) {
 
      */
 
-    function _debug(n) {
-        return W.debug >= (n || 0);
-    }
-
     function _init() {
         $('section .pager').on('inview', function (e, i, h, v) {
             C.log('pager', i, v);
         });
 
+        _debug() && C.debug([name]);
         return Df.init();
     }
 
     self = {
         init: _init,
     };
-
-    _debug() && C.debug([name]);
 
     return self;
 }(window, jQuery));

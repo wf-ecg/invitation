@@ -1,4 +1,5 @@
 /* SCREEN */
+@import "compass/css3";
 @import "_def";
 
 //  font-weights
@@ -8,52 +9,34 @@
 
 @import "_debug";
 @import "_champs";
+@import "_chrome";
 @import "_gallery";
 @import "_green";
-@import "_pager";
+@import "_respond";
 @import "_ribbon";
-@import "_menu";
 @import "_misc";
 @import "_text";
 
-html, body {
-    background-color: $green;
+html {
+    background-color: darken($green, 10%);
+}
+body {
+    background-color: black;
     font-size: 10px;
-    margin: 0;
+    margin: auto;
 }
 img {
     display: block;
     margin: auto;
 }
 section, div {
-    box-sizing: border-box;
+    @include box-sizing(border-box);
 }
 section {
     @include setEase(all 0.125s ease-out);
 }
 sup {
     font-size: 0.6em;
-}
-header, footer {
-    background-color: white;
-    box-sizing: border-box;
-    position: fixed;
-    width: 100%;
-}
-header {
-    box-shadow: 0 0 50px transparentize(black, 0.6);
-    height: 72px;
-    padding: 12px 0;
-    top: 0;
-    z-index: 9;
-}
-footer {
-    bottom: 0;
-    box-shadow: 0 0 15px transparentize(black, 0.8);
-    height: 36px;
-    font-size: 9pt;
-    padding: 12px 15px;
-    z-index: 2;
 }
 
 /*::-moz-selection{ background-color: transparent; color: inherit; text-shadow: none; }*/

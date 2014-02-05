@@ -1,15 +1,27 @@
 /* DEF */
-$green: #46a033;
-$red: #C00029;
-$whitish: transparentize(white, 0.1);
-
-@function setTrans($color, $opacity: 0.5) {
-    @return rgba($color, $opacity);
+@function setTrans($color, $amount: 0.1) { // pos only
+    @return change-color($color, $alpha: $amount);
 }
-@mixin setTrans($color, $opacity: 0.5) {
-    background-color: $color; /* fallback2 */
-    background-color: lighten($color, percentage($opacity/2)); /* fallback1 */
-    background-color: setTrans($color, $opacity);
+@function adjTrans($color, $amount: 0.1) { // pos or neg linear
+    @return adjust-color($color, $alpha: $amount);
+}
+@function scaTrans($color, $amount: 0.1) { // pos or neg percent
+    $amount: percentage($amount);
+    @return scale-color($color, $alpha: $amount);
+}
+@function simAlpha($color) {
+    @return lighten(setTrans($color, 1), percentage(1 - alpha($color)) / 2);
+}
+@mixin oldAlpha($color) {
+    $hex: ie-hex-str($color);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#00000000, endColorstr=#00000000);
+    -ms-filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr='+$hex+', endColorstr='+$hex+')';
+}
+@mixin backTrans($color, $opacity: 0.5) {
+    $color: adjTrans($color, $opacity);
+    @include oldAlpha($color);
+    /* end fallbacks */
+    background-color: $color;
 }
 @mixin setEase($a) {
     -webkit-transition: $a;
@@ -32,11 +44,11 @@ $whitish: transparentize(white, 0.1);
     margin-bottom: -2px;
     margin-left: -1px;
 }
-@mixin oldAlpha($color) {
-    background: rgb(0, 0, 0);
-    background: rgba(0, 0, 0, 0.6);
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-    -ms-filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)';
+@mixin test($color) {
+    position: absolute;
+    height: 100%;
+    font-size: 400%;
+    @include backTrans($color, -0.5);
 }
 /* absolute centering */
 %abscent {
@@ -49,3 +61,30 @@ $whitish: transparentize(white, 0.1);
     max-width: 90%;
     max-height: 90%;
 }
+
+$green: #46a033;
+$red: #C00029;
+
+.foooo {
+    @include test(#cc0000);
+}
+// -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+// filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+// opacity: .5;
+/*
+    $R: red($color);
+    $G: green($color);
+    $B: blue($color);
+    $A: alpha($color);
+    r: $R;
+    g: $G;
+    b: $B;
+    a: $A;
+    ie: ie-hex-str($color);
+    st: setTrans($color);
+    at: adjTrans($color);
+    a-5: adjTrans($color, -0.5);
+    tpz: adjTrans($color, -0.1);
+    tpt: adjTrans($color, -0.1);
+    sim: simAlpha($color);
+*/
