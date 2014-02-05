@@ -15,12 +15,13 @@ var Url = (function (W, $) {
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _clear() {
-        History.pushState({}, 'WFC Invitation', '.');
+        W.location.hash = '' ;
+        //History.pushState(_datax(), 'WFC Invitation', './index.html');
     }
 
     function _read() {
-        var str = W.location.search;
-
+        var str = W.location.hash;
+        //
         str = str.slice(1, - 1);
         // brackets
         str = str.replace(/\^/g, '["');
@@ -47,8 +48,8 @@ var Url = (function (W, $) {
         // boundary
         str = str.replace(/\"\,\"/g, '&');
 
-        str = '?' + str + '/';
-        W.location.search = str;
+        str = '' + str + '/';
+        W.location.hash = str;
     }
 
     function _datax(dat) {
@@ -65,7 +66,7 @@ var Url = (function (W, $) {
         arr = ['_bname', '_cname', '_dates'];
         dat = _datax();
         //
-        $.each(arr, function (i, e) {
+        dat && $.each(arr, function (i, e) {
             $('.' + e).text(dat[i]); //.removeClass(e);
         });
     }
@@ -73,9 +74,14 @@ var Url = (function (W, $) {
     function _init() {
         _debug() && C.log([name]);
 
-        if (W.location.search.length > 9) {
+        if (W.location.hash.length > 9) {
             _swaps();
+            _clear();
         } else {
+            $(W).on('hashchange', function () {
+                C.warn('hashchange');
+                _swaps();
+            });
             _datax([
                 'Jon Banker',
                 'Jan D. Client',
