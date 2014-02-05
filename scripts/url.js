@@ -24,7 +24,7 @@ var Url = (function (W, $) {
         //
         str = str.slice(1, - 1);
         // brackets
-        str = str.replace(/\^/g, '["');
+        str = str.replace(/\^|%5E/g, '["');
         str = str.replace(/\$/g, '"]');
         // spaces
         str = str.replace(/\_/g, ' ');
