@@ -47,18 +47,16 @@ var Main = (function (W, $) {
 
     if ('PLATFORM') {
         var desktop = false;
-        var fontsize = $.browser.safari ? 12 : 10;
+        var fontsize = $.browser.chrome ? 10 : 11;
 
         function _updatePlatform() {
             if (desktop) {
-                $('html').addClass('desktop');
-                $('html').removeClass('mobile');
+                $('html').addClass('desktop').removeClass('mobile');
                 wrap.fitText(fontsize, {
                     'minFontSize': 7
                 });
             } else {
-                $('html').removeClass('desktop');
-                $('html').addClass('mobile');
+                $('html').removeClass('desktop').addClass('mobile');
                 $.fitText.off();
                 $('#Wrap').css('font-size', '');
             }
@@ -73,7 +71,7 @@ var Main = (function (W, $) {
             // desktop changed by _isMobile (=== order is important)
             if (desktop === _isMobile()) {
                 _updatePlatform();
-                _debug() && C.warn('_isMobile change', desktop ? 'desktop' : 'mobile');
+                _debug(1) && C.warn('_setPlatform change', desktop ? 'desktop' : 'mobile');
             }
             return desktop ? 'desktop' : 'mobile';
         }
