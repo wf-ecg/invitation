@@ -118,6 +118,10 @@ var Main = (function (W, $) {
     function _init() {
         _debug() && C.log([name], $.now() / 1000 | 0);
 
+        if (W.isIE) {
+            $('html').addClass('msie');
+        }
+
         $$.port = W.Port = new Port($W);
         $$.gallery = W.Gallery && Gallery.init();
         $$.url = W.Url && Url.init();
