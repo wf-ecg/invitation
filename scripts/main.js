@@ -28,14 +28,14 @@ var Main = (function (W, $) {
         function _stickTo() {
             Util.scroll(currentSection, $$.OFF);
             //
-            _debug(2) && C.error('_stickTo', currentSection[0].id);
+            _debug(2) && C.error(name, '_stickTo', currentSection[0].id);
         }
 
         function _sectionStick(e, showing, h, vsides) {
             var my = $(this);
             //
             if (showing) {
-                _debug(1) && C.debug('_sectionStick', my.parent().parent()[0].id, vsides);
+                _debug(1) && C.debug(name, '_sectionStick', my.parent().parent()[0].id, vsides);
                 //
                 if (vsides === 'both' || (vsides === 'top' && my.is('.sticky'))) {
                     currentSection = my.closest('section');
@@ -73,7 +73,7 @@ var Main = (function (W, $) {
             // desktop changed by _isMobile (=== order is important)
             if (desktop === _isMobile()) {
                 _updatePlatform();
-                C.warn('_isMobile change', desktop ? 'desktop' : 'mobile');
+                _debug() && C.warn('_isMobile change', desktop ? 'desktop' : 'mobile');
             }
             return desktop ? 'desktop' : 'mobile';
         }

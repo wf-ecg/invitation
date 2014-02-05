@@ -21,16 +21,12 @@ var Bg = (function (W, $) {
         });
 
         my.$.on('dblclick.' + name, function () {
-            C.log(my);
+            _debug() && C.log(my);
         });
         $.PS_sub('resize', function () {
             my.measure();
             $W.scroll();
         });
-        //        my.$.on('measure.' + name, function () {
-        //            my.measure();
-        //            C.log(my.topof);
-        //        });
         _debug(2) && C.debug(name, my);
     };
 

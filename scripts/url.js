@@ -79,7 +79,7 @@ var Url = (function (W, $) {
             _clear();
         } else {
             $(W).on('hashchange', function () {
-                C.warn('hashchange');
+                _debug(1) && C.warn(name, 'hashchange');
                 _swaps();
             });
             _datax([
