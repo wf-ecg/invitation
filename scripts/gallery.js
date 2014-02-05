@@ -3,12 +3,12 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 var Gallery = (function (W, $) {
-    var C, self, name;
+    var C, self, name, OK;
     //
     name = 'Gallery';
     C = W.console;
+    OK = !W.isIE;
     //
-
     function _debug(n) {
         return W.debug >= (n || 0);
     }
@@ -18,13 +18,13 @@ var Gallery = (function (W, $) {
         var gal, all;
         //
         gal = $('#Gallery');
-        all = gal.find('img').hide();
+        all = gal.find('img').exempt(OK).hide().end();
         //
         gal.on('inview', function (e, showing, h, vsides) {
             if (showing) {
                 all.addClass('grid').show();
             } else {
-                all.removeClass('grid').hide();
+                all.removeClass('grid').exempt(OK).hide();
             }
         });
         all.on('click', function () {

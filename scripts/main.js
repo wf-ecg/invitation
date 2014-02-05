@@ -107,7 +107,7 @@ var Main = (function (W, $) {
     function _cleanup() {
         Url.clear();
         Util.scroll('#Wrap');
-        $('section .bubble > *').on('inview', _sectionStick);
+        $('section .bubble > div').on('inview', _sectionStick);
 
         _debug() && C.log([name], $.now() / 1000 | 0);
     }

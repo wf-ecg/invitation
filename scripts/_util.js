@@ -120,6 +120,19 @@ var Util = (function (W, $) {
             }
         }
     }
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    // JQUERY
+
+    $.fn.exempt = function (bool) {
+        var ret = $();
+        if (!bool) {
+            ret = $(this);
+        }
+        ret.prevObject = this;
+        return ret;
+    };
+
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     self = {
         arg: _arg,
