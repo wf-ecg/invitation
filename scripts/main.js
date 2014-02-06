@@ -121,7 +121,7 @@ var $W, $$, Main =
 
         Gallery.lazy();
 
-        C.warn('inited @ ' + Date() + ' debug:', W.debug);
+        C.warn('finited @ ' + Date());
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
