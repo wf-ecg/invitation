@@ -1,11 +1,10 @@
 /*jslint es5:true, white:false */
 /*globals Bg, Debug, Gallery, Port, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var $W, $$;
-
-var Main = (function (W, $) {
+var $W, $$, Main =
+(function (W, $) { // IIFE
     var name = 'Main',
-        self, C, Df, G = Global;
+    self, C, Df, G = Global;
 
     self = new G(name, '(kicker and binder)');
     C = W.console;
@@ -120,7 +119,7 @@ var Main = (function (W, $) {
 
         Gallery.lazy();
 
-        _debug() && C.log([name], $.now() / 1000 | 0);
+        C.warn('inited @ ' + Date() + ' debug:', W.debug);
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
@@ -129,8 +128,6 @@ var Main = (function (W, $) {
         if (self.inited(true)) {
             return null;
         }
-
-        _debug() && C.log([name], $.now() / 1000 | 0);
         Df.inits();
 
         $$.port = W.Port = new Port($W);

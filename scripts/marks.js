@@ -1,12 +1,21 @@
 /*jslint es5:true, white:false */
 /*globals jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Marks = (function (W, $) {
-    var C, self, name;
+var Marks =
+(function (W, $) { // IIFE
+    var name = 'Marks',
+    self, C, Df, G = Global;
     //
-    name = 'Marks';
+    self = new G(name, '(draw gauge of vertical pixels)');
     C = W.console;
     //
+    Df = { // DEFAULTS
+        step: 250,
+        inits: function () {
+        }
+    };
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    /// INTERNAL
 
     function _debug(n) {
         return W.debug >= (n || 0);
@@ -21,23 +30,26 @@ var Marks = (function (W, $) {
         pix = bod.outerHeight();
         mrk = $('<span>').addClass('marker').append('<i>');
         //
-        for (i = 250; i < pix; i += 250) {
+        for (i = Df.step; i < pix; i += Df.step) {
             dup = mrk.clone().appendTo(div).css('top', i).find('i').text(i);
             _debug(2) && C.debug(i, dup);
         }
     }
 
     function _init() {
-        _debug() && C.log([name]);
+        if (self.inited(true)) {
+            return null;
+        }
+        Df.inits();
 
         W.setTimeout(_makeMarks, 999);
 
         return self;
     }
 
-    self = {
+    $.extend(true, self, {
         init: _init,
-    };
+    });
 
     return self;
 }(window, jQuery));

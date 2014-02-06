@@ -1,17 +1,18 @@
 /*jslint es5:true, white:false */
 /*globals $$, $W, Util, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-var Gallery = (function (W, $) {
-    var C, self, name, OK, Df;
+var Gallery =
+(function (W, $) { // IIFE
+    var name = 'Gallery',
+    self, C, OK, Df, G = Global;
     //
-    name = 'Gallery';
+    self = new G(name, '(props for the animation and grid of pics)');
     C = W.console;
     OK = !W.isIE;
     //
-    Df = {
+    Df = { // DEFAULTS
         gal: '#Gallery',
-        init: function () {
+        inits: function () {
             //
             this.gal = $(this.gal);
             this.all = this.gal.find('img').exempt(OK).hide().end();
@@ -21,7 +22,7 @@ var Gallery = (function (W, $) {
         return W.debug >= (n || 0);
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
+    /// INTERNAL
     function _bindGallery() {
         //
         Df.gal.on('inview', function (e, showing, h, vsides) {
@@ -33,7 +34,8 @@ var Gallery = (function (W, $) {
         });
         Df.all.on('click', function () {
             var me = $(this),
-                zoomed = me.is('.zoom');
+            zoomed = me.is('.zoom');
+
             if (!zoomed) {
                 Df.all.removeClass('zoom');
             }
@@ -49,18 +51,20 @@ var Gallery = (function (W, $) {
     }
 
     function _init() {
-        _debug() && C.log([name]);
+        if (self.inited(true)) {
+            return null;
+        }
+        Df.inits();
 
-        Df.init();
         _bindGallery();
 
         return self;
     }
 
-    self = {
+    $.extend(true, self, {
         init: _init,
         lazy: _lazyGallery,
-    };
+    });
 
     return self;
 }(window, jQuery));

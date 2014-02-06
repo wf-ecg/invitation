@@ -1,7 +1,8 @@
 /*jslint es5:true, white:false */
 /*globals _, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Port = (function (W, $) {
+var Port =
+(function (W, $) { // IIFE
     var C = W.console,
         self, name = 'Port';
 

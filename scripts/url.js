@@ -1,22 +1,33 @@
 /*jslint es5:true, white:false, evil:true */
-/*globals $, $W, History, jQuery, window */
+/*globals $W, History, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-var Url = (function (W, $) {
-    var C, self, name;
+var Url =
+(function (W, $) { // IIFE
+    var name = 'Url',
+    self, C, L, Df, G = Global;
     //
-    name = 'Url';
+    self = new G(name, '(manage url to data and back)');
     C = W.console;
+    L = W.location;
     //
-
+    Df = { // DEFAULTS
+        dirty: null,
+        loaded: null,
+        data: null,
+        inits: function () {
+            this.dirty = L.href.slice(-1) === '#';
+            this.loaded = L.hash.length > 9;
+        }
+    };
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    /// INTERNAL
     function _debug(n) {
         return W.debug >= (n || 0);
     }
-    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _clear() {
         W.location.hash = '' ;
-        //History.pushState(_datax(), 'WFC Invitation', './index.html');
+    //History.pushState(_datax(), 'WFC Invitation', './index.html');
     }
 
     function _read() {
@@ -53,14 +64,17 @@ var Url = (function (W, $) {
     }
 
     function _datax(dat) {
+        Df.url = Df.url || '?';
         if (dat) {
+            Df.url = dat;
             _write(JSON.stringify(dat));
         } else {
-            return eval(_read());
+            Df.url = eval(_read()) || Df.url;
+            return Df.url;
         }
     }
 
-    function _swaps() {
+    function _tokenSwap() {
         var arr, dat;
         //
         arr = ['_bname', '_cname', '_dates'];
@@ -72,15 +86,21 @@ var Url = (function (W, $) {
     }
 
     function _init() {
-        _debug() && C.log([name]);
+        if (self.inited(true)) {
+            return null;
+        }
+        Df.inits();
 
-        if (W.location.hash.length > 9) {
-            _swaps();
+        if (Df.dirty) {
+            C.error('dirty');
+        }
+        if (Df.loaded) {
+            _tokenSwap();
             _clear();
         } else {
             $(W).on('hashchange', function () {
                 _debug(1) && C.warn(name, 'hashchange');
-                _swaps();
+                _tokenSwap();
             });
             _datax([
                 'Jon Banker',
@@ -92,14 +112,14 @@ var Url = (function (W, $) {
         return self;
     }
 
-    self = {
+    $.extend(true, self, {
         init: _init,
         read: _read,
         write: _write,
         datax: _datax,
-        swaps: _swaps,
+        swaps: _tokenSwap,
         clear: _clear,
-    };
+    });
 
     return self;
 }(window, jQuery));

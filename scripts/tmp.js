@@ -26,6 +26,14 @@ var TMP = (function (W, $) {
 
     }
 
+    var str;
+    function _fake() {
+        str = str || Url.datax().join('/'); // restore
+
+        str = W.prompt ('add text sep’d by slashes', str);
+        str && Url.datax(str.split('/')); // stop null
+    }
+
     function _init() {
         _debug() && C.log([name]);
 
@@ -36,6 +44,7 @@ var TMP = (function (W, $) {
 
     self = {
         init: _init,
+        fake: _fake,
     };
 
 
