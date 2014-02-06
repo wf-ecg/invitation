@@ -2,16 +2,18 @@
 
 #Wrap .champs {
     @include backTrans(#5e8206, -0.2);
-    top: 10%;
-    left: 10%;
+    top: 5%;
     margin: 2em 5%;
+    min-width: 420px;
     padding: 2em;
     position: absolute;
-    right: 10%;
+    left: 5%;
+    right: 5%;
 
     &.fixed {
-        min-width: 400px;
         top: 72px;
+        left: 10%;
+        right: 10%;
     }
     h1 {
         font-size: 3em;
@@ -26,8 +28,10 @@
         margin: auto;
 
         td {
+            padding: 0.1em 1% 0.05em;
+            white-space: nowrap;
+            width: 10%;
             @include backTrans(black, -0.8);
-            padding: 0.1em 0.35em 0.05em;
 
             &:first-child, &:last-child {
                 @include backTrans(black, -0.6);
@@ -39,7 +43,7 @@
             &:nth-child(2) {
                 padding-left: 1em;
                 text-align: left;
-                width: 11em;
+                width: 66%;
             }
         }
     }
