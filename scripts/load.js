@@ -32,7 +32,6 @@ Modernizr.load([{
     test: W.isIE,
     yep: [
     G.lib + '/ie/split.js',
-    G.lib + '/ie/jquery.history.js',
     '//cloud.typography.com/6819872/620964/css/fonts.css',
     ],
     both: [

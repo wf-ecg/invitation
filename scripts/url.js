@@ -30,8 +30,8 @@ var Url =
     }
 
     function _clear() {
-        W.location.hash = '' ;
-    //History.pushState(_datax(), 'WFC Invitation', './index.html');
+        if (!W.isIE) W.location.hash = '' ;
+    // History.pushState(_datax(), 'WFC Invitation', './index.html');
     }
 
     function _read() {
