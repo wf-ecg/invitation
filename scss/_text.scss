@@ -4,12 +4,13 @@
     b {
         font-weight: 700;
     }
-    p {
-        margin-bottom: 0.25em;
-        margin-top: 0.75em;
+    h1, h2, h3 {
+        color: white;
+        margin: 0.75em;
     }
     h1 {
         font-size: 4em;
+        line-height: 100%;
     }
     h2 {
         font-size: 3.1em;
@@ -24,8 +25,8 @@
         font-style: italic;
         font-weight: 300;
     }
-    h1, h2, h3 {
-        color: white;
-        margin: 0.75em;
+    p {
+        margin-bottom: 0.25em;
+        margin-top: 0.75em;
     }
 }
