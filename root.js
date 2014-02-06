@@ -10,6 +10,8 @@ var W = window, D = W.document, ROOT = {
     'localhost:8000': /*                    */ 'wf-ecg/champ/invitation',
 };
 ROOT.config();
-D.write('<script src="' + ROOT.www + '/lib/js/req.js"></script>');
-D.write('<script src="' + ROOT.www + '/lib/js/global.js"></script>');
+D.write('<script src="' + ROOT.top + '/lib/jquery/1.8.2/jquery.js"></script>');
+D.write('<script src="' + ROOT.top + '/lib/modernizr/2.6.2/modernizr.js"></script>');
+D.write('<script src="' + ROOT.top + '/lib/js/console.js"></script>');
+D.write('<script src="' + ROOT.top + '/lib/js/global.js"></script>');
 D.write('<script src="' + ROOT.home + '/scripts/load.js"></script>');
