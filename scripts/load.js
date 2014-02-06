@@ -33,12 +33,16 @@ Modernizr.load([{
     yep: [
     G.lib + '/ie/split.js',
     G.lib + '/ie/jquery.history.js',
+    '//cloud.typography.com/6819872/620964/css/fonts.css',
     ],
     both: [
     G.lib + '/underscore/js-1.4.4/underscore.js',
     G.dir + '/lib/jq-fittext.js',
     G.dir + '/lib/jq-inview.js',
     G.dir + '/lib/jq-pubsub.js',
+    ],
+    nope: [
+    G.dir + '/fonts.css',
     ],
     complete: function () {
         G = $.extend(true, Global, G);
@@ -61,11 +65,7 @@ Modernizr.load([{
 }, {
     test: W.debug < 1,
     yep: [
-    G.www + 'lib/js/ecg-ga.js',
-    '//cloud.typography.com/6819872/620964/css/fonts.css',
-    ],
-    nope: [
-    G.dir + '/fonts.css',
+    G.www + '/lib/js/ecg-ga.js',
     ],
 }]);
 
