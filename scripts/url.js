@@ -11,12 +11,16 @@ var Url =
     L = W.location;
     //
     Df = { // DEFAULTS
-        dirty: null,
-        loaded: null,
         data: null,
+        state: null,
         inits: function () {
             this.dirty = L.href.slice(-1) === '#';
             this.loaded = L.hash.length > 9;
+            if (L.href.slice(-1) === '#') {
+                this.state = 'dirty';
+            } else if (L.hash.length > 9) {
+                this.state = 'loaded';
+            }
         }
     };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -91,15 +95,14 @@ var Url =
         }
         Df.inits();
 
-        if (Df.dirty) {
-            C.error('dirty');
-        }
-        if (Df.loaded) {
+        Df.state && C.warn(Df.state);
+
+        if (Df.state === 'loaded') {
             _tokenSwap();
             _clear();
         } else {
             $(W).on('hashchange', function () {
-                _debug(1) && C.warn(name, 'hashchange');
+                _debug(2) && C.warn(name, 'hashchange');
                 _tokenSwap();
             });
             _datax([
