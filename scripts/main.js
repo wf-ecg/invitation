@@ -4,19 +4,28 @@
 var $W, $$;
 
 var Main = (function (W, $) {
-    var C, self, name, html, wrap;
+    var name = 'Main',
+        self, C, Df, G = Global;
 
+    self = new G(name, '(kicker and binder)');
     C = W.console;
-    name = 'Main';
-    html = $('html');
-    wrap = $('#Wrap');
 
     // Cache the Window object
     $W = $(W);
     $$ = {
         OFF: 24,
     };
+
+    Df = { // DEFAULTS
+        html: null,
+        wrap: '#Wrap',
+        inits: function () {
+            this.html = $('html');
+            this.wrap = $(this.wrap);
+        },
+    };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    /// INTERNAL
 
     function _debug(n) {
         return W.debug >= (n || 0);
@@ -51,14 +60,14 @@ var Main = (function (W, $) {
 
         function _updatePlatform() {
             if (desktop) {
-                $('html').addClass('desktop').removeClass('mobile');
-                wrap.fitText(fontsize, {
+                Df.html.addClass('desktop').removeClass('mobile');
+                Df.wrap.fitText(fontsize, {
                     'minFontSize': 7
                 });
             } else {
-                $('html').removeClass('desktop').addClass('mobile');
                 $.fitText.off();
-                $('#Wrap').css('font-size', '');
+                Df.html.removeClass('desktop').addClass('mobile');
+                Df.wrap.css('font-size', '');
             }
         }
 
@@ -91,12 +100,12 @@ var Main = (function (W, $) {
     }
 
     function _bindAll() {
-        html.on('click', '.touch', function () {
+        Df.html.on('click', '.touch', function () {
             $(this).toggleClass('hover');
         });
         _setPlatform();
 
-        wrap.find('section') //
+        Df.wrap.find('section') //
         .each(_activeSection) //
         .each(_bubbleWrap);
 
@@ -116,11 +125,13 @@ var Main = (function (W, $) {
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _init() {
-        _debug() && C.log([name], $.now() / 1000 | 0);
-
-        if (W.isIE) {
-            $('html').addClass('msie');
+        C.error('init @ ' + Date() + ' debug:', W.debug);
+        if (self.inited(true)) {
+            return null;
         }
+
+        _debug() && C.log([name], $.now() / 1000 | 0);
+        Df.inits();
 
         $$.port = W.Port = new Port($W);
         $$.gallery = W.Gallery && Gallery.init();
@@ -134,12 +145,15 @@ var Main = (function (W, $) {
         return self;
     }
 
-    self = {
+    $.extend(true, self, {
+        _: function () {
+            return Df;
+        },
         init: _init,
         platform: _setPlatform,
-    };
+    });
 
-    return self.init();
+    return self;
 }(window, jQuery));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
