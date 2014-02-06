@@ -29,7 +29,6 @@ $neg: -1 * $pos;
         }
         &:hover {
             background-color: $red;
-/*            height: 14em;*/
             opacity: 0.8;
             z-index: 10;
             @include setEase(all 0.25s ease-out 0.5s);
@@ -38,7 +37,7 @@ $neg: -1 * $pos;
         &.zoom {
             background-color: black;
             top: -15% !important;
-            height: initial !important;
+            height: auto !important;
             opacity: 1;
             position: absolute;
             width: 95%;
