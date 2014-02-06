@@ -95,7 +95,7 @@ var Url =
         }
         Df.inits();
 
-        Df.state && C.warn(Df.state);
+        _debug(1) && Df.state && C.warn(Df.state);
 
         if (Df.state === 'loaded') {
             _tokenSwap();
