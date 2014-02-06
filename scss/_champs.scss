@@ -9,6 +9,10 @@
     position: absolute;
     right: 10%;
 
+    &.fixed {
+        min-width: 400px;
+        top: 72px;
+    }
     h1 {
         font-size: 3em;
         letter-spacing: 0.1em;

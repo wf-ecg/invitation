@@ -20,7 +20,7 @@ var $W, $$, Main =
         wrap: '#Wrap',
         inits: function () {
             this.html = $('html');
-            this.wrap = $(this.wrap);
+            this.wrap = $(this.wrap).show().slideUp(1);
         },
     };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -106,6 +106,8 @@ var $W, $$, Main =
         Df.wrap.find('section') //
         .each(_activeSection) //
         .each(_bubbleWrap);
+
+        Df.wrap.slideDown(1111);
 
         $W.scroll(_.debounce(_stickTo, 1111));
         $W.on('resize', _.debounce(_setPlatform, 333));

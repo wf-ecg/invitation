@@ -10,7 +10,7 @@ var Marks =
     C = W.console;
     //
     Df = { // DEFAULTS
-        step: 250,
+        step: 500,
         inits: function () {
         }
     };
