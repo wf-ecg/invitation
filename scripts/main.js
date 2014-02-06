@@ -102,7 +102,6 @@ var $W, $$, Main =
         Df.html.on('click', '.touch', function () {
             $(this).toggleClass('hover');
         });
-        _setPlatform();
 
         Df.wrap.find('section') //
         .each(_activeSection) //
@@ -110,6 +109,7 @@ var $W, $$, Main =
 
         $W.scroll(_.debounce(_stickTo, 1111));
         $W.on('resize', _.debounce(_setPlatform, 333));
+        $W.resize().scroll();
     }
 
     function _cleanup() {
@@ -134,8 +134,8 @@ var $W, $$, Main =
         $$.gallery = W.Gallery && Gallery.init();
         $$.url = W.Url && Url.init();
         $$.debug = W.Debug && Debug.init();
-        $W.resize().scroll();
 
+        _setPlatform();
         _bindAll();
 
         W.setTimeout(_cleanup, 1333);
