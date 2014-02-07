@@ -1,15 +1,23 @@
 var W = window, D = W.document, ROOT = {
     config: function () {
         this.host = W.location.host;
-        this.home = this[this.host];
+        this.path = W.location.pathname.replace(/^\/|\/$/g, '');
+
+        this.ver = this.version();
         this.top = '//' + this.host;
-        this.www = '//www.wellsfargomedia.com';
-        this.home = this.home ? '/' + this.home : '.';
+        this.home = this.hosts[this.top] || ('/' + this.path);
     },
-    'www.wellsfargomedia.com': /*           */ 'championship/2014/invitation',
-    '10.89.101.100': /*                     */ 'wf-ecg/champ/invitation/6',
-    'localhost:8000': /*                    */ 'wf-ecg/champ/invitation',
+    version: function () {
+        return this.path.split('/').slice(-1) | 0 || '';
+    },
+    hosts: {
+        '//localhost:8000': /*            */ '.',
+        'x//10.89.101.100': /*             */ '/wf-ecg/champ/invitation',
+        '//www.wellsfargomedia.com': /*   */ '/championship/2014/invitation',
+    },
+    www: '//www.wellsfargomedia.com',
 };
+
 ROOT.config();
 D.write('<script src="' + ROOT.top + '/lib/jquery/1.8.2/jquery.js"></script>');
 D.write('<script src="' + ROOT.top + '/lib/modernizr/2.6.2/modernizr.js"></script>');
