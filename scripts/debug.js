@@ -31,9 +31,11 @@ var Debug =
             if (Df.html.is('.debug')) {
                 $.fitText.off();
                 Df.wrap.css('font-size', '');
+                Gallery.swapah();
             } else {
                 Df.wrap.fitText(10);
                 TMP.fake();
+                Gallery.lazy();
             }
         });
     }

@@ -43,10 +43,17 @@ var Gallery =
         });
     }
 
+    function _swapah() {
+        Df.all.each(function () {
+            var me = $(this);
+            me.attr('src', 'images/pics/_' + me.data('cache'));
+        });
+    }
+
     function _lazyGallery() {
         Df.all.each(function () {
             var me = $(this);
-            me.attr('src', me.data('cache'));
+            me.attr('src', 'images/pics/' + me.data('cache'));
         });
     }
 
@@ -64,6 +71,7 @@ var Gallery =
     $.extend(true, self, {
         init: _init,
         lazy: _lazyGallery,
+        swapah: _swapah,
     });
 
     return self;
