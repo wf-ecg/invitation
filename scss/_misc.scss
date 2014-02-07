@@ -35,7 +35,7 @@
     line-height: 1.3em;
     margin: 15em auto auto 1em;
     max-width: 36em;
-    padding: 1em;
+    padding: 1.5em;
     position: absolute;
 
     p {
@@ -43,8 +43,7 @@
         text-align: left;
     }
     img {
-        float: left;
-        margin: -2px 12px 2px -2px;
+        margin: auto;
     }
     &.reading img {
         margin-top: -9px;
