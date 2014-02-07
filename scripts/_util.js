@@ -1,8 +1,8 @@
 /*jslint es5:true, white:false */
 /*globals jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-var Util = (function (W, $) {
+var Util =
+(function (W, $) { // IIFE
     var C, D, DE, name, self, easing;
 
     C = W.console;

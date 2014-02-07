@@ -1,7 +1,8 @@
 /*jslint es5:true, white:false */
 /*globals $W, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Bg = (function (W, $) {
+var Bg =
+(function (W, $) { // IIFE
     var C = W.console,
         self, name = 'Bg';
 

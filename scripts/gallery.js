@@ -1,53 +1,70 @@
 /*jslint es5:true, white:false */
 /*globals $$, $W, Util, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-var Gallery = (function (W, $) {
-    var C, self, name, OK;
+var Gallery =
+(function (W, $) { // IIFE
+    var name = 'Gallery',
+    self, C, OK, Df, G = Global;
     //
-    name = 'Gallery';
+    self = new G(name, '(props for the animation and grid of pics)');
     C = W.console;
     OK = !W.isIE;
     //
+    Df = { // DEFAULTS
+        gal: '#Gallery',
+        inits: function () {
+            //
+            this.gal = $(this.gal);
+            this.all = this.gal.find('img').exempt(OK).hide().end();
+        },
+    };
     function _debug(n) {
         return W.debug >= (n || 0);
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
+    /// INTERNAL
     function _bindGallery() {
-        var gal, all;
         //
-        gal = $('#Gallery');
-        all = gal.find('img').exempt(OK).hide().end();
-        //
-        gal.on('inview', function (e, showing, h, vsides) {
+        Df.gal.on('inview', function (e, showing, h, vsides) {
             if (showing) {
-                all.addClass('grid').show();
+                Df.all.addClass('grid').show();
             } else {
-                all.removeClass('grid').exempt(OK).hide();
+                Df.all.removeClass('grid').exempt(OK).hide();
             }
         });
-        all.on('click', function () {
+        Df.all.on('click', function () {
             var me = $(this),
-                zoomed = me.is('.zoom');
+            zoomed = me.is('.zoom');
+
             if (!zoomed) {
-                all.removeClass('zoom');
+                Df.all.removeClass('zoom');
             }
             me.toggleClass('zoom');
         });
     }
 
+    function _lazyGallery() {
+        Df.all.each(function () {
+            var me = $(this);
+            me.attr('src', me.data('cache'));
+        });
+    }
+
     function _init() {
-        _debug() && C.log([name]);
+        if (self.inited(true)) {
+            return null;
+        }
+        Df.inits();
 
         _bindGallery();
 
         return self;
     }
 
-    self = {
+    $.extend(true, self, {
         init: _init,
-    };
+        lazy: _lazyGallery,
+    });
 
     return self;
 }(window, jQuery));

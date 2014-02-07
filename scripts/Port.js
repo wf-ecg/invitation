@@ -1,7 +1,8 @@
 /*jslint es5:true, white:false */
 /*globals _, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Port = (function (W, $) {
+var Port =
+(function (W, $) { // IIFE
     var C = W.console,
         self, name = 'Port';
 
@@ -21,7 +22,7 @@ var Port = (function (W, $) {
 
     self.prototype.log = function (str) {
         this.reset();
-        _debug() && C.debug(name, (str || 'access'), this.all);
+        _debug(1) && C.debug(name, (str || 'access'), this.all);
     };
     self.prototype.reset = function () {
         return (this.all = {

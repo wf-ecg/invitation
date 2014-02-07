@@ -1,22 +1,30 @@
 /*jslint es5:true, white:false */
 /*globals Bg, Debug, Gallery, Port, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var $W, $$;
+var $W, $$, Main =
+(function (W, $) { // IIFE
+    var name = 'Main',
+    self, C, Df, G = Global;
 
-var Main = (function (W, $) {
-    var C, self, name, html, wrap;
-
+    self = new G(name, '(kicker and binder)');
     C = W.console;
-    name = 'Main';
-    html = $('html');
-    wrap = $('#Wrap');
 
     // Cache the Window object
     $W = $(W);
     $$ = {
         OFF: 24,
     };
+
+    Df = { // DEFAULTS
+        html: null,
+        wrap: '#Wrap',
+        inits: function () {
+            this.html = $('html');
+            this.wrap = $(this.wrap).show().slideUp(1);
+        },
+    };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    /// INTERNAL
 
     function _debug(n) {
         return W.debug >= (n || 0);
@@ -51,14 +59,14 @@ var Main = (function (W, $) {
 
         function _updatePlatform() {
             if (desktop) {
-                $('html').addClass('desktop').removeClass('mobile');
-                wrap.fitText(fontsize, {
+                Df.html.addClass('desktop').removeClass('mobile');
+                Df.wrap.fitText(fontsize, {
                     'minFontSize': 7
                 });
             } else {
-                $('html').removeClass('desktop').addClass('mobile');
                 $.fitText.off();
-                $('#Wrap').css('font-size', '');
+                Df.html.removeClass('desktop').addClass('mobile');
+                Df.wrap.css('font-size', '');
             }
         }
 
@@ -91,17 +99,19 @@ var Main = (function (W, $) {
     }
 
     function _bindAll() {
-        html.on('click', '.touch', function () {
+        Df.html.on('click', '.touch', function () {
             $(this).toggleClass('hover');
         });
-        _setPlatform();
 
-        wrap.find('section') //
+        Df.wrap.find('section') //
         .each(_activeSection) //
         .each(_bubbleWrap);
 
+        Df.wrap.slideDown(1111);
+
         $W.scroll(_.debounce(_stickTo, 1111));
         $W.on('resize', _.debounce(_setPlatform, 333));
+        $W.resize().scroll();
     }
 
     function _cleanup() {
@@ -109,35 +119,40 @@ var Main = (function (W, $) {
         Util.scroll('#Wrap');
         $('section .bubble > div').on('inview', _sectionStick);
 
-        _debug() && C.log([name], $.now() / 1000 | 0);
+        Gallery.lazy();
+
+        _debug() && C.warn('finited @ ' + Date());
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _init() {
-        _debug() && C.log([name], $.now() / 1000 | 0);
-
-        if (W.isIE) {
-            $('html').addClass('msie');
+        C.error('init @ ' + Date() + ' debug:', W.debug);
+        if (self.inited(true)) {
+            return null;
         }
+        Df.inits();
 
         $$.port = W.Port = new Port($W);
         $$.gallery = W.Gallery && Gallery.init();
         $$.url = W.Url && Url.init();
         $$.debug = W.Debug && Debug.init();
-        $W.resize().scroll();
 
+        _setPlatform();
         _bindAll();
 
         W.setTimeout(_cleanup, 1333);
         return self;
     }
 
-    self = {
+    $.extend(true, self, {
+        _: function () {
+            return Df;
+        },
         init: _init,
         platform: _setPlatform,
-    };
+    });
 
-    return self.init();
+    return self;
 }(window, jQuery));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

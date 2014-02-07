@@ -1,35 +1,48 @@
 /*jslint es5:true, white:false */
 /*globals $$, Marks, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Debug = (function (W, $) {
-    var C, self, name, html, wrap;
+var Debug =
+(function (W, $) { // IIFE
+    var name = 'Debug',
+    self, C, Df, G = Global;
     //
-    name = 'Debug';
+    self = new G(name, '(toggles of test convenience)');
     C = W.console;
     //
-    html = $('html');
-    wrap = $('#Wrap');
+    Df = { // DEFAULTS
+        html: null,
+        wrap: null,
+        inits: function () {
+            Df.html = $('html');
+            Df.wrap = $('#Wrap');
+        }
+    };
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    /// INTERNAL
 
     function _debug(n) {
         return W.debug >= (n || 0);
     }
-    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _bind() {
         $('#Chrome').on('dblclick', function () {
-            html.toggleClass('debug');
+            Df.html.toggleClass('debug');
 
-            if (html.is('.debug')) {
+            if (Df.html.is('.debug')) {
                 $.fitText.off();
-                wrap.css('font-size', '');
+                Df.wrap.css('font-size', '');
             } else {
-                wrap.fitText(10);
+                Df.wrap.fitText(10);
+                TMP.fake();
             }
         });
     }
 
     function _init() {
-        _debug() && C.log([name]);
+        if (self.inited(true)) {
+            return null;
+        }
+        Df.inits();
 
         _bind();
         $$.marks = W.Marks && Marks.init();
@@ -37,9 +50,9 @@ var Debug = (function (W, $) {
         return self;
     }
 
-    self = {
+    $.extend(true, self, {
         init: _init,
-    };
+    });
 
     return self;
 }(window, jQuery));
