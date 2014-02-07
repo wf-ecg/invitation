@@ -81,11 +81,11 @@ var Url =
     function _tokenSwap() {
         var arr, dat;
         //
-        arr = ['_bname', '_cname', '_dates'];
+        arr = ['_bname', '_cname', '_dates', '_dates1', '_dates2'];
         dat = _datax();
         //
         dat && $.each(arr, function (i, e) {
-            $('.' + e).text(dat[i]); //.removeClass(e);
+            $('.' + e).text(dat[i] || ''); //.removeClass(e);
         });
     }
 

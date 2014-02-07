@@ -33,6 +33,7 @@ var Debug =
                 Df.wrap.css('font-size', '');
             } else {
                 Df.wrap.fitText(10);
+                TMP.fake();
             }
         });
     }

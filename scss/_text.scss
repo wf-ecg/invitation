@@ -23,6 +23,9 @@
         font-size: 2.2em;
         font-weight: 400;
     }
+    h3 + h3 {
+        margin-top: -0.75em;
+    }
     h4 {
         font-size: 1.4em;
         font-style: italic;
