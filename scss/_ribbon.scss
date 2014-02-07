@@ -18,6 +18,7 @@
             font-family: Verdana;
             font-size: 60%;
             height: 3em;
+            letter-spacing: 6px;
             opacity: 0;
             padding: 0.5em;
             position: absolute;
@@ -29,9 +30,8 @@
 
             :hover & {
                 display: block;
-                letter-spacing: 6px;
+                letter-spacing: 1px;
                 opacity: 0.9;
-
             }
         }
         &.whiten {
