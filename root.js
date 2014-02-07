@@ -1,9 +1,10 @@
 var W = window, D = W.document, ROOT = {
     config: function () {
         this.host = W.location.host;
-        this.home = '/' + this[this.host];
+        this.home = this[this.host];
         this.top = '//' + this.host;
         this.www = '//www.wellsfargomedia.com';
+        this.home = this.home ? '/' + this.home : '.';
     },
     'www.wellsfargomedia.com': /*           */ 'championship/2014/invitation',
     '10.89.101.100': /*                     */ 'wf-ecg/champ/invitation/6',
