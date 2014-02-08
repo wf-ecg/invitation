@@ -81,7 +81,7 @@ var Url =
     function _tokenSwap() {
         var arr, dat;
         //
-        arr = ['_bname', '_cname', '_dates', '_dates1', '_dates2'];
+        arr = ['_bname', '_cname', '_dates0', '_dates1', '_dates2','_dates3', '_dates4', '_dates5', '_dates6'];
         dat = _datax();
         //
         dat && $.each(arr, function (i, e) {
