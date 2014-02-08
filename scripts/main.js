@@ -110,7 +110,7 @@ var $W, $$, Main =
         Df.wrap.slideDown(1111);
 
         $W.scroll(_.debounce(_stickTo, 2222));
-        $W.on('resize', _.debounce(_setPlatform, 333));
+        $W.on('resize', _.debounce(_setPlatform, 999));
         $W.resize().scroll();
     }
 
