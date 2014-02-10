@@ -3,12 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-        <title>WFC Invitation</title>
-        <script>location.href.match(/\.com.*(\/[^\.\/]+)+$/)&&(location.href+='/index.html')</script>
+        <title>WF Championship Invitation</title>
+        <script>location.href.match(/\.com.*(\/[^\.\/]+)+$/)&&(location.href+='/')</script>
         <!--  -->
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="viewport" content="width=device-width, minimum-scale=0.50, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+        <meta name="viewport" content="width=device-width, height=device-height, minimum-scale=0.50, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
         <!--  -->
         <link rel="stylesheet" href="styles/reset.css">
         <link rel="stylesheet" href="styles/screen.css">
@@ -26,22 +26,26 @@ WRAP
     MASTERY
                 -->
                 <!-- | | | | -->
-                <section id="X1a" data-F="sqrs/_orange.jpg" data-H="0" data-R="10" data-O="0" data-T="move" style="z-index: 1;">
+                <section id="X1a" data-F="sqrs/_orange.jpg" data-H="0" data-R="10" data-O="0" data-T="move" style="z-index: 1;  box-shadow: none;">
                     <div class="padded" style="height: 30%;">
                         <h3 class="_cname">[CUSTOMER NAME]</h3>
                         <div class="tbox v1">
                             <h1>You’re Invited</h1>
                         </div>
-                        <h3 class="_dates">{{dates0}}</h3>
+                        <h3 class="_dates0">{{dates0}}</h3>
                         <h3 class="_dates1">{{dates1}}</h3>
                         <h3 class="_dates2">{{dates2}}</h3>
+                        <h3 class="_dates3">{{dates3}}</h3>
+                        <h3 class="_dates4">{{dates4}}</h3>
+                        <h3 class="_dates5">{{dates5}}</h3>
+                        <h3 class="_dates6">{{dates6}}</h3>
                         <br>
                         <h4>Scroll down to discover more.</h4>
                         <br>
                         <img src="images/btns/down.png" alt="Scroll down to discover more.">
                     </div>
                 </section>
-                <section id="X5a" data-F="sqrs/_green.jpg" data-H="0" data-R="10" data-O="0" data-T="move">
+                <section id="X5a" data-F="sqrs/_orange.jpg" data-H="0" data-R="10" data-O="111" data-T="move">
                     <div class="padded sticky" style="height: 50%;">
                         <h2><b class="_cname">[CUSTOMER NAME]</b></h2>
                         <h2>
@@ -110,15 +114,15 @@ WRAP
                 </section>
                 <section id="X3b" data-F="sqrs/_quail.jpg" data-H="0" data-R="10" data-O="0" data-T="move" class="darken">
                     <div id="Gallery" class="sticky" style="height: 60%;">
-                        <img data-cache="images/pics/_beaut_1.jpg" src="#" alt="pic1" class="shadow pic1">
-                        <img data-cache="images/pics/_beaut_2.jpg" src="#" alt="pic2" class="shadow pic2">
-                        <img data-cache="images/pics/_beaut_3.jpg" src="#" alt="pic3" class="shadow pic3"><br>
-                        <img data-cache="images/pics/_beaut_4.jpg" src="#" alt="pic4" class="shadow pic4">
-                        <img data-cache="images/pics/_beaut_5.jpg" src="#" alt="pic5" class="shadow pic5">
-                        <img data-cache="images/pics/_beaut_6.jpg" src="#" alt="pic6" class="shadow pic6"><br>
-                        <img data-cache="images/pics/_beaut_7.jpg" src="#" alt="pic7" class="shadow pic7">
-                        <img data-cache="images/pics/_beaut_8.jpg" src="#" alt="pic8" class="shadow pic8">
-                        <img data-cache="images/pics/_beaut_9.jpg" src="#" alt="pic9" class="shadow pic9">
+                        <img data-cache="beaut_1.jpg" src="#" alt="pic1" class="shadow pic1">
+                        <img data-cache="beaut_2.jpg" src="#" alt="pic2" class="shadow pic2">
+                        <img data-cache="beaut_3.jpg" src="#" alt="pic3" class="shadow pic3"><br>
+                        <img data-cache="beaut_4.jpg" src="#" alt="pic4" class="shadow pic4">
+                        <img data-cache="beaut_5.jpg" src="#" alt="pic5" class="shadow pic5">
+                        <img data-cache="beaut_6.jpg" src="#" alt="pic6" class="shadow pic6"><br>
+                        <img data-cache="beaut_7.jpg" src="#" alt="pic7" class="shadow pic7">
+                        <img data-cache="beaut_8.jpg" src="#" alt="pic8" class="shadow pic8">
+                        <img data-cache="beaut_9.jpg" src="#" alt="pic9" class="shadow pic9">
                     </div>
                     <div class="ribbon overlay">
                         <h3>Click photos to zoom in/out</h3>
@@ -169,7 +173,7 @@ WRAP
                             Beginning in March, interested candidates were asked to submit a short video of themselves addressing several questions.
                             The videos submitted were voted on by the public, and then four videos were selected as finalists.
                             The grand prize winner was awarded a trip to Charlotte to attend the Wells Fargo Championship and had the unique opportunity
-                            to play in the Wednesday ProAm with defending champion, Rickie Fowler. </p>
+                            to play in the Wednesday ProAm with defending champion, Rickie Fowler. </p>
                     </div>
                     <br>
                     <div class="ribbon bottom shadow">
@@ -203,10 +207,15 @@ WRAP
                         <div class="tbox v2">
                             <h1>Get Closer</h1>
                         </div>
-                        <h3 class="_dates">{{dates0}}</h3>
+                        <h3 class="_dates0">{{dates0}}</h3>
                         <h3 class="_dates1">{{dates1}}</h3>
                         <h3 class="_dates2">{{dates2}}</h3>
-                        <h4>To R.S.V.P. please email <a href="{{banker email}}">{{banker email}}</a> or call {{banker phone}}.</h4>
+                        <h3 class="_dates3">{{dates3}}</h3>
+                        <h3 class="_dates4">{{dates4}}</h3>
+                        <h3 class="_dates5">{{dates5}}</h3>
+                        <h3 class="_dates6">{{dates6}}</h3>
+                        <br>
+                        <h4>To R.S.V.P. please email <a class="_bemail" href="#">{{_bemail}}</a> or call <a class="_bphone" href="#">{{_bphone}}</a>.</h4>
                         <br>
                         <br>
                         <br>

@@ -16,22 +16,22 @@
         }
         &.overlay {
             font-family: Verdana;
-            font-size: 80%;
+            font-size: 60%;
             height: 3em;
+            letter-spacing: 11px;
             opacity: 0;
             padding: 0.5em;
             position: absolute;
-            text-shadow:  -1px -1px 0 adjTrans(white, -0.3), 1px 1px 0 adjTrans(black, -0.3);
+            text-shadow: 1px 2px 3px adjTrans(black, -0.1);
             top: 100px;
             z-index: 99;
-            @include backTrans(gray, -0.6);
+            @include backTrans(gray, -1);
             @include setEase(all 0.25s ease-out 0.5s);
 
             :hover & {
                 display: block;
-                letter-spacing: 10px;
-                opacity: 0.6;
-
+                letter-spacing: 1px;
+                opacity: 0.9;
             }
         }
         &.whiten {
