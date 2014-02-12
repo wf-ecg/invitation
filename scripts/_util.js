@@ -66,6 +66,40 @@ var Util =
         return obj;
     }
 
+    _Mob = {
+        agent: function () {
+            return (/mobi|android/i).test(W.navigator.userAgent);
+        },
+        zoomed: function () {
+            return _Port.layoutWidth() / _Port.visualWidth();
+        },
+    };
+    _Port = {
+        aspect: function () {
+            return this.visualWidth() / this.visualHeight();
+        },
+        layoutWidth: function () {
+            return W.screen.width;
+        },
+        layoutHeight: function () {
+            return W.screen.height;
+        },
+        visualWidth: function () {
+            return W.innerWidth;
+        },
+        visualHeight: function () {
+            return W.innerHeight;
+        },
+        orientation: function () {
+            var diff = this.aspect();
+
+            if (diff > .9 && diff < 1.1) {
+                return 'square';
+            }
+            return diff > 1 ? 'landscape' : 'portrait';
+        },
+    };
+
     // reflect function takes number arg (def 1) (0 = *)
     // returns function that slices and returns args array
     // on num means gimme that arg number
@@ -141,6 +175,8 @@ var Util =
         isDef: _undef,
         I: _reflect,
         scroll: _scroll,
+        mobile: _Mob,
+        viewport: _Port,
     };
 
     $.extend(W, {
