@@ -90,6 +90,10 @@ var $W, $$, Main =
         $(this).children().not('.ribbon').wrapAll('<div class="bubble">');
     }
 
+    function _fixerWrap() {
+        $(this).wrap('<div class="fixer">');
+    }
+
     function _activeSection(i) {
         var bg = new Bg(this, $$.port);
         //
@@ -104,6 +108,7 @@ var $W, $$, Main =
         });
 
         Df.wrap.find('section') //
+        .each(_fixerWrap) //
         .each(_activeSection) //
         .each(_bubbleWrap);
 
