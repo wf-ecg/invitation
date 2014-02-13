@@ -92,10 +92,13 @@ var $W, $$, Main = (function (W, $) { // IIFE
     }
 
     function _activeSection(i) {
-        var bg = new Bg(this, $$.port);
+        var bg, mo;
         //
-        $W[_isMobile() ? 'one' : 'on']('scroll resize', function () {
-            bg.redraw();
+        bg = new Bg(this, $$.port);
+        mo = _isMobile();
+
+        $W[mo ? 'one' : 'on']('scroll resize', function () {
+            bg.redraw(mo);
         });
     }
 
@@ -111,7 +114,7 @@ var $W, $$, Main = (function (W, $) { // IIFE
         Df.wrap.slideDown(1111);
 
         $W.scroll(_.debounce(_stickTo, 2222));
-        $W.on('resize', _.debounce(_setPlatform, 999));
+        $W.on('resize orientationchange', _.debounce(_setPlatform, 999));
         $W.resize().scroll();
     }
 

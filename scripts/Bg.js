@@ -70,10 +70,10 @@ var Bg =
             // negative as we scroll up
             return '50% ' + this._y + 'px';
         },
-        redraw: function () {
+        redraw: function (mo) {
             this.compare();
             this._css = {
-                backgroundPosition: this.getBackCss(),
+                backgroundPosition: mo ? 0 : this.getBackCss(),
                 height: this.port.all.high,
             };
             this.$.css(this._css);
