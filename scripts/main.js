@@ -15,6 +15,9 @@ var $W, $$, Main = (function (W, $) { // IIFE
     };
 
     Df = { // DEFAULTS
+        currentSection: 'Wrap',
+        desktop: false,
+        fontsize: $.browser.chrome ? 10 : 11,
         html: null,
         wrap: '#Wrap',
         inits: function () {
@@ -30,12 +33,10 @@ var $W, $$, Main = (function (W, $) { // IIFE
     }
 
     if ('STICKY') {
-        var currentSection = 'Wrap';
-
         function _stickTo() {
-            Util.scroll(currentSection, $$.OFF);
+            Util.scroll(Df.currentSection, $$.OFF);
             //
-            _debug(2) && C.error(name, '_stickTo', currentSection[0].id);
+            _debug(2) && C.error(name, '_stickTo', Df.currentSection[0].id);
         }
 
         function _sectionStick(e, showing, h, vsides) {
@@ -45,7 +46,7 @@ var $W, $$, Main = (function (W, $) { // IIFE
                 _debug(1) && C.debug(name, '_sectionStick', my.parent().parent()[0].id, vsides);
                 //
                 if (vsides === 'both' || (vsides === 'top' && my.is('.sticky'))) {
-                    currentSection = my.closest('section');
+                    Df.currentSection = my.closest('section');
                 }
             }
         }
@@ -53,13 +54,11 @@ var $W, $$, Main = (function (W, $) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     if ('PLATFORM') {
-        var desktop = false;
-        var fontsize = $.browser.chrome ? 10 : 11;
 
         function _updatePlatform() {
-            if (desktop) {
+            if (Df.desktop) {
                 Df.html.addClass('desktop').removeClass('mobile');
-                Df.wrap.fitText(fontsize, {
+                Df.wrap.fitText(Df.fontsize, {
                     'minFontSize': 7
                 });
             } else {
@@ -70,17 +69,17 @@ var $W, $$, Main = (function (W, $) { // IIFE
         }
 
         function _isMobile() {
-            desktop = ($$.port.all.wide > 960);
-            return !desktop;
+            Df.desktop = ($$.port.all.wide > 600);
+            return !Df.desktop;
         }
 
         function _setPlatform() {
             // desktop changed by _isMobile (=== order is important)
-            if (desktop === _isMobile()) {
+            if (Df.desktop === _isMobile()) {
                 _updatePlatform();
-                _debug(1) && C.warn('_setPlatform change', desktop ? 'desktop' : 'mobile');
+                _debug(1) && C.warn('_setPlatform change', Df.desktop ? 'desktop' : 'mobile');
             }
-            return desktop ? 'desktop' : 'mobile';
+            return Df.desktop ? 'Df.desktop' : 'mobile';
         }
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
