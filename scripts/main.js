@@ -34,6 +34,9 @@ var $W, $$, Main = (function (W, $) { // IIFE
 
     if ('STICKY') {
         function _stickTo() {
+            if (!Df.desktop) {
+                return;
+            }
             Util.scroll(Df.currentSection, $$.OFF);
             //
             _debug(2) && C.error(name, '_stickTo', Df.currentSection[0].id);

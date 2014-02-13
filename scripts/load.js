@@ -4,7 +4,7 @@
 
 var Data, G, W = (W || window);
 
-W.debug = -1;
+W.debug = 1;
     lax_debug : {
         if ($.browser.msie) {
             W.isIE = true;

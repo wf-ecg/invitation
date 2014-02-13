@@ -21,7 +21,7 @@ var Bg =
             backgroundImage: 'url(images/' + my.data.image + ')',
         });
 
-        my.$.on('dblclick.' + name, function () {
+        _debug(2) && my.$.on('dblclick.' + name, function () {
             _debug() && C.log(my);
         });
         $.PS_sub('resize', function () {
