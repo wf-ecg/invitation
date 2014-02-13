@@ -76,6 +76,10 @@ var $W, $$, Main = (function (W, $) { // IIFE
             return !Df.desktop;
         }
 
+        function _isLarge() {
+            return Util.viewport.visualWidth() > 480;
+        }
+
         function _setPlatform() {
             // desktop changed by _isMobile (=== order is important)
             if (Df.desktop === _isMobile()) {
