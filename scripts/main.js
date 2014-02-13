@@ -1,8 +1,7 @@
 /*jslint es5:true, white:false */
-/*globals Bg, Debug, Gallery, Port, jQuery, window */
+/*globals Bg, Debug, Gallery, Global, Port, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var $W, $$, Main =
-(function (W, $) { // IIFE
+var $W, $$, Main = (function (W, $) { // IIFE
     var name = 'Main',
     self, C, Df, G = Global;
 
@@ -90,10 +89,6 @@ var $W, $$, Main =
         $(this).children().not('.ribbon').wrapAll('<div class="bubble">');
     }
 
-    function _fixerWrap() {
-        $(this).wrap('<div class="fixer">');
-    }
-
     function _activeSection(i) {
         var bg = new Bg(this, $$.port);
         //
@@ -108,7 +103,6 @@ var $W, $$, Main =
         });
 
         Df.wrap.find('section') //
-        .each(_fixerWrap) //
         .each(_activeSection) //
         .each(_bubbleWrap);
 
@@ -145,7 +139,7 @@ var $W, $$, Main =
         _setPlatform();
         _bindAll();
 
-        W.setTimeout(_cleanup, 1333);
+        W.setTimeout(_cleanup, 3333);
         return self;
     }
 
