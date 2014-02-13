@@ -1,29 +1,30 @@
 /*jslint es5:true, white:false */
 /*globals jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Util =
-(function (W, $) { // IIFE
-    var C, D, DE, name, self, easing;
+var Util = (function (W, $) { // IIFE
+    var name = 'Util',
+        C, D, DE, self, easing, _Port, _Mob;
 
     C = W.console;
     D = W.document;
     DE = D.documentElement;
     self = {};
-    name = 'Util';
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     // CONSTANTS
     easing = {
         easeInBack: function (x, t, b, c, d, s) {
-            if (s == undefined) {
-                s = 0.5;
-            }
+            s = s || 0.5;
             return c * (t /= d) * t * ((s + 1) * t - s) + b;
         },
     };
     $.extend($.easing, easing);
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+    function _undef() {
+        return (typeof arguments[0] === 'undefined');
+    }
 
     function _debug(n) {
         return W.debug >= (n || 0);
@@ -45,10 +46,6 @@ var Util =
         C.log([name], arguments);
     }
 
-    function _undef() {
-        return (typeof arguments[0] === 'undefined');
-    }
-
     function _defined(x) {
         return !_undef(x);
     }
@@ -64,6 +61,10 @@ var Util =
             _dom.Obj = obj = $(obj);
         }
         return obj;
+    }
+
+    if (_undef(W.debug)) {
+        W.debug = 1;
     }
 
     _Mob = {
@@ -93,10 +94,13 @@ var Util =
         orientation: function () {
             var diff = this.aspect();
 
-            if (diff > .9 && diff < 1.1) {
+            if (diff > 0.9 && diff < 1.1) {
                 return 'square';
             }
             return diff > 1 ? 'landscape' : 'portrait';
+        },
+        scrollbarWidth: function () {
+            return W.outerWidth - W.innerWidth;
         },
     };
 
@@ -104,7 +108,6 @@ var Util =
     // returns function that slices and returns args array
     // on num means gimme that arg number
     // two nums mean apply slice (the way splice numbers it)
-
 
     function _arg(n1, n2) {
         // n2 = _undef(n2) ? 99 : n2;
@@ -128,7 +131,7 @@ var Util =
             ele = 'body';
         }
         ele = $(ele || 'body').first();
-        nom = (ele[0] && ele[0].id || ele);
+        nom = ((ele[0] && ele[0].id) || ele);
 
         if (ele.length) {
             top = ele.offset().top;
@@ -138,7 +141,6 @@ var Util =
                 _debug(1) && C.debug(name, '_scroll start', nom, off + 'px', add);
                 ele.addClass(':target');
                 // W.location.hash = nom;
-
                 off = (off > 1111 ? off / 5 : off / 2) + 250;
 
                 _dom().stop().animate({
@@ -156,7 +158,6 @@ var Util =
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     // JQUERY
-
     $.fn.exempt = function (bool) {
         var ret = $();
         if (!bool) {
@@ -168,7 +169,7 @@ var Util =
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-    self = {
+    $.extend(true, self, {
         arg: _arg,
         dom: _dom,
         flatten: _flatcat,
@@ -177,9 +178,11 @@ var Util =
         scroll: _scroll,
         mobile: _Mob,
         viewport: _Port,
-    };
+        undef: _undef,
+        debug: _debug,
+    });
 
-    $.extend(W, {
+    $.extend(true, W, {
         args: _args,
         echo: _echo,
         isDef: _defined,
