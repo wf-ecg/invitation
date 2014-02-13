@@ -20,6 +20,8 @@ var $W, $$, Main = (function (W, $) { // IIFE
         desktop: false,
         fontsize: $.browser.chrome ? 10 : 11,
         html: null,
+        large: false,
+        mobile: false,
         wrap: '#Wrap',
         inits: function () {
             this.html = $('html');
@@ -79,7 +81,7 @@ var $W, $$, Main = (function (W, $) { // IIFE
             _updatePlatform();
             U.debug(1) && C.warn('_setPlatform change', Df.desktop ? 'desktop' : 'mobile');
         }
-        return Df.desktop ? 'Df.desktop' : 'mobile';
+        return Df.desktop ? 'desktop' : 'mobile';
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
