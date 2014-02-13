@@ -26,67 +26,60 @@ var $W, $$, Main = (function (W, $) { // IIFE
             this.wrap = $(this.wrap).show().slideUp(1);
         },
     };
-    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    //  STICKY
 
-    if ('STICKY') {
-        function _stickTo() {
-            if (!Df.desktop) {
-                return;
-            }
-            U.scroll(Df.currentSection, $$.OFF);
-            //
-            U.debug(2) && C.error(name, '_stickTo', Df.currentSection[0].id);
+    function _stickTo() {
+        if (!Df.desktop) {
+            return;
         }
+        U.scroll(Df.currentSection, $$.OFF);
+        //
+        U.debug(2) && C.error(name, '_stickTo', Df.currentSection[0].id);
+    }
 
-        function _sectionStick(e, showing, h, vsides) {
-            var my = $(this);
+    function _sectionStick(e, showing, h, vsides) {
+        var my = $(this);
+        //
+        if (showing) {
+            U.debug(1) && C.debug(name, '_sectionStick', my.parent().parent()[0].id, vsides);
             //
-            if (showing) {
-                U.debug(1) && C.debug(name, '_sectionStick', my.parent().parent()[0].id, vsides);
-                //
-                if (vsides === 'both' || (vsides === 'top' && my.is('.sticky'))) {
-                    Df.currentSection = my.closest('section');
-                }
+            if (vsides === 'both' || (vsides === 'top' && my.is('.sticky'))) {
+                Df.currentSection = my.closest('section');
             }
         }
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    //  PLATFORM
 
-    if ('PLATFORM') {
-
-        function _updatePlatform() {
-            if (Df.desktop) {
-                Df.html.addClass('desktop').removeClass('mobile');
-                Df.wrap.fitText(Df.fontsize, {
-                    'minFontSize': 7
-                });
-            } else {
-                $.fitText.off();
-                Df.html.removeClass('desktop').addClass('mobile');
-                Df.wrap.css('font-size', '');
-            }
+    function _updatePlatform() {
+        if (Df.desktop) {
+            Df.html.addClass('desktop').removeClass('mobile');
+            Df.wrap.fitText(Df.fontsize, {
+                'minFontSize': 7,
+            });
+        } else {
+            $.fitText.off();
+            Df.html.removeClass('desktop').addClass('mobile');
+            Df.wrap.css('font-size', '');
         }
+    }
 
-        function _isMobile() {
-            Df.large = U.viewport.visualWidth() > 600;
-            Df.mobile = U.mobile.agent();
-            Df.desktop = Df.large && !Df.mobile;
-            return !Df.desktop;
-        }
+    function _isMobile() {
+        Df.large = U.viewport.visualWidth() > 600;
+        Df.mobile = U.mobile.agent();
+        Df.desktop = Df.large && !Df.mobile;
+        return !Df.desktop;
+    }
 
-        function _isLarge() {
-            return Util.viewport.visualWidth() > 480;
+    function _setPlatform() {
+        // desktop changed by _isMobile (=== order is important)
+        if (Df.desktop === _isMobile()) {
+            _updatePlatform();
+            U.debug(1) && C.warn('_setPlatform change', Df.desktop ? 'desktop' : 'mobile');
         }
-
-        function _setPlatform() {
-            // desktop changed by _isMobile (=== order is important)
-            if (Df.desktop === _isMobile()) {
-                _updatePlatform();
-                U.debug(1) && C.warn('_setPlatform change', Df.desktop ? 'desktop' : 'mobile');
-            }
-            return Df.desktop ? 'Df.desktop' : 'mobile';
-        }
+        return Df.desktop ? 'Df.desktop' : 'mobile';
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
