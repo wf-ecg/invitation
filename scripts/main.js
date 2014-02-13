@@ -1,12 +1,13 @@
 /*jslint es5:true, white:false */
-/*globals Bg, Debug, Gallery, Global, Port, jQuery, window */
+/*globals Bg, Debug, Gallery, Global, Port, Url, Util, _, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var $W, $$, Main = (function (W, $) { // IIFE
     var name = 'Main',
-    self, C, Df, G = Global;
+        self, C, Df, U, G = Global;
 
     self = new G(name, '(kicker and binder)');
     C = W.console;
+    U = Util;
 
     // Cache the Window object
     $W = $(W);
@@ -28,25 +29,21 @@ var $W, $$, Main = (function (W, $) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
 
-    function _debug(n) {
-        return W.debug >= (n || 0);
-    }
-
     if ('STICKY') {
         function _stickTo() {
             if (!Df.desktop) {
                 return;
             }
-            Util.scroll(Df.currentSection, $$.OFF);
+            U.scroll(Df.currentSection, $$.OFF);
             //
-            _debug(2) && C.error(name, '_stickTo', Df.currentSection[0].id);
+            U.debug(2) && C.error(name, '_stickTo', Df.currentSection[0].id);
         }
 
         function _sectionStick(e, showing, h, vsides) {
             var my = $(this);
             //
             if (showing) {
-                _debug(1) && C.debug(name, '_sectionStick', my.parent().parent()[0].id, vsides);
+                U.debug(1) && C.debug(name, '_sectionStick', my.parent().parent()[0].id, vsides);
                 //
                 if (vsides === 'both' || (vsides === 'top' && my.is('.sticky'))) {
                     Df.currentSection = my.closest('section');
@@ -72,7 +69,9 @@ var $W, $$, Main = (function (W, $) { // IIFE
         }
 
         function _isMobile() {
-            Df.desktop = ($$.port.all.wide > 600);
+            Df.large = U.viewport.visualWidth() > 600;
+            Df.mobile = U.mobile.agent();
+            Df.desktop = Df.large && !Df.mobile;
             return !Df.desktop;
         }
 
@@ -84,7 +83,7 @@ var $W, $$, Main = (function (W, $) { // IIFE
             // desktop changed by _isMobile (=== order is important)
             if (Df.desktop === _isMobile()) {
                 _updatePlatform();
-                _debug(1) && C.warn('_setPlatform change', Df.desktop ? 'desktop' : 'mobile');
+                U.debug(1) && C.warn('_setPlatform change', Df.desktop ? 'desktop' : 'mobile');
             }
             return Df.desktop ? 'Df.desktop' : 'mobile';
         }
@@ -124,12 +123,12 @@ var $W, $$, Main = (function (W, $) { // IIFE
 
     function _cleanup() {
         Url.clear();
-        Util.scroll('#Wrap');
+        U.scroll('#Wrap');
         $('section .bubble > div').on('inview', _sectionStick);
 
         Gallery.lazy();
 
-        _debug() && C.warn('finited @ ' + Date());
+        U.debug() && C.warn('finited @ ' + Date());
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
