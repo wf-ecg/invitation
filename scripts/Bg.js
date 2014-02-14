@@ -73,7 +73,7 @@ var Bg =
         redraw: function (mo) {
             this.compare();
             this._css = {
-                backgroundPosition: mo ? 0 : this.getBackCss(),
+                backgroundPosition: mo ? '50%' : this.getBackCss(),
                 height: this.port.all.high,
             };
             this.$.css(this._css);
