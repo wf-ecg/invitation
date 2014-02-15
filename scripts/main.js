@@ -128,7 +128,7 @@ var $W, $$, Main = (function (W, $) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _init() {
-        C.error('init @ ' + Date() + ' debug:', W.debug);
+        C.info('init @ ' + Date() + ' debug:', W.debug);
         if (self.inited(true)) {
             return null;
         }
