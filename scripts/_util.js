@@ -86,10 +86,10 @@ var Util = (function (W, $) { // IIFE
             return W.screen.height;
         },
         visualWidth: function () {
-            return W.innerWidth;
+            return W.isIE ? DE.offsetWidth : W.innerWidth;
         },
         visualHeight: function () {
-            return W.innerHeight;
+            return W.isIE ? DE.offsetHeight : W.innerHeight;
         },
         orientation: function () {
             var diff = this.aspect();
