@@ -12,9 +12,11 @@ var Gallery =
     //
     Df = { // DEFAULTS
         gal: '#Gallery',
+        overlay: '.ribbon.overlay',
         inits: function () {
             //
             this.gal = $(this.gal);
+            this.overlay = $(this.overlay, this.gal.closest('section'));
             this.all = this.gal.find('img').exempt(OK).hide().end();
         },
     };
@@ -23,15 +25,22 @@ var Gallery =
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
+
+    function _enter() {
+        Df.all.addClass('grid').add(Df.overlay).show();
+    }
+
+    function _leave() {
+        Df.all.removeClass('zoom grid').exempt(OK).add(Df.overlay).hide();
+    }
+
     function _bindGallery() {
+        _leave();
         //
         Df.gal.on('inview', function (e, showing, h, vsides) {
-            if (showing) {
-                Df.all.addClass('grid').show();
-            } else {
-                Df.all.removeClass('zoom grid').exempt(OK).hide();
-            }
+            (showing) ? _enter() : _leave();
         });
+
         Df.all.on('click', function () {
             var me = $(this),
             zoomed = me.is('.zoom');

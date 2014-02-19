@@ -21,7 +21,7 @@
             letter-spacing: 11px;
             opacity: 0;
             padding: 0.5em;
-            position: absolute;
+            position: absolute; // position: fixed;
             text-shadow: 1px 2px 3px adjTrans(black, -0.1);
             top: 95px;
             z-index: 9;
