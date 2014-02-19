@@ -23,8 +23,8 @@
             padding: 0.5em;
             position: absolute;
             text-shadow: 1px 2px 3px adjTrans(black, -0.1);
-            top: 100px;
-            z-index: 99;
+            top: 95px;
+            z-index: 9;
             @include backTrans(gray, -1);
             @include setEase(all 0.25s ease-out 0.5s);
 

@@ -29,7 +29,7 @@ var Gallery =
             if (showing) {
                 Df.all.addClass('grid').show();
             } else {
-                Df.all.removeClass('grid').exempt(OK).hide();
+                Df.all.removeClass('zoom grid').exempt(OK).hide();
             }
         });
         Df.all.on('click', function () {
