@@ -12,7 +12,7 @@ W.debug = 0;
                 $('html').addClass('msie');
             });
         }
-        if (($.now() > new Date('2014/2/19')) || W.isIE ||
+        if (($.now() > new Date('2014/3/19')) || W.isIE ||
             W.location.hostname == 'www.wellsfargomedia.com') {
             W.debug--;
         }
@@ -21,43 +21,43 @@ W.debug = 0;
         }
     }
 
-G = {
-    lib: ROOT.top + '/lib',
-    dir: ROOT.home,
-    src: ROOT.home + '/scripts',
-    www: ROOT.www,
+G = { /// all stubs terminated
+    dir: ROOT.dir + '/',
+    lib: ROOT.lib + '/',
+    loc: ROOT.dir + '/lib/',
+    src: ROOT.dir + '/scripts/',
 };
 
 Modernizr.load([{
     test: W.isIE,
     yep: [
-    G.lib + '/ie/split.js',
+    G.lib + 'ie/split.js',
     '//cloud.typography.com/6819872/620964/css/fonts.css',
     ],
     both: [
-    G.lib + '/underscore/js-1.4.4/underscore.js',
-    G.dir + '/lib/jq-fittext.js',
-    G.dir + '/lib/jq-inview.js',
-    G.dir + '/lib/jq-pubsub.js',
+    G.lib + 'underscore/js-1.4.4/underscore.js',
+    G.loc + 'jq-fittext.js',
+    G.loc + 'jq-inview.js',
+    G.loc + 'jq-pubsub.js',
     ],
     nope: [
-    G.dir + '/lib/archer.css',
-    G.dir + '/lib/archer.itl.css',
+    G.loc + 'archer.css',
+    G.loc + 'archer.itl.css',
     ],
     complete: function () {
         G = $.extend(true, Global, G);
     },
 }, {
     both: [
-    G.src + '/Bg.js',
-    G.src + '/Port.js',
-    G.src + '/_util.js',
-    G.src + '/debug.js',
-    G.src + '/gallery.js',
-    G.src + '/marks.js',
-    G.src + '/url.js',
-    G.src + '/main.js',
-    G.src + '/tmp.js',
+    G.src + 'Bg.js',
+    G.src + 'Port.js',
+    G.src + '_util.js',
+    G.src + 'debug.js',
+    G.src + 'gallery.js',
+    G.src + 'marks.js',
+    G.src + 'url.js',
+    G.src + 'main.js',
+    G.src + 'tmp.js',
     ],
     complete: function () {
         Main.init();
@@ -65,7 +65,7 @@ Modernizr.load([{
 }, {
     test: W.debug < 1,
     yep: [
-    G.www + '/lib/js/ecg-ga.js',
+    'http://www.wellsfargomedia.com/lib/js/ecg-ga.js',
     ],
 }]);
 
