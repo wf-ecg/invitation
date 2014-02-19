@@ -118,17 +118,17 @@ var Url =
                 _tokenSwap();
             });
             _datax([
-                'Monday, April 28 at the Grounds',
+                'Pro Am, Quail Hollow Club – Wednesday April 30',
                 '',
                 '',
                 '',
-                'Friday, May 2 at the Club House',
-                'Saturday, May 3 at the Grounds',
-                'Sunday, May 4 at the Hospitality Tent 1',
-                'Jan D. Client',
-                'Jon Banker',
-                'abc@def.xyz',
-                '123-123-1234',
+                'On Course guest, Quail Hollow Club – Wednesday April 30',
+                '',
+                '',
+                'Your Name',
+                'Banker Name',
+                'email@internet.biz',
+                '321-123-4312',
                 ]);
         }
 
