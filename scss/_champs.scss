@@ -3,7 +3,7 @@
 #Wrap .champs {
     @include backTrans(#5e8206, -0.2);
     top: 5%;
-    margin: 2em 5%;
+    margin: 2em auto;
     min-width: 420px;
     max-width: 600px;
     padding: 2em;
@@ -12,10 +12,9 @@
     right: 0%;
 
     &.fixed {
-        top: 72px;
-        left: 5%;
-        right: 5%;
+        position: fixed;
     }
+
     h1 {
         font-size: 3em;
         letter-spacing: 0.1em;
@@ -25,7 +24,7 @@
     table {
         border-collapse: separate;
         border-spacing: 0 0.15em;
-        font-size: 2.3em;
+        font-size: 2em;
         margin: auto;
 
         td {

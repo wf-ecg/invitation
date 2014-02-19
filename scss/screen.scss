@@ -1,6 +1,7 @@
 /* SCREEN */
 @import "compass/css3";
-@import "_def";
+@import "__def";
+@import "_base";
 
 //  font-weights
 //    400 = Light     500 = Regular
@@ -16,28 +17,3 @@
 @import "_ribbon";
 @import "_misc";
 @import "_text";
-
-html {
-    background-color: darken($green, 10%);
-}
-body {
-    background-color: black;
-    font-size: 10px;
-    margin: auto;
-}
-img {
-    display: block;
-    margin: auto;
-}
-body, section, div, header, footer {
-    @include box-sizing(border-box);
-}
-section {
-    @include setEase(all 0.125s ease-out);
-}
-sup {
-    font-size: 0.6em;
-}
-
-/*::-moz-selection{ background-color: transparent; color: inherit; text-shadow: none; }*/
-::selection { background-color: transparent; color: inherit; text-shadow: none; }

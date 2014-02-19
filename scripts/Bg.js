@@ -21,7 +21,7 @@ var Bg =
             backgroundImage: 'url(images/' + my.data.image + ')',
         });
 
-        my.$.on('dblclick.' + name, function () {
+        _debug(2) && my.$.on('dblclick.' + name, function () {
             _debug() && C.log(my);
         });
         $.PS_sub('resize', function () {
@@ -70,10 +70,10 @@ var Bg =
             // negative as we scroll up
             return '50% ' + this._y + 'px';
         },
-        redraw: function () {
+        redraw: function (mo) {
             this.compare();
             this._css = {
-                backgroundPosition: this.getBackCss(),
+                backgroundPosition: mo ? '50%' : this.getBackCss(),
                 height: this.port.all.high,
             };
             this.$.css(this._css);

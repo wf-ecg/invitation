@@ -70,8 +70,9 @@
 .marker {
     display: none;
 }
-.darken > * {
+.darken > .bubble {
     @include backTrans(black, -0.4);
+    height: 200%;
 }
 .padded {
     @extend %abscent;
@@ -91,6 +92,6 @@
     margin: 0.5em;
 }
 .fixed {
-    position: fixed !important;
-    margin: 0 !important;
+    position: fixed;
+    margin: 0;
 }

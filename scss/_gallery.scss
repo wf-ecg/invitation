@@ -36,12 +36,18 @@ $neg: -1 * $pos;
         }
         &.zoom {
             background-color: black;
-            top: -15% !important;
             height: auto !important;
             opacity: 1;
-            position: absolute;
+            position: fixed;
+            top: 5% !important;
             width: 95%;
             z-index: 11;
+            @include setTransform( scale(1.25) );
+
+            &:hover {
+                @include setTransform( scale(1) );
+                z-index: 9;
+            }
         }
     }
     .pic1 { left: $neg; top: $neg; } .pic2 { left: 0px; top: $neg; } .pic3 { left: $pos; top: $neg; }

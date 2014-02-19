@@ -4,7 +4,7 @@
 
 var Data, G, W = (W || window);
 
-W.debug = -1;
+W.debug = 0;
     lax_debug : {
         if ($.browser.msie) {
             W.isIE = true;
@@ -41,7 +41,8 @@ Modernizr.load([{
     G.dir + '/lib/jq-pubsub.js',
     ],
     nope: [
-    G.dir + '/fonts.css',
+    G.dir + '/lib/archer.css',
+    G.dir + '/lib/archer.itl.css',
     ],
     complete: function () {
         G = $.extend(true, Global, G);

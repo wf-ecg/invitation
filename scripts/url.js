@@ -81,7 +81,7 @@ var Url =
     function _tokenSwap() {
         var arr, dat;
         //
-        arr = '_bname _cname _dates0 _dates1 _dates2 _dates3 _dates4 _dates5 _dates6 _bemail _bphone'.split(' ');
+        arr = '_dates0 _dates1 _dates2 _dates3 _dates4 _dates5 _dates6 _cname _bname _bemail _bphone'.split(' ');
         dat = _datax();
         //
         dat && $.each(arr, function (i, e) {
@@ -118,17 +118,17 @@ var Url =
                 _tokenSwap();
             });
             _datax([
-                'Jon Banker',
-                'Jan D. Client',
-                'Monday, April 28 at Grounds',
-                'Tuesday, April 29 at Hospitality Tent 1',
-                'Wednesday, April 30 at Hospitality Tent 2',
-                'Thursday, May 1 at Hospitality Tent 3',
-                'Friday, May 2 at Club House',
-                'Saturday, May 3 at Grounds',
-                'Sunday, May 4 at Hospitality Tent 1',
-                'abc@def.xyz',
-                '123-123-1234',
+                'Pro Am, Quail Hollow Club – Wednesday April 30',
+                '',
+                '',
+                '',
+                'On Course guest, Quail Hollow Club – Wednesday April 30',
+                '',
+                '',
+                'Your Name',
+                'Banker Name',
+                'email@internet.biz',
+                '321-123-4312',
                 ]);
         }
 
