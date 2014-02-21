@@ -45,6 +45,7 @@ $neg: -1 * $pos;
             @include setTransform( scale(1.111111) );
 
             &:hover {
+                top: -5% !important;
                 @include setTransform( scale(1) );
             }
         }
