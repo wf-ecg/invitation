@@ -51,6 +51,7 @@ Modernizr.load([{
     both: [
     G.src + 'Bg.js',
     G.src + 'Port.js',
+    G.src + 'Viewport.js',
     G.src + '_util.js',
     G.src + 'debug.js',
     G.src + 'gallery.js',

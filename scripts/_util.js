@@ -1,5 +1,5 @@
 /*jslint es5:true, white:false */
-/*globals jQuery, window */
+/*globals Viewport, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Util = (function (W, $) { // IIFE
     var name = 'Util',
@@ -66,41 +66,13 @@ var Util = (function (W, $) { // IIFE
     if (_undef(W.debug)) {
         W.debug = 1;
     }
-
+    _Port = Viewport;
     _Mob = {
         agent: function () {
             return (/mobi|android/i).test(W.navigator.userAgent);
         },
         zoomed: function () {
             return _Port.layoutWidth() / _Port.visualWidth();
-        },
-    };
-    _Port = {
-        aspect: function () {
-            return this.visualWidth() / this.visualHeight();
-        },
-        layoutWidth: function () {
-            return W.screen.width;
-        },
-        layoutHeight: function () {
-            return W.screen.height;
-        },
-        visualWidth: function () {
-            return W.isIE ? DE.offsetWidth : W.innerWidth;
-        },
-        visualHeight: function () {
-            return W.isIE ? DE.offsetHeight : W.innerHeight;
-        },
-        orientation: function () {
-            var diff = this.aspect();
-
-            if (diff > 0.9 && diff < 1.1) {
-                return 'square';
-            }
-            return diff > 1 ? 'landscape' : 'portrait';
-        },
-        scrollbarWidth: function () {
-            return W.outerWidth - W.innerWidth;
         },
     };
 
