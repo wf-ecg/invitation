@@ -69,7 +69,7 @@ var $W, $$, Main = (function (W, $) { // IIFE
     }
 
     function _isMobile() {
-        Df.large = U.viewport.visualWidth() > 600;
+        Df.large = U.viewport.visualWidth() > 799;
         Df.mobile = U.mobile.agent();
         Df.desktop = Df.large && !Df.mobile;
         return !Df.desktop;

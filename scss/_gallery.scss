@@ -41,7 +41,7 @@ $neg: -1 * $pos;
             margin: 2.5% 5%;
             opacity: 1;
             position: fixed;
-            bottom: 0%;
+            bottom: 5%;
             width: 90%;
             z-index: 111;
             @include setTransform( scale(1.11) );
