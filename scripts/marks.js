@@ -1,8 +1,7 @@
 /*jslint es5:true, white:false */
-/*globals jQuery, window */
+/*globals Global, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Marks =
-(function (W, $) { // IIFE
+var Marks = (function (W, $) { // IIFE
     var name = 'Marks',
     self, C, Df, G = Global;
     //
@@ -11,8 +10,7 @@ var Marks =
     //
     Df = { // DEFAULTS
         step: 500,
-        inits: function () {
-        }
+        inits: function () {}
     };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
@@ -41,7 +39,7 @@ var Marks =
             return null;
         }
         Df.inits();
-
+        _debug(1) && C.debug(name, '_init');
         W.setTimeout(_makeMarks, 999);
 
         return self;

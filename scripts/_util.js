@@ -140,7 +140,7 @@ var Util = (function (W, $) { // IIFE
         I: _reflect,
         scroll: _scroll,
         mobile: View.mobile,
-        viewport: View,
+        viewport: View.port,
         undef: _undef,
         debug: _debug,
     });

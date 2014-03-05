@@ -1,8 +1,7 @@
 /*jslint es5:true, white:false */
-/*globals $$, $W, Util, jQuery, window */
+/*globals Global, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Gallery =
-(function (W, $) { // IIFE
+var Gallery = (function (W, $) { // IIFE
     var name = 'Gallery',
     self, C, OK, Df, G = Global;
     //
@@ -20,6 +19,7 @@ var Gallery =
             this.all = this.gal.find('img').exempt(OK).hide().end();
         },
     };
+
     function _debug(n) {
         return W.debug >= (n || 0);
     }
@@ -71,8 +71,8 @@ var Gallery =
             return null;
         }
         Df.inits();
-
         _bindGallery();
+        _debug(1) && C.debug(name, '_init');
 
         return self;
     }

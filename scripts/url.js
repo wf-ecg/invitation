@@ -1,8 +1,7 @@
 /*jslint es5:true, white:false, evil:true */
-/*globals $W, History, jQuery, window */
+/*globals Global, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Url =
-(function (W, $) { // IIFE
+var Url = (function (W, $) { // IIFE
     var name = 'Url',
     self, C, L, Df, G = Global;
     //
@@ -25,14 +24,17 @@ var Url =
     };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
+
     function _debug(n) {
         return W.debug >= (n || 0);
     }
 
     function _clear() {
-        if (!W.isIE) W.location.hash = '' ;
-    // History.pushState(_datax(), 'WFC Invitation', './index.html');
+        if (!W.isIE) {
+            W.location.hash = '';
+        }
     }
+    // History.pushState(_datax(), 'WFC Invitation', './index.html');
 
     function _read() {
         var str = W.location.hash;
@@ -63,7 +65,7 @@ var Url =
         // boundary
         str = str.replace(/\"\,\"/g, '&');
 
-        str = '' + str + '/';
+        str = String() + str + '/';
         W.location.hash = str;
     }
 
@@ -84,7 +86,7 @@ var Url =
         arr = '_dates0 _dates1 _dates2 _dates3 _dates4 _dates5 _dates6 _cname _bname _bemail _bphone'.split(' ');
         dat = _datax();
         //
-        dat && $.each(arr, function (i, e) {
+        if (dat) $.each(arr, function (i, e) {
             var ele, val;
             //
             ele = $('.' + e);
