@@ -1,5 +1,5 @@
 /*jslint es5:true, white:false */
-/*globals Bg, Debug, Gallery, Global, Port, Url, Util, _, jQuery, window */
+/*globals _, Bg, Debug, Gallery, Global, Port, Url, Util, View, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var $W, $$, Main = (function (W, $) { // IIFE
     var name = 'Main',

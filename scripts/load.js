@@ -39,6 +39,7 @@ Modernizr.load([{
     G.loc + 'jq-fittext.js',
     G.loc + 'jq-inview.js',
     G.loc + 'jq-pubsub.js',
+    G.loc + 'js-view.js',
     ],
     nope: [
     G.loc + 'archer.css',
@@ -51,7 +52,6 @@ Modernizr.load([{
     both: [
     G.src + 'Bg.js',
     G.src + 'Port.js',
-    G.src + 'Viewport.js',
     G.src + '_util.js',
     G.src + 'debug.js',
     G.src + 'gallery.js',

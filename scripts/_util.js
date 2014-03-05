@@ -1,9 +1,9 @@
 /*jslint es5:true, white:false */
-/*globals Viewport, jQuery, window */
+/*globals View, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Util = (function (W, $) { // IIFE
     var name = 'Util',
-        C, D, DE, self, easing, _Port;
+        C, D, DE, self, easing;
 
     C = W.console;
     D = W.document;
@@ -66,7 +66,6 @@ var Util = (function (W, $) { // IIFE
     if (_undef(W.debug)) {
         W.debug = 1;
     }
-    _Port = Viewport;
 
     // reflect function takes number arg (def 1) (0 = *)
     // returns function that slices and returns args array
@@ -140,8 +139,8 @@ var Util = (function (W, $) { // IIFE
         isDef: _undef,
         I: _reflect,
         scroll: _scroll,
-        mobile: _Port.Mobile,
-        viewport: _Port,
+        mobile: View.mobile,
+        viewport: View,
         undef: _undef,
         debug: _debug,
     });
