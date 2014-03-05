@@ -1,8 +1,8 @@
 /*jslint es5:true, white:false */
-/*globals window */
+/*globals window, jQuery */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Viewport =
-(function (W) { // IIFE
+(function (W, $) { // IIFE
     var C = W.console,
         self, name = 'Viewport';
 
@@ -53,12 +53,44 @@ var Viewport =
                     'scrollW/' + this._e.scrollWidth ]+'',
             };
         },
-    }
+    };
+
+    self.Mobile = {
+        bugged: false,
+        addBug: function (){
+            $('<cite class="bug">M</cite>').css({
+                backgroundColor: 'rgba(0,0,0,0.5)',
+                bottom: '-2px',
+                color: 'white',
+                position: 'fixed',
+                right: 0,
+                zIndex: '9999',
+            }).appendTo('body');
+
+            this.bugged = true;
+        },
+        agent: function () {
+            var viswid = self.visualWidth(),
+                mobdev = (/mobi|android/i).test(W.navigator.userAgent);
+
+            if (!this.bugged && //
+                (viswid < 973 && viswid % 10 === 3) && // webdev responsive layouts add 13px
+                (/chrome/i).test(W.navigator.userAgent)
+                ){
+                mobdev = true;
+                this.addBug();
+            }
+            return mobdev;
+        },
+        zoomed: function () {
+            return self.layoutWidth() / self.visualWidth();
+        },
+    };
 
     _debug() && C.log([name]);
 
     return self;
-}(window));
+}(window, jQuery));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 

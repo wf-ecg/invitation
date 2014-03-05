@@ -3,7 +3,7 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Util = (function (W, $) { // IIFE
     var name = 'Util',
-        C, D, DE, self, easing, _Port, _Mob;
+        C, D, DE, self, easing, _Port;
 
     C = W.console;
     D = W.document;
@@ -67,14 +67,6 @@ var Util = (function (W, $) { // IIFE
         W.debug = 1;
     }
     _Port = Viewport;
-    _Mob = {
-        agent: function () {
-            return (/mobi|android/i).test(W.navigator.userAgent);
-        },
-        zoomed: function () {
-            return _Port.layoutWidth() / _Port.visualWidth();
-        },
-    };
 
     // reflect function takes number arg (def 1) (0 = *)
     // returns function that slices and returns args array
@@ -148,7 +140,7 @@ var Util = (function (W, $) { // IIFE
         isDef: _undef,
         I: _reflect,
         scroll: _scroll,
-        mobile: _Mob,
+        mobile: _Port.Mobile,
         viewport: _Port,
         undef: _undef,
         debug: _debug,
