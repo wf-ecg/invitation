@@ -118,17 +118,17 @@ var Url =
                 _tokenSwap();
             });
             _datax([
-                'Pro Am, Quail Hollow Club – Wednesday April 30',
                 '',
                 '',
                 '',
-                'On Course guest, Quail Hollow Club – Wednesday April 30',
+                '',
+                'To Quail Hollow',
                 '',
                 '',
-                'Your Name',
-                'Banker Name',
-                'email@internet.biz',
-                '321-123-4312',
+                'My Friend',
+                'Your Host',
+                'me',
+                '',
                 ]);
         }
 
