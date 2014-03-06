@@ -1,6 +1,7 @@
 /*jslint es5:true, white:false */
 /*globals View, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+// CHAMP invitation
 var Util = (function (W, $) { // IIFE
     var name = 'Util',
         C, D, DE, self, easing;
