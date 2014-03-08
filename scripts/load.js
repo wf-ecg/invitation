@@ -35,7 +35,7 @@ Modernizr.load([{
     '//cloud.typography.com/6819872/620964/css/fonts.css',
     ],
     both: [
-    G.lib + 'underscore/js-1.4.4/underscore.js',
+    G.lib + 'underscore/js-1.4.4/lodash.underscore.js',
     G.loc + 'jq-fittext.js',
     G.loc + 'jq-inview.js',
     G.loc + 'jq-pubsub.js',

@@ -128,7 +128,7 @@ var $W, $$, Main = (function (W, $) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _init() {
-        C.info('init @ ' + Date() + ' debug:', W.debug);
+        C.info('init @ ' + Date() + ' debug:', W.debug, self.mode);
         if (self.inited(true)) {
             return null;
         }
@@ -152,6 +152,7 @@ var $W, $$, Main = (function (W, $) { // IIFE
         },
         init: _init,
         platform: _setPlatform,
+        mode: eval(U.testrict),
     });
 
     return self;
