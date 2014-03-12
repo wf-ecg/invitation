@@ -15,6 +15,7 @@ var Url = (function (W, $) { // IIFE
         inits: function () {
             this.dirty = L.href.slice(-1) === '#';
             this.loaded = L.hash.length > 9;
+
             if (L.href.slice(-1) === '#') {
                 this.state = 'dirty';
             } else if (L.hash.length > 9) {
@@ -31,7 +32,7 @@ var Url = (function (W, $) { // IIFE
 
     function _clear() {
         if (!W.isIE) {
-            W.location.hash = '';
+            //W.location.hash = '';
         }
     }
     // History.pushState(_datax(), 'WFC Invitation', './index.html');
@@ -47,6 +48,7 @@ var Url = (function (W, $) { // IIFE
         str = str.replace(/\_/g, ' ');
         str = str.replace(/\+/g, '. ');
         str = str.replace(/\//g, ', ');
+        str = str.replace(/\-\-\-/g, ' — ');
         str = str.replace(/\-\-/g, ' – ');
         // boundary
         str = str.replace(/&/g, '","');
