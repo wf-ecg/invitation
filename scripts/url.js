@@ -92,12 +92,16 @@ var Url = (function (W, $) { // IIFE
             ele = $('.' + e);
             val = dat[i] || '';
             ele.text(val);
-            //
+            // Handle Email and Phone differently
             if (ele.attr('href') === '#') {
                 if (e === '_bemail') {
                     ele.attr('href', 'mailto:' + val);
                 } else if (e === '_bphone') {
-                    ele.attr('href', 'tel:' + val);
+                    if (val) {
+                        ele.attr('href', 'tel:' + val);
+                    } else {
+                        $('#PhoneOpt').hide();
+                    }
                 }
             }
         });
