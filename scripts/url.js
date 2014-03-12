@@ -41,6 +41,7 @@ var Url = (function (W, $) { // IIFE
         var str = W.location.hash;
         //
         str = str.slice(1, - 1);
+        str = str.replace(/%5C/g, '\\');
         // brackets
         str = str.replace(/\^|%5E/g, '["');
         str = str.replace(/\$/g, '"]');
