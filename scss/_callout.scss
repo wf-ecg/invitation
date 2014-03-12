@@ -1,0 +1,43 @@
+/* CALLOUT */
+
+.callout {
+    @include backTrans(white, -0.1);
+    background-position: 1em 1em;
+    background-repeat: no-repeat;
+    background-size: 35%;
+    bottom: 9em;
+    color: $green;
+    display: inline-block;
+    .msie & {
+        font-size: 1.4em;
+    }
+    font-size: 1.2em;
+    line-height: 1.3em;
+    margin: 15em auto auto 1em;
+    max-width: 36em;
+    padding: 1.5em;
+    position: absolute;
+
+    p {
+        font-weight: 200;
+        text-align: left;
+    }
+    img {
+        margin: auto;
+    }
+    &.reading img {
+        margin-top: -9px;
+        height: 5em;
+    }
+    &.succeed img {
+        height: 5em;
+    }
+    &.tending {
+        bottom: 7em;
+        width: 30em;
+
+        h4 {
+            text-align: left;
+        }
+    }
+}
