@@ -35,20 +35,16 @@ var Data, Glob;
         test: W.isIE,
         yep: [
         G.lib + 'ie/split.js',
-        '//cloud.typography.com/6819872/620964/css/fonts.css', /* Normal */
-        /* '//cloud.typography.com/6819872/633184/css/fonts.css', ScrnSmrt */
         ],
         both: [
+        '//cloud.typography.com/6819872/620964/css/fonts.css', /* Normal */
+        /* '//cloud.typography.com/6819872/633184/css/fonts.css', ScrnSmrt */
         G.lib + 'underscore/js-1.4.4/lodash.underscore.js',
         /* */
         G.loc + 'jq-fittext.js',
         G.loc + 'jq-inview.js',
         G.loc + 'jq-pubsub.js',
         G.loc + 'js-view.js',
-        ],
-        nope: [
-        G.loc + 'archer.css',
-        G.loc + 'archer.itl.css',
         ],
         complete: function () {
             G = $.extend(true, Global, G);
