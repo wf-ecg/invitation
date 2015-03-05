@@ -1,5 +1,5 @@
 /*jslint es5:true, white:false */
-/*globals $$, $W, Util, jQuery, window, _ */
+/*globals Url, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var TMP = (function (W, $) {
     var C, self, name;
@@ -14,10 +14,10 @@ var TMP = (function (W, $) {
     }
 
     function _bind() {
-        var champs = $('.champs')
+        var champs = $('.champs');
 
         $('#X2a .ribbon').on('inview', function (e, showing, h, vsides) {
-            if (showing && !$.browser.msie){
+            if (showing && !$.browser.msie) {
                 champs.addClass('fixed');
             } else {
                 champs.removeClass('fixed');
@@ -27,10 +27,10 @@ var TMP = (function (W, $) {
     }
 
     var str;
+
     function _fake() {
         str = str || Url.datax().join('/'); // restore
-
-        str = W.prompt ('add text sep’d by slashes', str);
+        str = W.prompt('add text sep’d by slashes', str);
         str && Url.datax(str.split('/')); // stop null
     }
 

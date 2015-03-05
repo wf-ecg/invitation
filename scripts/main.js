@@ -1,5 +1,5 @@
 /*jslint es5:true, white:false */
-/*globals Bg, Debug, Gallery, Global, Port, Url, Util, _, jQuery, window */
+/*globals _, Bg, Debug, Gallery, Global, Port, Url, Util, View, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var $W, $$, Main = (function (W, $) { // IIFE
     var name = 'Main',
@@ -69,7 +69,7 @@ var $W, $$, Main = (function (W, $) { // IIFE
     }
 
     function _isMobile() {
-        Df.large = U.viewport.visualWidth() > 600;
+        Df.large = U.viewport.visualWidth() > 799;
         Df.mobile = U.mobile.agent();
         Df.desktop = Df.large && !Df.mobile;
         return !Df.desktop;
@@ -128,7 +128,7 @@ var $W, $$, Main = (function (W, $) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _init() {
-        C.info('init @ ' + Date() + ' debug:', W.debug);
+        C.info('init @ ' + Date() + ' debug:', W.debug, self.mode);
         if (self.inited(true)) {
             return null;
         }
@@ -152,6 +152,7 @@ var $W, $$, Main = (function (W, $) { // IIFE
         },
         init: _init,
         platform: _setPlatform,
+        mode: eval(U.testrict),
     });
 
     return self;

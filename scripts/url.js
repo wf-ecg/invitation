@@ -1,8 +1,7 @@
 /*jslint es5:true, white:false, evil:true */
-/*globals $W, History, jQuery, window */
+/*globals Global, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Url =
-(function (W, $) { // IIFE
+var Url = (function (W, $) { // IIFE
     var name = 'Url',
     self, C, L, Df, G = Global;
     //
@@ -16,6 +15,7 @@ var Url =
         inits: function () {
             this.dirty = L.href.slice(-1) === '#';
             this.loaded = L.hash.length > 9;
+
             if (L.href.slice(-1) === '#') {
                 this.state = 'dirty';
             } else if (L.hash.length > 9) {
@@ -25,19 +25,23 @@ var Url =
     };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
+
     function _debug(n) {
         return W.debug >= (n || 0);
     }
 
     function _clear() {
-        if (!W.isIE) W.location.hash = '' ;
-    // History.pushState(_datax(), 'WFC Invitation', './index.html');
+        if (!W.isIE) {
+            //W.location.hash = '';
+        }
     }
+    // History.pushState(_datax(), 'WFC Invitation', './index.html');
 
     function _read() {
         var str = W.location.hash;
         //
         str = str.slice(1, - 1);
+        str = str.replace(/%5C/g, '\\');
         // brackets
         str = str.replace(/\^|%5E/g, '["');
         str = str.replace(/\$/g, '"]');
@@ -45,6 +49,7 @@ var Url =
         str = str.replace(/\_/g, ' ');
         str = str.replace(/\+/g, '. ');
         str = str.replace(/\//g, ', ');
+        str = str.replace(/\-\-\-/g, ' — ');
         str = str.replace(/\-\-/g, ' – ');
         // boundary
         str = str.replace(/&/g, '","');
@@ -63,7 +68,7 @@ var Url =
         // boundary
         str = str.replace(/\"\,\"/g, '&');
 
-        str = '' + str + '/';
+        str = String() + str + '/';
         W.location.hash = str;
     }
 
@@ -84,18 +89,22 @@ var Url =
         arr = '_dates0 _dates1 _dates2 _dates3 _dates4 _dates5 _dates6 _cname _bname _bemail _bphone'.split(' ');
         dat = _datax();
         //
-        dat && $.each(arr, function (i, e) {
+        if (dat) $.each(arr, function (i, e) {
             var ele, val;
             //
             ele = $('.' + e);
             val = dat[i] || '';
             ele.text(val);
-            //
+            // Handle Email and Phone differently
             if (ele.attr('href') === '#') {
                 if (e === '_bemail') {
                     ele.attr('href', 'mailto:' + val);
                 } else if (e === '_bphone') {
-                    ele.attr('href', 'tel:' + val);
+                    if (val) {
+                        ele.attr('href', 'tel:' + val);
+                    } else {
+                        $('#PhoneOpt').hide();
+                    }
                 }
             }
         });
@@ -118,17 +127,17 @@ var Url =
                 _tokenSwap();
             });
             _datax([
-                'Pro Am, Quail Hollow Club – Wednesday April 30',
                 '',
                 '',
                 '',
-                'On Course guest, Quail Hollow Club – Wednesday April 30',
+                '',
+                'To Quail Hollow',
                 '',
                 '',
-                'Your Name',
-                'Banker Name',
-                'email@internet.biz',
-                '321-123-4312',
+                'My Friend',
+                'Your Host',
+                'me',
+                '',
                 ]);
         }
 

@@ -1,8 +1,7 @@
 /*jslint es5:true, white:false */
-/*globals $$, Marks, jQuery, window */
+/*globals $$, Gallery, Global, Marks, TMP, jQuery, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Debug =
-(function (W, $) { // IIFE
+var Debug = (function (W, $) { // IIFE
     var name = 'Debug',
     self, C, Df, G = Global;
     //
@@ -45,10 +44,10 @@ var Debug =
             return null;
         }
         Df.inits();
-
         _bind();
         $$.marks = W.Marks && Marks.init();
 
+        _debug(1) && C.debug(name, '_init');
         return self;
     }
 
